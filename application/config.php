@@ -5,7 +5,7 @@
  * @author hebidu <email:346551990@qq.com>
  */
 
-define("ITBOYE_CDN", "http://dev.cdn.sunsunxiaoli.com");
+define("ITBOYE_CDN", "http://devapi.cdn.sunsunxiaoli.com");
 
 return [
 
@@ -35,14 +35,14 @@ return [
     ],
     // 应用模式状态
     //地址配置
-    'file_download_url'=>'http://dev.sunsunxiaoli.com/index.php/user_file/download?id=',
-    'site_url'=>'http://dev.sunsunxiaoli.com',
-    'api_url'=>'http://dev.sunsunxiaoli.com/index.php',
-    'avatar_url'=>'http://dev.sunsunxiaoli.com/index.php/picture/avatar',
-    'picture_url'=>'http://dev.sunsunxiaoli.com/index.php/picture/index?id=',
-    'file_curl_upload_url'=>'http://dev.sunsunxiaoli.com/index.php/file/curl_upload',
-    'user_file_curl_upload_url'=>'http://dev.sunsunxiaoli.com/index.php/user_file/curl_upload',
-    'upload_path'=>'http://dev.sunsunxiaoli.com/',
+    'file_download_url'=>'http://devapi.sunsunxiaoli.com/index.php/user_file/download?id=',
+    'site_url'=>'http://devapi.sunsunxiaoli.com',
+    'api_url'=>'http://devapi.sunsunxiaoli.com/index.php',
+    'avatar_url'=>'http://devapi.sunsunxiaoli.com/index.php/picture/avatar',
+    'picture_url'=>'http://devapi.sunsunxiaoli.com/index.php/picture/index?id=',
+    'file_curl_upload_url'=>'http://devapi.sunsunxiaoli.com/index.php/file/curl_upload',
+    'user_file_curl_upload_url'=>'http://devapi.sunsunxiaoli.com/index.php/user_file/curl_upload',
+    'upload_path'=>'http://devapi.sunsunxiaoli.com/',
 
     //百度地图ak
     'baidu_map_ak' =>'NB4fAMqntPrs1RSGkTXBzjK9FVCMx9ix',//300w/d
