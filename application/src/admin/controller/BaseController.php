@@ -61,6 +61,7 @@ class BaseController extends Controller {
 		//设置程序版本
 		$this->_assignVars();
 		$this->_defined();
+		$this->_setAjax();
 	}
 
 	protected function _defined(){
@@ -99,6 +100,18 @@ class BaseController extends Controller {
 		}
     }
 
+    protected function _setAjax(){
+        header('Access-Control-Allow-Origin:*');
+        header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
+        header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, sessionId");
+
+        $header = Request::instance()->header();
+        $sessionId = isset($header['sessionid']) ? $header['sessionid'] : null;
+
+        if(!empty($sessionId)) {
+            session_id($sessionId);
+        }
+    }
 
 
 }

@@ -18,6 +18,42 @@ use app\src\menu\logic\MenuLogic;
 class MenuHelper
 {
 
+    public static function getVMenu($uid)
+    {
+
+        $menuList = AdminSessionHelper::getAdminTopMenuList($uid);
+        if ($menuList === false || is_null($menuList)) {//未缓存、或过期
+            $map = [];
+            $result = (new MenuLogic())->queryNoPaging($map, "sort desc");
+
+            $menuList = [];
+            if (!$result['status']) {
+                echo($result['info']);
+            } else {
+                $list = $result['info'];
+                $current_menus = AdminSessionHelper::getCurrentUserMenu();
+                $current_menus = explode(',', rtrim($current_menus, ','));
+
+                $current_menus = array_unique($current_menus);
+                foreach ($list as $val) {
+
+                    if (in_array($val['id'], $current_menus) || AdminFunctionHelper::isRoot($uid)) {
+                        $menuList[] = [
+                            'Id' => $val['id'],
+                            'ParentId' => $val['pid'],
+                            'Name' => $val['title'],
+                            'Icon' => $val['icon'],
+                            'UrlAddress' => $val['url'] != '#' ? $val['url'] : '#',
+                            'IsFront' => $val['is_front']
+                        ];
+                    }
+                }
+            }
+        }
+
+        return $menuList;
+    }
+
     public static function getBreadcrumb(){
         $breadcrumb = [];
         $active_menu_id = AdminSessionHelper::getCurrentActiveTopMenuId();

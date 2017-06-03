@@ -31,22 +31,34 @@ class Index extends BaseController {
         'hutouben'=>array('pwd'=>'123456','roledesc'=>'后台操作员')
     );
 
-	/**
-	 * 注销\登出
-	 */
-	public function logout() {
-        $uid = AdminSessionHelper::getUserId();
-        $auto_login_code = AdminSessionHelper::getAutoLoginCode();
+    /**
+     * 注销\登出
+     */
+    public function logout() {
+        if(request()->isAjax()){
+            $uid = AdminSessionHelper::getUserId();
+            $auto_login_code = AdminSessionHelper::getAutoLoginCode();
 
-        (new UserLogoutAction())->logout($uid,$auto_login_code);
+            (new UserLogoutAction())->logout($uid,$auto_login_code);
 
-        //会话
-        AdminSessionHelper::logout();
+            //会话
+            AdminSessionHelper::logout();
+            $this->success('退出成功');
+        }
+        if(request()->isGet()){
+            $uid = AdminSessionHelper::getUserId();
+            $auto_login_code = AdminSessionHelper::getAutoLoginCode();
 
-		$this -> redirect(url('index/login'));
-	}
+            (new UserLogoutAction())->logout($uid,$auto_login_code);
 
-	/**
+            //会话
+            AdminSessionHelper::logout();
+            $this -> redirect(url('index/login'));
+        }
+    }
+
+
+    /**
 	 * 登录检测
 	 */
 	public function checkLogin() {
@@ -76,7 +88,9 @@ class Index extends BaseController {
                 $user['_username'] = $username;
 
                 AdminSessionHelper::setLoginUserInfo($user);
-                $this -> success(L('SUC_LOGIN'), url('manager/index'));
+
+                $this -> success(L('SUC_LOGIN'), url('manager/index'), ['sessionid' => $this->session_id]);
+
             } else {
                 $this -> error($result['info'],url('index/login'));
             }
