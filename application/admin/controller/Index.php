@@ -115,7 +115,8 @@ class Index extends BaseController {
 	public function login() {
 		$this -> assignTitle("账号-登录");
 
-        return $this->fetch("learun/". request()->controller().'/'.request()->action());
+        return $this->fetch("default/index/vue-admin");
+//        return $this->fetch("learun/". request()->controller().'/'.request()->action());
 	}
 
 	/**

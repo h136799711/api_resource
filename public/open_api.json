@@ -1,0 +1,101 @@
+{
+  "last_modified":"2017-06-03 11:27:48",
+  "client_id": "by58018f50cfcae1",
+  "client_secret": "cb0bfaf5b9b2f53a216bf518e18fef18",
+  "alg":"md5_v3",
+  "project_name": "开放接口项目接口",
+  "url_list":[
+    {"desc":"APP测试环境地址(新)","url":"http://api.app.8raw.com/index.php?lang=en"}
+  ],
+  "meta_list":[
+    {"title":"友盟推送测试","value":"http://api.app.8raw.com/index.php/device_event/test_push?uid={用户id}&title=[test]"},
+    {"title":"快递查看地址","value":"http://api.app.8raw.com/web.php/Express/index?order_code={订单编号}&uid={用户id}&psw={用户密码}"},
+    {"title":"模拟支付完成(荒废)","value":"http://api.app.8raw.com/index.php/payback/test?pay_type={1=>支付宝(未毕),2=>Paypal(未毕),3=>微信,4=>余额(未毕)}&pay_cde={支付编号}[&fee={支付金额,分,可选,默认1}]"},
+    {"title":"支付宝异步通知地址","value":"http://api.app.8raw.com/index.php/Alipay/notify"},
+    {"title":"单图片查看接口","value":"http://api.app.8raw.com/index.php/picture/index?id={图片id}"},
+    {"title":"头像查看地址","value":"http://api.app.8raw.com/index.php/picture/avatar?uid={用户id}"},
+    {"title":"单图片上传接口地址","value":"http://api.app.8raw.com/index.php/file/upload"},
+    {"title":"单图片上传测试地址","value":"http://api.app.8raw.com/web.php/test/upload"},
+    {"title":"支持语言","value":" English:en;简体中文: zh-cn"},
+    {"title":"支持语言接口地址","value":"http://api.app.8raw.com/index.php/Lang/support"},
+    {"title":"接口文档地址","value":"https://doc.oschina.net/all-itboye"},
+    {"title":"开发环境接口地址","value":"http://api.app.8raw.com/index.php"},
+    {"title":"定时任务处理（手动调用请加上from=crontab）","value":"http://api.app.8raw.com/index.php/Task"}
+  ],
+  "api_list": [
+    {
+      "desc": "应用相关接口",
+      "list": [
+        {
+          "desc": "应用创建接口",
+          "type": "By_Clients_create",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "uid",
+              "desc": "登录用户id",
+              "value": "120"
+            },
+            {
+              "key": "client_name",
+              "desc": "应用名称",
+              "value": "默认应用"
+            },
+            {
+              "key": "note",
+              "desc": "备注",
+              "value": "这是一个默认的应用"
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+        },
+        {
+          "desc": "应用查询接口",
+          "type": "By_Clients_create",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "uid",
+              "desc": "登录用户id",
+              "value": "120"
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+        },
+        {
+          "desc": "应用密钥重置接口",
+          "type": "By_Clients_secretReset",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "uid",
+              "desc": "登录用户id",
+              "value": "120"
+            },
+            {
+              "key": "client_id",
+              "desc": "应用标识",
+              "value": "by222222"
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+        }
+      ]
+    },
+  ]
+}

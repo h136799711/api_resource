@@ -12,7 +12,7 @@ use app\src\system\logic\DatatreeLogicV2;
 class Material extends Admin
 {
 
-    public $pcode='00Q%';
+    public $pcode='00P002001%';
     public function avatar(){
 
 

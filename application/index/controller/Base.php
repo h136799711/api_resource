@@ -88,6 +88,9 @@ abstract class Base extends Rest{
 
         $algFactory = new AlgFactory();
         $this->algInstance = $algFactory->getAlg($alg);
+        if(!$this->algInstance){
+            $this->apiReturnErr('不支持的通信算法',ErrorCode::Invalid_Parameter);
+        }
         $data = $this->algInstance->decryptTransmissionData($post,$this->alParams->getClientSecret());
         $data = $this->filter_post($data);
         addLog("__BASE__DECODE__",$post,$data,"通信算法(".$alg.")",false,$clientInfo['client_name']);

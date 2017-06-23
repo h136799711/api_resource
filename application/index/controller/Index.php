@@ -85,13 +85,17 @@ class Index extends Base
 
             //3. 初始化业务类
             $class = new  $cls_name($this->algInstance,$this->decrypt_data);
-            if(!method_exists($class,$action_name)){
-                $this->apiReturnErr('api-'.lang('err_404'),ErrorCode::Not_Found_Resource);
+
+            $action_ver_name = $action_name.'_'.$this->getApiVer();
+
+            if(method_exists($class,$action_ver_name)){
+                //如果新版本的方法存在，则调用新方法
+                $class->$action_ver_name();
+            }elseif(method_exists($class,$action_name)){
+                $class->$action_name();
             }
 
-            //4. 调用方法
-            $class->$action_name();
-
+            $this->apiReturnErr('api-'.lang('err_404'),ErrorCode::Not_Found_Resource);
             //1. 这一步不会走到,如果走到，说明前面没有exit
             throw  new BusinessException("no return data");
 
@@ -231,5 +235,14 @@ class Index extends Base
         $uid = intval($uid);
 
         return $uid;
+    }
+
+    /**
+     * @author hebidu <email:346551990@qq.com>
+     * @modify 2017-06-17 16:15:38
+     * @return mixed 请求的接口版本
+     */
+    private function getApiVer(){
+        return $this->alParams->getApiVer();
     }
 }

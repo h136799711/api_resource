@@ -39,6 +39,7 @@
                     <thead>
                     <tr>
                         <th>国家ID</th>
+                        <th >国旗图标</th>
                         <th >国家名称</th>
                         <th >国家拼音</th>
                         <th >电话前缀</th>
@@ -54,6 +55,7 @@
                         {volist name="list"  id="vo"}
                             <tr>
                                 <td data-id="{$vo['id']}">{$vo['id']}</td>
+                                <td><a href="{:url('Province/index',array('father'=>$vo['id']))}"> {:strtolower($vo['country_code'])}</a></td>
                                 <td><a href="{:url('Province/index',array('father'=>$vo['id']))}">{$vo['country_name']}</a></td>
 
                                 <td  >{$vo['py']}</td>

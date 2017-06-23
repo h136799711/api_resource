@@ -75,7 +75,16 @@
 							<div class="form-group">
 								<label class="col-md-2 col-lg-2 control-label">用户手机号</label>
 								<div class="col-md-10 col-lg-10">
-									<div class="h4">{$userinfo.mobile}</div>
+									{eq name="userinfo['mobile']" value="1" }
+									<div  title="已验证" class="h4">
+										{$userinfo.mobile}
+									<i class="by-icon">&#xe62e;</i>
+									{else/}
+										<div  title="未验证" class="h4">
+											{$userinfo.mobile}
+									<i title="未验证" class="by-icon">&#xe62f;</i>
+									{/eq}
+									</div>
 								</div>
 							</div>
 

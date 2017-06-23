@@ -13,6 +13,7 @@
 namespace app\index\controller;
 
 
+use itboye\vendor\Uploader;
 use think\controller\Rest;
 
 class Ueditor extends Rest
@@ -36,7 +37,7 @@ class Ueditor extends Rest
         error_reporting(E_ERROR);
         header("Content-Type: text/html; charset=utf-8");
 
-        $config_path = VENDOR_PATH.'/Ueditor/php/config.json';
+        $config_path = VENDOR_PATH.'/itboye/vendor-framework/Ueditor/php/config.json';
         $this->url = config('site_url'); //目前为 site_URL 即可
 
         $urlInfo = parse_url($this->url);
@@ -104,8 +105,8 @@ class Ueditor extends Rest
         }
     }
 
-    private function action_upload(){
-        vendor('Ueditor.php.Uploader');
+    public function action_upload(){
+//        vendor('itboye.vendor-framework.Ueditor.php.Uploader');
         /* 上传配置 */
         $base64 = "upload";
         switch (htmlspecialchars($_GET['action'])) {
@@ -147,7 +148,7 @@ class Ueditor extends Rest
         }
 
         /* 生成上传实例对象并完成上传 */
-        $up = new \Uploader($fieldName, $config, $base64);
+        $up = new Uploader($fieldName, $config, $base64);
 
         /**
          * 得到上传文件所对应的各个参数,数组结构

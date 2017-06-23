@@ -73,8 +73,8 @@
                     <div class="form-group">
                         <label for="btns" class="col-md-2 col-lg-2 control-label">&nbsp;</label>
                         <div class="col-lg-10 col-md-10">
-                            <a target-form="validateForm" class="ajax-post btn btn-primary" href="{:U('Country/edit',array('id'=>$entity['id']))}" autofocus="autofocus"  data-loading-text="{:L('BTN_SAVE')}..." ><i class="fa fa-save"></i> {:L('BTN_SAVE')}</a>
-                            <a class="btn btn-default" href="{:U(CONTROLLER_NAME.'/index')}"><i class="fa fa-times-circle"></i> {:L('BTN_CANCEL')}</a>
+                            <a target-form="validateForm" class="ajax-post btn btn-primary" href="{:url('Country/edit',array('id'=>$entity['id']))}" autofocus="autofocus"  data-loading-text="{:L('BTN_SAVE')}..." ><i class="fa fa-save"></i> {:L('BTN_SAVE')}</a>
+                            <a class="btn btn-default" href="{:url(CONTROLLER_NAME.'/index')}"><i class="fa fa-times-circle"></i> {:L('BTN_CANCEL')}</a>
                         </div>
                     </div>
                 </fieldset>
@@ -118,7 +118,7 @@
                 //     name: {
                 //         required: true,
                 //         remote: {
-                //             url: "{:U('Game/check_name')}"
+                //             url: "{:url('Game/check_name')}"
                 //         }
                 //     }
                 // }

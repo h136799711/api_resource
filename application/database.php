@@ -7,13 +7,13 @@ return [
     // 数据库类型
     'type'           => 'mysql',
     // 服务器地址
-    'hostname'       => '101.37.37.167',
+    'hostname'       => '47.88.216.242',
     // 数据库名
-    'database'       => 'sunsun_xiaoli',
+    'database'       => 'qqav',
     // 用户名
-    'username'       => 'sunsun',
+    'username'       => 'hebidu',
     // 密码
-    'password'       => 'poiuyTREWQ123456',
+    'password'       => ',136799711hbdHBD',
     // 端口
     'hostport'       => '3306',
     // 连接dsn

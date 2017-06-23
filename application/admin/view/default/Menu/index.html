@@ -35,7 +35,7 @@
 								{:L('TITLE')}
 							</th>
 							<th>
-								{:L('VIEW_ISHIDE')}
+								链接地址
 							</th>
 							<th>
 								{:L('SORT')}
@@ -50,7 +50,10 @@
 							<tr>
 								<td>{$vo.id}</td>
 								<td><a class="" href="{:url('Menu/index',array('pid'=>$vo['id']))}">{$vo.title}</a></td>
-								<td>{:app\\src\\admin\\helper\\AdminFunctionHelper::yesorno($vo['hide'])}</td>
+								<td>
+									{eq name="vo['is_front']" value="1"}
+									<span class="bg-success">前端路由链接</span>
+									{/eq}{$vo.url}</td>
 								<td>{$vo.sort}</td>
 								<td>
 									<!--<a href="{:url('Menu/view',array('id'=>$vo['id']))}" class="btn btn-default btn-sm"><i class="fa fa-eye"></i>{:L('BTN_VIEW')}</a>-->

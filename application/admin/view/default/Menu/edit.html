@@ -30,6 +30,18 @@
 							<input type="text" class="required form-control input-normal" value="{$entity.url}" name="url" id="inputtitle" placeholder="{:L('PLACEHOLDER_URL')}">
 						</div>
 					</div>
+
+					<div class="form-group">
+						<label for="inputis_dev" class="col-md-2 col-lg-2 control-label">是否前端链接</label>
+						<div class="col-md-10 col-lg-10 input-number">
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" class="
+							 " {eq name="entity['is_front']" value="1"}checked="checked"{/eq} id="is_front" name="is_front" value="1">
+								</label>
+							</div>
+						</div>
+					</div>
 					<div class="form-group">
 						<label for="inputpid" class="col-md-2 col-lg-2 control-label">所属上级菜单</label>
 						<div class="col-md-10 col-lg-10">
@@ -41,27 +53,12 @@
 							</select>
 						</div>
 					</div>
-					<div class="form-group">
-						<label for="inputhide" class="col-md-2 col-lg-2 control-label">{:L('VIEW_ISHIDE')}</label>
-						<div class="col-md-10 col-lg-10 input-number">
-							<div class="checkbox">
-								<label>
-									<input type="checkbox" {eq name="entity.hide" value="1"}checked="checked"{/eq} class=" " id="inputhide" name="hide" value="1">
-								</label>
-							</div>
 
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="inputis_dev" class="col-md-2 col-lg-2 control-label">{:L('VIEW_ISDEV')}</label>
-						<div class="col-md-10 col-lg-10 input-number">
-							<div class="checkbox">
-								<label>
-									<input type="checkbox" class="
 
-							 " {eq name="entity.is_dev" value="1"}checked="checked"{/eq} id="inputis_dev" name="is_dev" value="1">
-								</label>
-							</div>
+					<div class="form-group">
+						<label class="col-md-2 col-lg-2 control-label">图标样式</label>
+						<div class="col-md-10 col-lg-10">
+							<input type="text" class="required form-control input-normal" name="icon" value="{$entity.icon}">
 						</div>
 					</div>
 					<div class="form-group">

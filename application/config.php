@@ -5,7 +5,7 @@
  * @author hebidu <email:346551990@qq.com>
  */
 
-define("ITBOYE_CDN", "http://devapi.cdn.sunsunxiaoli.com");
+define("ITBOYE_CDN", "http://api.cdn.app.8raw.com");
 
 return [
 
@@ -26,23 +26,22 @@ return [
     ],
     //图片上传相关配置（文件上传类配置）
     'picture_upload_driver'=>'local',
-
     'by_api_config'=>[
         'client_id'=>'by571846d03009e1',
         'client_secret'=>'964561983083ac622f03389051f112e5',
-        'api_url'=>'http://dev.sunsunxiaoli.com/index.php',
+        'api_url'=>'http://localapi.app.8raw.com/index.php',
         'debug'=> false
     ],
     // 应用模式状态
     //地址配置
-    'file_download_url'=>'http://devapi.sunsunxiaoli.com/index.php/user_file/download?id=',
-    'site_url'=>'http://devapi.sunsunxiaoli.com',
-    'api_url'=>'http://devapi.sunsunxiaoli.com/index.php',
-    'avatar_url'=>'http://devapi.sunsunxiaoli.com/index.php/picture/avatar',
-    'picture_url'=>'http://devapi.sunsunxiaoli.com/index.php/picture/index?id=',
-    'file_curl_upload_url'=>'http://devapi.sunsunxiaoli.com/index.php/file/curl_upload',
-    'user_file_curl_upload_url'=>'http://devapi.sunsunxiaoli.com/index.php/user_file/curl_upload',
-    'upload_path'=>'http://devapi.sunsunxiaoli.com/',
+    'file_download_url'=>'http://api.app.8raw.com/index.php/user_file/download?id=',
+    'site_url'=>'http://api.app.8raw.com',
+    'api_url'=>'http://api.app.8raw.com/index.php',
+    'avatar_url'=>'http://api.app.8raw.com/index.php/picture/avatar',
+    'picture_url'=>'http://api.app.8raw.com/index.php/picture/index?id=',
+    'file_curl_upload_url'=>'http://api.app.8raw.com/index.php/file/curl_upload',
+    'user_file_curl_upload_url'=>'http://api.app.8raw.com/index.php/user_file/curl_upload',
+    'upload_path'=>'http://api.app.8raw.com/',
 
     //百度地图ak
     'baidu_map_ak' =>'NB4fAMqntPrs1RSGkTXBzjK9FVCMx9ix',//300w/d

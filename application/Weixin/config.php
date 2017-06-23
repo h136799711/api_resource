@@ -15,11 +15,5 @@ return [
 
 
     //'site_url' => 'http://127.0.0.1/github/itboye_hutouben_api/public/mobile.php',
-    'by_api_config'       =>[
-    'alg'=>'md5_v2',
-    'client_id'=>'by571846d03009e1',
-    'client_secret'=>'964561983083ac622f03389051f112e5',
-    'api_url'=>'http://dev.sunsunxiaoli.com/index.php',
-    'debug'=> false
-    ]
+
 ];

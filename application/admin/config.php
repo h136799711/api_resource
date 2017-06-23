@@ -22,11 +22,6 @@ return [
         // 是否自动开启 SESSION
         'auto_start'     => true
     ],
-    'by_api_config'=>[
-        'client_id'=>'by571846d03009e1',
-        'client_secret'=>'964561983083ac622f03389051f112e5',
-        'api_url'=>'http://dev.sunsunxiaoli.com/index.php'
-    ],
     'baidu_map_key'=> 'bV4eyokvXF2Z36PeTbww7fHQ',
     'default_module'         => 'admin',
     // 默认控制器名

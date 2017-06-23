@@ -22,12 +22,14 @@ use app\src\sunsun\heatingRod\action\HeatingRodDeviceEventAction;
 use app\src\sunsun\heatingRod\action\HeatingRodTcpLogAction;
 use app\src\system\action\ApiCallHisClearOldAction;
 use app\src\tool_email\helper\EmailHelper;
+use app\src\user\action\LoginAction;
 use app\src\user\logic\MemberConfigLogic;
 use think\Controller;
 
 class Test extends Controller
 {
     public function time(){
+        var_dump(LoginAction::class);
         echo time();
         echo '<br/>';
         echo date('Y-m-d H:i:s',time());

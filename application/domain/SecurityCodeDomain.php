@@ -10,6 +10,7 @@ namespace app\domain;
 
 
 use app\admin\controller\Email;
+use app\sdk\helper\ByConfigHelper;
 use app\src\base\helper\ResultHelper;
 use app\src\base\helper\ValidateHelper;
 use app\src\email\action\EmailSendAction;
@@ -20,6 +21,7 @@ use app\src\message\facade\MessageFacade;
 use app\src\securitycode\action\SecurityCodeCreateAction;
 use app\src\securitycode\action\SecurityCodeVerifyAction;
 use app\src\securitycode\enum\CodeTypeEnum;
+use app\src\securitycode\logic\SecurityCodeLogic;
 use app\src\securitycode\model\SecurityCode;
 use app\src\user\logic\UcenterMemberLogic;
 
@@ -29,12 +31,16 @@ class SecurityCodeDomain extends BaseDomain
      * 验证码检测
      */
     public function check(){
-        $acceptor = $this->_post('acceptor','', LangHelper::lackParameter('acceptor'));
+        $id = $this->_post('id','');
+        if(empty($id)){
+            $this->apiReturnErr('缺少id参数');
+        }
+
         $type = $this->_post("code_type","",lang('code_type_need'));
         $code = $this->_post('code','', lang('code_need'));
 
         $action = (new SecurityCodeVerifyAction());
-        $result = $action->verify($acceptor,$type,$code,$this->client_id);
+        $result = $action->verify($id,$type,$code,$this->client_id);
         $this->returnResult($result);
     }
 
@@ -47,9 +53,14 @@ class SecurityCodeDomain extends BaseDomain
         $type = $this->_post("code_type","",lang('code_type_need'));
         $code_length = $this->_post('code_length','6');
         $code_create_way = $this->_post('code_create_way','only_number');
-
+        $time = strtotime(date('Y-m-d',time()));
+        $result = (new SecurityCodeLogic())->count(['acceptor'=>$acceptor,'create_time'=>['gt',$time]]);
+        if($result['status'] && intval($result['info']) > 100){
+            $this->apiReturnErr('调用超过限制（100次）');
+        }
         $action = (new SecurityCodeCreateAction());
         $result = $action->create($this->client_id,$acceptor,$type,$code_create_way,$code_length);
+
 
         $this->returnResult($result);
     }

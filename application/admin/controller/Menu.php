@@ -83,6 +83,8 @@ class Menu extends Admin
         if($hide === ''){
             $entity['hide']=0;
         }
+        $is_front = $this->_post('is_front','');
+        $entity['is_front'] = $is_front;
 
 
         $result = (new MenuLogic())->saveByID($id, $entity);
@@ -140,6 +142,9 @@ class Menu extends Admin
 
             $menu['pid'] = $this->_param('pid','');
             $success_url = url('Admin/Menu/index', array('pid' => $menu['pid'] ));
+
+            $is_front = $this->_post('is_front','');
+            $menu['is_front'] = $is_front;
 
             $result =  (new MenuLogic())->add($menu);
             if ($result['status'] === false) {
