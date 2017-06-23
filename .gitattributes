@@ -1,0 +1,8 @@
+application/config.php merge=ours
+application/database.php merge=ours
+application/admin/config.php merge=ours
+application/weixin/config.php merge=ours
+application/index/config.php merge=ours
+application/mobile/config.php merge=ours
+application/web/config.php merge=ours
+git_update.sh merge=ours
