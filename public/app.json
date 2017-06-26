@@ -16,7 +16,7 @@
       "list": [
         {
           "desc": "验证码验证接口",
-          "type": "By_SecurityCode_check",
+          "type": "By_security_code_check",
           "version": ["100"],
           "params": [
             {
@@ -45,7 +45,7 @@
         },
         {
           "desc": "验证码创建接口(20161017 11:40)",
-          "type": "By_SecurityCode_create",
+          "type": "By_security_code_create",
           "version": ["100"],
           "params": [
             {
@@ -68,7 +68,7 @@
         },
         {
           "desc": "验证码发送接口(20161017 11:40)",
-          "type": "By_SecurityCode_send",
+          "type": "By_security_code_send",
           "version": ["101"],
           "params": [
             {
@@ -102,7 +102,7 @@
         },
         {
           "desc": "验证码发送接口(邮件 临时用待整合)",
-          "type": "By_SecurityCode_sendEmail",
+          "type": "By_security_code_sendEmail",
           "version": ["101"],
           "params": [
             {
@@ -131,7 +131,7 @@
         },
         {
           "desc": "验证码校验接口",
-          "type": "By_SecurityCode_verify",
+          "type": "By_security_code_verify",
           "version": ["101"],
           "params": [
             {
