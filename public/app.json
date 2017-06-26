@@ -8,7 +8,8 @@
     {"desc":"前端接口","url":"http://apidev.qqav.club/app.php"}
   ],
   "meta_list":[
-    {"title":"友盟推送测试","value":"http://api.app.8raw.com/index.php/device_event/test_push?uid={用户id}&title=[test]"}
+    {"title":"友盟推送测试","value":"http://api.app.8raw.com/index.php/device_event/test_push?uid={用户id}&title=[test]"},
+    {"title":"验证码图像","value":"http://apidev.qqav.club/app.php/security_code/image_src?session_id=byitboye&client_id=byitboye&id="}
   ],
   "api_list": [
     {
@@ -16,7 +17,7 @@
       "list": [
         {
           "desc": "登录验证码创建接口",
-          "type": "By_security_code_image_create",
+          "type": "security_code/image_create",
           "version": ["100"],
           "params": [
             {
