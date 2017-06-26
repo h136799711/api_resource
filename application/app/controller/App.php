@@ -38,16 +38,17 @@ class App extends Rest
 
     public function initParams(){
 
+        $this->sessionId = $this->_param('session_id','');
         $header = Request::instance()->header();
         $sessionId = isset($header['sessionid']) ? $header['sessionid'] : null;
 
         if(!empty($sessionId)) {
             session_start();
             session_id($sessionId);
-//            Session::init(['id'=>$sessionId]);
-//            var_dump($_SESSION);
         }
-        $this->sessionId = $sessionId;
+        if(empty($this->sessionId)){
+            $this->sessionId = $sessionId;
+        }
 
         $this->clientId = $this->_param('client_id','');
         $clientId = isset($header['clientid']) ? $header['clientid'] : null;
@@ -55,8 +56,12 @@ class App extends Rest
             $this->clientId = $clientId;
         }
         if(empty($this->clientId)){
-            $this->fail('缺少client_id');
+            $this->fail('缺少 client_id');
         }
+        if(empty($this->sessionId)){
+            $this->fail('缺少 sessionId');
+        }
+
     }
 
     public function returnResult($result){

@@ -7,13 +7,7 @@
  * Time: 16:12
  */
 
-// 或者进行自动检测语言
-\think\Lang::detect();
 
-// 获取CDN图标 - country[60,107] service[35]
-function getCdnIcon($type,$size=60,$name,$ext='png'){
-    return ITBOYE_CDN.$type.DS.$size.DS.$name.'.'.$ext;
-}
 
 //return eg:
 //{
@@ -65,82 +59,6 @@ function fixNull($r,$replace=''){
     //     return is_null($r) ? $replace : $r;
     }
     return $r;
-}
-
-function sdb($table='',$pre=''){
-    return \think\Db::table($table,$pre);
-}
-//db_object to array
-function Obj2Arr($r,$key=false){
-    $l = [];
-    foreach ($r as $v) {
-        $data = $v->getData();
-        if($key) $l[$data[$key]] = $data;
-        else $l[] = $data;
-    }
-    return $l;
-}
-//缓存键名
-function getCacheKey($map=null,$pre='g'){
-    $key = '_'.serialize($map);
-    return $pre.$key;
-}
-//将数组的某个键作为索引key
-function changeArrayKey($arr = null,$k='id'){
-    $r = [];
-    foreach ($arr as $v) {
-        $r[$v[$k]] = $v;
-    }
-    return $r;
-}
-/**
- * 获取config中配置的数据字典的ID
- */
-function getDtreeId($code) {
-    return config("datatree." . $code);
-}
-
-function shalt($r,$msg='',$end=true){
-    echo $msg  ? $msg.'<br/>':'';
-    dump($r);
-    $end && die();
-}
-/**
- * 生成假数据对象列表
- * eg:
- * $map = ['id'=>['numberBetween',[1,99]],'name'=>['firstName',[]]];
- * getFaker($map,rand(1,5));
- * return faker object list
- */
-//require '../vendor/faker/autoload.php';
-function getFaker(array $rules,$count=1){
-    vendor('faker.autoload');
-    $faker = \Faker\Factory::create('zh_CN');
-    $r = [];
-    for ($i=0; $i < $count; $i++) {
-        $map = [];
-        foreach ($rules as $k => $v) {
-            $map[$k] = call_user_func_array([$faker,$v[0]], $v[1]);
-        }
-        $r[] = $map;
-    }
-    return $r;
-}
-/**
- * 记录日志，系统运行过程中可能产生的日志
- * Level取值如下：
- * EMERG 严重错误，导致系统崩溃无法使用
- * ALERT 警戒性错误， 必须被立即修改的错误
- * CRIT 临界值错误， 超过临界值的错误
- * WARN 警告性错误， 需要发出警告的错误
- * ERR 一般性错误
- * NOTICE 通知，程序可以运行但是还不够完美的错误
- * INFO 信息，程序输出信息
- * DEBUG 调试，用于调试信息
- * SQL SQL语句，该级别只在调试模式开启时有效
- */
-function LogRecord($msg, $location, $level = 'ERR') {
-    \think\Log::write($location . $msg, $level);
 }
 
 /**

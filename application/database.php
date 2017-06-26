@@ -7,7 +7,7 @@ return [
     // 数据库类型
     'type'           => 'mysql',
     // 服务器地址
-    'hostname'       => '47.88.216.242',
+    'hostname'       => 'localhost',
     // 数据库名
     'database'       => 'qqav',
     // 用户名

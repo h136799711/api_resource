@@ -5,7 +5,7 @@
  * @author hebidu <email:346551990@qq.com>
  */
 
-define("ITBOYE_CDN", "http://api.cdn.app.8raw.com");
+define("ITBOYE_CDN", "http://devapi.cdn.qqav.club");
 
 return [
 
@@ -29,19 +29,19 @@ return [
     'by_api_config'=>[
         'client_id'=>'by571846d03009e1',
         'client_secret'=>'964561983083ac622f03389051f112e5',
-        'api_url'=>'http://localapi.app.8raw.com/index.php',
+        'api_url'=>'http://apidev.qqav.club/index.php',
         'debug'=> false
     ],
     // 应用模式状态
     //地址配置
-    'file_download_url'=>'http://api.app.8raw.com/index.php/user_file/download?id=',
-    'site_url'=>'http://api.app.8raw.com',
-    'api_url'=>'http://api.app.8raw.com/index.php',
-    'avatar_url'=>'http://api.app.8raw.com/index.php/picture/avatar',
-    'picture_url'=>'http://api.app.8raw.com/index.php/picture/index?id=',
-    'file_curl_upload_url'=>'http://api.app.8raw.com/index.php/file/curl_upload',
-    'user_file_curl_upload_url'=>'http://api.app.8raw.com/index.php/user_file/curl_upload',
-    'upload_path'=>'http://api.app.8raw.com/',
+    'file_download_url'=>'http://apidev.qqav.club/index.php/user_file/download?id=',
+    'site_url'=>'http://apidev.qqav.club',
+    'api_url'=>'http://apidev.qqav.club/index.php',
+    'avatar_url'=>'http://apidev.qqav.club/index.php/picture/avatar',
+    'picture_url'=>'http://apidev.qqav.club/index.php/picture/index?id=',
+    'file_curl_upload_url'=>'http://apidev.qqav.club/index.php/file/curl_upload',
+    'user_file_curl_upload_url'=>'http://apidev.qqav.club/index.php/user_file/curl_upload',
+    'upload_path'=>'http://apidev.qqav.club/',
 
     //百度地图ak
     'baidu_map_ak' =>'NB4fAMqntPrs1RSGkTXBzjK9FVCMx9ix',//300w/d

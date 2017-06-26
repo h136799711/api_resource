@@ -1,2 +1,2 @@
 #更新代码仓库
-git fetch origin master:refs/remotes/origin/master && git reset --hard origin/master && composer update
+git fetch origin dev:refs/remotes/origin/dev && git reset --hard origin/dev && composer update

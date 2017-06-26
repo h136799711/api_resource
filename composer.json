@@ -6,6 +6,8 @@
         "mobiledetect/mobiledetectlib": "^2.8",
         "topthink/think-queue": "^1.1",
         "topthink/framework": "5.0.9",
-        "phpunit/phpunit": "4.8.*"
+        "phpunit/phpunit": "4.8.*",
+        "itboye/vendor":"dev-master",
+        "itboye/source":"dev-master"
     }
 }
