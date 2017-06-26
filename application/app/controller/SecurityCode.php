@@ -9,8 +9,6 @@
 namespace app\app\controller;
 
 
-use app\src\admin\api\po\SecurityCodePo;
-use app\src\admin\api\SecurityCodeApi;
 use app\src\base\helper\ValidateHelper;
 use app\src\securitycode\action\SecurityCodeCreateAction;
 use app\src\securitycode\enum\CodeCreateWayEnum;

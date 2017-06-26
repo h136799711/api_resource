@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "df4130f4b43248ad9952838e62db7c80",
-    "content-hash": "be2e287e653450986b75b77e8cc6ec0a",
+    "hash": "af89104cfb7d1458516533c96ff8c1b2",
+    "content-hash": "042331f9ec936f1d423c11352cd2d6e8",
     "packages": [
         {
             "name": "doctrine/instantiator",
@@ -62,51 +62,72 @@
             "time": "2015-06-14 21:17:01"
         },
         {
-            "name": "itboye/sunsun_tcp",
+            "name": "itboye/src",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/h136799711/itboye_sunsun_tcp.git",
-                "reference": "08e0973967c6b86468e014345e9a99495768fdb2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/h136799711/itboye_sunsun_tcp/zipball/08e0973967c6b86468e014345e9a99495768fdb2",
-                "reference": "08e0973967c6b86468e014345e9a99495768fdb2",
-                "shasum": ""
+                "url": "https://git.oschina.net/gooraye/itboye_source.git",
+                "reference": "854bb6342584af37a7584af81b6fc5d48f8dd245"
             },
             "require": {
-                "php": ">=5.3",
-                "workerman/gateway-worker": ">=3.0.0",
-                "workerman/gatewayclient": "^3.0",
-                "workerman/mysql": "1.0",
-                "workerman/workerman": ">=3.1.8"
+                "php": ">=5.3"
             },
-            "type": "project",
+            "require-dev": {
+                "php": ">=5.3"
+            },
+            "type": "library",
             "autoload": {
                 "psr-4": {
-                    "sunsun\\": [
-                        "sunsun/src"
+                    "app\\src\\": [
+                        "."
                     ]
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "GPL"
+                "MIT"
             ],
             "authors": [
                 {
                     "name": "hebidu",
-                    "email": "hebiduhebi@126.com",
-                    "role": "developer"
+                    "email": "hebiduhebi@126.com"
                 }
             ],
-            "description": "sunsun tcp server",
-            "keywords": [
-                "itboye",
-                "sunsun_tcp"
+            "description": "source",
+            "time": "2017-06-19 12:19:24"
+        },
+        {
+            "name": "itboye/vendor",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://git.oschina.net/gooraye/itboye_vendor.git",
+                "reference": "7bea1b693692710c3045e8244b81b6ef17d57f64"
+            },
+            "require": {
+                "mobiledetect/mobiledetectlib": "^2.8",
+                "php": ">=5.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "itboye\\vendor\\": [
+                        "src"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
             ],
-            "time": "2017-06-02 09:01:57"
+            "authors": [
+                {
+                    "name": "hebidu",
+                    "email": "hebiduhebi@126.com"
+                }
+            ],
+            "description": "vendor library",
+            "time": "2017-06-06 01:59:23"
         },
         {
             "name": "mobiledetect/mobiledetectlib",
@@ -619,16 +640,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "4.8.35",
+            "version": "4.8.36",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "791b1a67c25af50e230f841ee7a9c6eba507dc87"
+                "reference": "46023de9a91eec7dfb06cc56cb4e260017298517"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/791b1a67c25af50e230f841ee7a9c6eba507dc87",
-                "reference": "791b1a67c25af50e230f841ee7a9c6eba507dc87",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/46023de9a91eec7dfb06cc56cb4e260017298517",
+                "reference": "46023de9a91eec7dfb06cc56cb4e260017298517",
                 "shasum": ""
             },
             "require": {
@@ -687,7 +708,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-02-06 05:18:07"
+            "time": "2017-06-21 08:07:12"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -1119,16 +1140,16 @@
         },
         {
             "name": "symfony/dom-crawler",
-            "version": "v2.8.21",
+            "version": "v2.8.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dom-crawler.git",
-                "reference": "b19d01ec41c704497b0bee78bce8bf97619c0649"
+                "reference": "edfa9c862da6c188b2b29b3f445a9dc81a9e004c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/b19d01ec41c704497b0bee78bce8bf97619c0649",
-                "reference": "b19d01ec41c704497b0bee78bce8bf97619c0649",
+                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/edfa9c862da6c188b2b29b3f445a9dc81a9e004c",
+                "reference": "edfa9c862da6c188b2b29b3f445a9dc81a9e004c",
                 "shasum": ""
             },
             "require": {
@@ -1171,20 +1192,20 @@
             ],
             "description": "Symfony DomCrawler Component",
             "homepage": "https://symfony.com",
-            "time": "2017-05-25 22:57:22"
+            "time": "2017-06-02 05:32:06"
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.3.0",
+            "version": "v1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "e79d363049d1c2128f133a2667e4f4190904f7f4"
+                "reference": "f29dca382a6485c3cbe6379f0c61230167681937"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/e79d363049d1c2128f133a2667e4f4190904f7f4",
-                "reference": "e79d363049d1c2128f133a2667e4f4190904f7f4",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/f29dca382a6485c3cbe6379f0c61230167681937",
+                "reference": "f29dca382a6485c3cbe6379f0c61230167681937",
                 "shasum": ""
             },
             "require": {
@@ -1196,7 +1217,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.3-dev"
+                    "dev-master": "1.4-dev"
                 }
             },
             "autoload": {
@@ -1230,20 +1251,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2016-11-14 01:06:16"
+            "time": "2017-06-09 14:24:12"
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.3.0",
+            "version": "v3.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "885db865f6b2b918404a1fae28f9ac640f71f994"
+                "reference": "9752a30000a8ca9f4b34b5227d15d0101b96b063"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/885db865f6b2b918404a1fae28f9ac640f71f994",
-                "reference": "885db865f6b2b918404a1fae28f9ac640f71f994",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/9752a30000a8ca9f4b34b5227d15d0101b96b063",
+                "reference": "9752a30000a8ca9f4b34b5227d15d0101b96b063",
                 "shasum": ""
             },
             "require": {
@@ -1285,20 +1306,20 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2017-05-28 10:56:20"
+            "time": "2017-06-02 22:05:06"
         },
         {
             "name": "topthink/framework",
-            "version": "v5.0.7",
+            "version": "v5.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/top-think/framework.git",
-                "reference": "bcf64f19f4fadbff6c8503891689ff7e6f2fe9a3"
+                "reference": "24ae4b9042bf9acfd041eb34602b14eb8669bc3f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/top-think/framework/zipball/bcf64f19f4fadbff6c8503891689ff7e6f2fe9a3",
-                "reference": "bcf64f19f4fadbff6c8503891689ff7e6f2fe9a3",
+                "url": "https://api.github.com/repos/top-think/framework/zipball/24ae4b9042bf9acfd041eb34602b14eb8669bc3f",
+                "reference": "24ae4b9042bf9acfd041eb34602b14eb8669bc3f",
                 "shasum": ""
             },
             "require": {
@@ -1336,7 +1357,7 @@
                 "orm",
                 "thinkphp"
             ],
-            "time": "2017-02-25 02:51:57"
+            "time": "2017-05-20 10:43:04"
         },
         {
             "name": "topthink/think-helper",
@@ -1589,123 +1610,24 @@
             "time": "2016-11-23 20:04:58"
         },
         {
-            "name": "workerman/gateway-worker",
-            "version": "v3.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/walkor/GatewayWorker.git",
-                "reference": "bc6513534d12bc6891a2e7dd00f0b8fa450c44dc"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/walkor/GatewayWorker/zipball/bc6513534d12bc6891a2e7dd00f0b8fa450c44dc",
-                "reference": "bc6513534d12bc6891a2e7dd00f0b8fa450c44dc",
-                "shasum": ""
-            },
-            "require": {
-                "workerman/workerman": ">=3.1.8"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "GatewayWorker\\": "./src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "homepage": "http://www.workerman.net",
-            "keywords": [
-                "communication",
-                "distributed"
-            ],
-            "time": "2017-03-04 10:06:20"
-        },
-        {
-            "name": "workerman/gatewayclient",
-            "version": "v3.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/walkor/GatewayClient.git",
-                "reference": "e58edc1f5eee7465c24fc97d8adff1f59b1b8455"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/walkor/GatewayClient/zipball/e58edc1f5eee7465c24fc97d8adff1f59b1b8455",
-                "reference": "e58edc1f5eee7465c24fc97d8adff1f59b1b8455",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "GatewayClient\\": "./"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "homepage": "http://www.workerman.net",
-            "time": "2016-12-07 09:06:11"
-        },
-        {
-            "name": "workerman/mysql",
-            "version": "v1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/walkor/mysql.git",
-                "reference": "b44580eda9d359cab06be6f7c45e9eee52cbd555"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/walkor/mysql/zipball/b44580eda9d359cab06be6f7c45e9eee52cbd555",
-                "reference": "b44580eda9d359cab06be6f7c45e9eee52cbd555",
-                "shasum": ""
-            },
-            "require": {
-                "ext-pdo": "*",
-                "ext-pdo_mysql": "*",
-                "php": ">=5.3"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Workerman\\MySQL\\": "./src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Long-living MySQL connection for daemon.",
-            "homepage": "http://www.workerman.net",
-            "keywords": [
-                "mysql",
-                "pdo",
-                "pdo_mysql"
-            ],
-            "time": "2017-03-04 06:46:51"
-        },
-        {
             "name": "workerman/workerman",
-            "version": "v3.4.2",
+            "version": "v3.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/walkor/Workerman.git",
-                "reference": "a10f58e546af755f3546a309afea7ac71f879aaf"
+                "reference": "9667e352cdf071820b90be5a754ea209222fd7cc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/walkor/Workerman/zipball/a10f58e546af755f3546a309afea7ac71f879aaf",
-                "reference": "a10f58e546af755f3546a309afea7ac71f879aaf",
+                "url": "https://api.github.com/repos/walkor/Workerman/zipball/9667e352cdf071820b90be5a754ea209222fd7cc",
+                "reference": "9667e352cdf071820b90be5a754ea209222fd7cc",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3"
             },
             "suggest": {
-                "ext-event": "For better performance."
+                "ext-event": "For better performance. "
             },
             "type": "library",
             "autoload": {
@@ -1731,14 +1653,15 @@
                 "asynchronous",
                 "event-loop"
             ],
-            "time": "2017-05-04 15:08:38"
+            "time": "2017-06-20 15:20:40"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "itboye/sunsun_tcp": 20
+        "itboye/vendor": 20,
+        "itboye/src": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
