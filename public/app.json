@@ -5,7 +5,7 @@
   "alg":"md5_v4",
   "project_name": "前端接口",
   "url_list":[
-    {"desc":"前端接口","url":"http://devapi.sunsunxiaoli.com/app.php"}
+    {"desc":"前端接口","url":"http://apidev.sunsunxiaoli.com/app.php"}
   ],
   "meta_list":[
     {"title":"友盟推送测试","value":"http://api.app.8raw.com/index.php/device_event/test_push?uid={用户id}&title=[test]"}

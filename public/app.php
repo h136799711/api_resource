@@ -4,8 +4,8 @@
  */
 
 // [ 应用入口文件 ]
-//UTC: Etc/GMT
-//东八区：Asia/Shanghai
+// UTC: Etc/GMT
+// 东八区：Asia/Shanghai
 
 // 绑定当前访问到index模块
 define('BIND_MODULE','app');
