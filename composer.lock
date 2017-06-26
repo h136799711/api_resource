@@ -67,7 +67,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.oschina.net/gooraye/itboye_source.git",
-                "reference": "854bb6342584af37a7584af81b6fc5d48f8dd245"
+                "reference": "577ddfec392428d8c12ad0b341c2f2d1997a07a6"
             },
             "require": {
                 "php": ">=5.3"
@@ -94,7 +94,7 @@
                 }
             ],
             "description": "source",
-            "time": "2017-06-19 12:19:24"
+            "time": "2017-06-26 08:29:13"
         },
         {
             "name": "itboye/vendor",
