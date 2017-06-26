@@ -15,6 +15,30 @@
       "desc": "验证码相关接口",
       "list": [
         {
+          "desc": "登录验证码创建接口",
+          "type": "By_security_code_image_create",
+          "version": ["100"],
+          "params": [
+            {
+              "key":"session_id",
+              "desc": "[必须]",
+              "value": "byitboye"
+            },
+            {
+              "key": "client_id",
+              "desc": "client_id",
+              "value": "byitboye"
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com",
+              "modify": "2017-06-19"
+            }
+          ]
+        },
+        {
           "desc": "验证码验证接口",
           "type": "By_security_code_check",
           "version": ["100"],
