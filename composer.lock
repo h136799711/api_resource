@@ -67,13 +67,14 @@
             "source": {
                 "type": "git",
                 "url": "https://git.oschina.net/gooraye/itboye_source.git",
-                "reference": "638e9f5c6428b4e5b441aca4ca4e6bbca2466fcf"
+                "reference": "23612ac1c6edd99994f38c33da974acb575e112b"
             },
             "require": {
                 "php": ">=5.3"
             },
             "require-dev": {
-                "php": ">=5.3"
+                "php": ">=5.3",
+                "topthink/framework": "5.0.9"
             },
             "type": "library",
             "autoload": {
@@ -94,7 +95,7 @@
                 }
             ],
             "description": "source",
-            "time": "2017-06-26 09:27:02"
+            "time": "2017-06-29 06:28:31"
         },
         {
             "name": "itboye/vendor",

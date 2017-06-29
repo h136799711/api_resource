@@ -10,6 +10,7 @@ namespace app\app\controller;
 
 
 use app\src\base\enum\ErrorCode;
+use app\src\base\helper\PageHelper;
 use app\src\user\action\UserHelperAction;
 use think\controller\Rest;
 use think\Request;
@@ -137,5 +138,14 @@ class App extends Rest
         }
 
         return $value;
+    }
+
+    /**
+     * 获取分页参数
+     */
+    public function getPageHelper(){
+        $page_index = $this->_param('page_index',0);
+        $page_size  = $this->_param('page_size',10);
+        return new PageHelper(['page_index'=>$page_index,'page_size'=>$page_size]);
     }
 }
