@@ -29,8 +29,11 @@ class ByBaseSdkObj
         date_default_timezone_set(self::$config['default_timezone']);
     }
 
-    protected function callremote($data){
+    protected function callRemote($data){
         return self::$curlHelper->callRemote($data);
     }
-
+    
+    protected function getNotifyId(){
+        return time();
+    }
 }

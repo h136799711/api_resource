@@ -11,6 +11,7 @@ namespace app\sdk\req;
 
 use app\sdk\base\ByBaseSdkObj;
 use app\sdk\helper\ByCurlHelper;
+use app\src\user\enum\RegFromEnum;
 
 class ByUserRequest extends ByBaseSdkObj
 {
@@ -23,6 +24,12 @@ class ByUserRequest extends ByBaseSdkObj
 
     /**
      * 通过手机号注册
+     * @param $nickname
+     * @param $username
+     * @param $password
+     * @param $country
+     * @param string $code
+     * @return array
      */
     public function registerByMobile($nickname,$username,$password,$country,$code='itboye'){
         $data = [
@@ -37,7 +44,7 @@ class ByUserRequest extends ByBaseSdkObj
             'reg_from'=>RegFromEnum::ADMIN_USER_ADD
         ];
 
-        return $this->callremote($data);
+        return $this->callRemote($data);
     }
 
 }
