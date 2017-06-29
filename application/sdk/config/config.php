@@ -17,7 +17,7 @@ return [
     'lang'=>'zh-cn', // 默认语言包
     'default_timezone'=>'Etc/GMT',// 默认时区 Etc/GMT
      // 接口网关请求地址
-    'by_api_gateway_uri'=>'http://localapi.app.8raw.com/index.php',
+    'by_api_gateway_uri'=>'http://apidev.qqav.club/index.php',
      // client_id
     'by_client_id'=>'by58018f50cfcae1',
     // client_secret
