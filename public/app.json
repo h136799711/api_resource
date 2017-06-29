@@ -114,6 +114,11 @@
           "version": ["100"],
           "params": [
             {
+              "key": "session_id",
+              "desc": "会话id【必须】",
+              "value": "itboye"
+            },
+            {
               "key": "uid",
               "desc": "用户id【必须】",
               "value": "4"
