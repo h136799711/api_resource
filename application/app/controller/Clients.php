@@ -8,14 +8,12 @@
 
 namespace app\app\controller;
 
-
-use app\src\base\helper\PageHelper;
 use app\src\clients\action\ClientsCreateAction;
 use app\src\clients\action\ClientsDeleteAction;
 use app\src\clients\action\ClientsDetailAction;
 use app\src\clients\action\ClientsQueryAction;
+use app\src\clients\action\ClientsResetSecretAction;
 use app\src\clients\action\ClientsUpdateAction;
-use app\src\user\action\UserHelperAction;
 
 class Clients extends App
 {
@@ -42,8 +40,7 @@ class Clients extends App
         $result = [];
         if(!empty($id)){
             $result = (new ClientsDeleteAction())->deleteByID($id);
-        }
-        if(!empty($client_id)){
+        }elseif(!empty($client_id)){
             $result = (new ClientsDeleteAction())->deleteByClientID($$client_id);
         }
         $this->returnResult($result);
@@ -66,14 +63,16 @@ class Clients extends App
         $result = [];
         if(!empty($id)) {
             $result = (new ClientsUpdateAction())->updateByID($id,$name,$note);
-        }
-        if(!empty($client_id)) {
+        }elseif(!empty($client_id)) {
             $result = (new ClientsUpdateAction())->updateByClientID($client_id,$name,$note);
         }
 
         $this->returnResult($result);
     }
 
+    /**
+     * 查询
+     */
     public function query(){
         $uid = $this->_param('uid','','缺少用户id');
         $result = (new ClientsQueryAction())->query($uid,'',$this->getPageHelper());
@@ -94,9 +93,25 @@ class Clients extends App
         $result = [];
         if(!empty($id)) {
             $result = (new ClientsDetailAction())->detailByID($id);
-        }
-        if(!empty($client_id)) {
+        }elseif(!empty($client_id)) {
             $result = (new ClientsDetailAction())->detailByClientID($client_id);
+        }
+        $this->returnResult($result);
+    }
+
+    public function reset_secret(){
+
+        $id = $this->_param('id','');
+        $client_id = $this->_param('client_id','');
+        if(empty($id) && empty($client_id)){
+            $this->fail('缺少参数');
+        }
+
+        $result = [];
+        if(!empty($id)) {
+            $result = (new ClientsResetSecretAction())->resetSecretByID($id);
+        }elseif(!empty($client_id)) {
+            $result = (new ClientsResetSecretAction())->resetSecretByClientID($client_id);
         }
         $this->returnResult($result);
     }
