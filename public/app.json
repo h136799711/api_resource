@@ -369,7 +369,7 @@
       "list": [
         {
           "desc": "用户注册接口",
-          "type": "user/regiter",
+          "type": "user/register",
           "version": ["100"],
           "params": [
             {
@@ -406,7 +406,6 @@
           ]
         }
       ]
-    },
-
+    }
   ]
 }
