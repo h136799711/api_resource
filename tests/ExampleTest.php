@@ -10,11 +10,16 @@
 // +----------------------------------------------------------------------
 namespace tests;
 
+use app\src\clients\helper\RandomHelper;
+
 class ExampleTest extends TestCase
 {
 
     public function testBasicExample()
     {
-
+        echo 'client_id';
+        $str =  RandomHelper::getClientID(36);
+        echo $str;
+        assert(strlen($str) < 28,"length less than 28");
     }
 }
