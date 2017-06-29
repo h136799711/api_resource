@@ -28,7 +28,7 @@
             {
               "key": "uid",
               "desc": "用户id[必须]",
-              "value": "120"
+              "value": "4"
             },
             {
               "key": "note",
