@@ -14,7 +14,6 @@ use app\src\base\helper\PageHelper;
 use app\src\user\action\UserHelperAction;
 use think\controller\Rest;
 use think\Request;
-use think\Session;
 
 class App extends Rest
 {
