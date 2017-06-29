@@ -67,10 +67,14 @@ class App extends Rest
     }
 
     public function returnResult($result){
-        if($result['status']){
-            $this->success($result['info'],'操作成功');
+        if(isset($result['status'])){
+            if($result['status']){
+                $this->success($result['info'],'操作成功');
+            }else{
+                $this->fail($result['info']);
+            }
         }else{
-            $this->fail($result['info']);
+            var_dump($result);
         }
     }
 

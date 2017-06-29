@@ -22,7 +22,6 @@ class ByBaseSdkObj
         // 读取配置信息
         $instance = ByConfigHelper::getInstance();
         self::$config = $instance::$config;
-        var_dump(self::$config);
         self::$curlHelper = new ByCurlHelper(self::$config);
         // 设置语言
         ByLangHelper::setLang(self::$config['lang']);

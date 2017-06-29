@@ -58,7 +58,6 @@ class User extends App
         $password = $this->_param('password','','缺少密码');
         $country = $this->_param('country','','缺少国家区号');
         $result = (new ByUserRequest())->registerByMobile($nickname,$username,$password,$country,$code);
-        var_dump($result);
-//        return $this->returnResult($result);
+        return $this->returnResult($result);
     }
 }
