@@ -36,6 +36,89 @@
               "value": "这是一个app应用"
             }
           ]
+        },
+        {
+          "desc": "应用删除接口",
+          "type": "clients/delete",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "id",
+              "desc": "应用ID【必须】",
+              "value": "1"
+            },
+            {
+              "key": "uid",
+              "desc": "用户id[必须]",
+              "value": "120"
+            }
+          ]
+        },
+        {
+          "desc": "应用创建接口",
+          "type": "clients/create",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "name",
+              "desc": "应用名称【必须】",
+              "value": "xxx的应用"
+            },
+            {
+              "key": "uid",
+              "desc": "用户id[必须]",
+              "value": "120"
+            },
+            {
+              "key": "note",
+              "desc": "应用备注[可选]",
+              "value": "这是一个app应用"
+            }
+          ]
+        },
+        {
+          "desc": "应用创建接口",
+          "type": "clients/create",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "name",
+              "desc": "应用名称【必须】",
+              "value": "xxx的应用"
+            },
+            {
+              "key": "uid",
+              "desc": "用户id[必须]",
+              "value": "120"
+            },
+            {
+              "key": "note",
+              "desc": "应用备注[可选]",
+              "value": "这是一个app应用"
+            }
+          ]
+        },
+        {
+          "desc": "应用创建接口",
+          "type": "clients/create",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "name",
+              "desc": "应用名称【必须】",
+              "value": "xxx的应用"
+            },
+            {
+              "key": "uid",
+              "desc": "用户id[必须]",
+              "value": "120"
+            },
+            {
+              "key": "note",
+              "desc": "应用备注[可选]",
+              "value": "这是一个app应用"
+            }
+          ]
         }
       ]
     },

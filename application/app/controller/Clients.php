@@ -37,11 +37,12 @@ class Clients extends App
         if(empty($id) && empty($client_id)){
             $this->fail('缺少参数');
         }
+        $uid = $this->_param('uid','');
         $result = [];
         if(!empty($id)){
-            $result = (new ClientsDeleteAction())->deleteByID($id);
+            $result = (new ClientsDeleteAction())->deleteByID($id,$uid);
         }elseif(!empty($client_id)){
-            $result = (new ClientsDeleteAction())->deleteByClientID($$client_id);
+            $result = (new ClientsDeleteAction())->deleteByClientID($$client_id,$uid);
         }
         $this->returnResult($result);
     }
