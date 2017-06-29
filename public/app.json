@@ -65,19 +65,24 @@
           ]
         },
         {
-          "desc": "应用创建接口",
-          "type": "clients/create",
+          "desc": "应用更新接口",
+          "type": "clients/update",
           "version": ["100"],
           "params": [
             {
-              "key": "name",
-              "desc": "应用名称【必须】",
-              "value": "xxx的应用"
+              "key": "session_id",
+              "desc": "会话id【必须】",
+              "value": "itboye"
             },
             {
-              "key": "uid",
-              "desc": "用户id[必须]",
-              "value": "120"
+              "key": "id",
+              "desc": "应用id【必须】",
+              "value": "1"
+            },
+            {
+              "key": "name",
+              "desc": "应用名称[可选]",
+              "value": "应用名称"
             },
             {
               "key": "note",
@@ -87,46 +92,41 @@
           ]
         },
         {
-          "desc": "应用创建接口",
-          "type": "clients/create",
+          "desc": "应用重置密钥接口",
+          "type": "clients/reset_secret",
           "version": ["100"],
           "params": [
             {
-              "key": "name",
-              "desc": "应用名称【必须】",
-              "value": "xxx的应用"
+              "key": "session_id",
+              "desc": "会话id【必须】",
+              "value": "itboye"
             },
             {
-              "key": "uid",
-              "desc": "用户id[必须]",
-              "value": "120"
-            },
-            {
-              "key": "note",
-              "desc": "应用备注[可选]",
-              "value": "这是一个app应用"
+              "key": "id",
+              "desc": "应用id【必须】",
+              "value": "1"
             }
           ]
         },
         {
-          "desc": "应用创建接口",
-          "type": "clients/create",
+          "desc": "应用查询接口",
+          "type": "clients/query",
           "version": ["100"],
           "params": [
             {
-              "key": "name",
-              "desc": "应用名称【必须】",
-              "value": "xxx的应用"
-            },
-            {
               "key": "uid",
-              "desc": "用户id[必须]",
-              "value": "120"
+              "desc": "用户id【必须】",
+              "value": "4"
             },
             {
-              "key": "note",
-              "desc": "应用备注[可选]",
-              "value": "这是一个app应用"
+              "key": "page_index",
+              "desc": "页码【必须】",
+              "value": "1"
+            },
+            {
+              "key": "page_size",
+              "desc": "页大小【必须】",
+              "value": "10"
             }
           ]
         }
