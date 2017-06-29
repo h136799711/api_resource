@@ -17,9 +17,29 @@ class ByUserRequest extends ByBaseSdkObj
 {
     /**
      * 通过用户名和密码登录
+     * @param $username
+     * @param $password
+     * @param $device_token
+     * @param $device_type
+     * @param $country
+     * @param $code
+     * @return array
      */
-    public function loginByUsernameAndPwd(){
+    public function loginByUsernameAndPwd($username,$password,$device_token,$device_type,$country,$code){
+        $data = [
+            'type'=>'By_User_Login',
+            'api_ver'=>'102',
+            'notify_id'=>self::getNotifyId(),
+            'role'=>'',
+            'device_token'=>$device_token,
+            'device_type'=>$device_type,
+            'username'=>$username,
+            'password'=>$password,
+            'country'=>$country,
+            'code'=>$code
+        ];
 
+        return $this->callRemote($data);
     }
 
     /**

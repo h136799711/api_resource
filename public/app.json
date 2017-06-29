@@ -409,6 +409,38 @@
               "email": "346551990@qq.com"
             }
           ]
+        },
+        {
+          "desc": "用户登录接口",
+          "type": "user/login",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "session_id",
+              "desc": "会话id[必须](itboye是万能会话id)",
+              "value": "itboye"
+            },
+            {
+              "key": "code",
+              "desc": "验证码[必须](itboye是万能验证码，测试其它请调用验证码接口获取)",
+              "value": "itboye"
+            },
+            {
+              "key": "country",
+              "desc": "国家电话[手机号注册必须]（国家区号）",
+              "value": "+86"
+            },
+            {
+              "key": "username",
+              "desc": "注册用户名[必须]（限手机号）",
+              "value": "13484379290"
+            },
+            {
+              "key": "password",
+              "desc": "注册密码[必须]（6-32位）",
+              "value": "123456"
+            }
+          ]
         }
       ]
     }
