@@ -10,6 +10,7 @@ namespace app\app\controller;
 
 
 use app\src\base\enum\ErrorCode;
+use app\src\user\action\UserHelperAction;
 use think\controller\Rest;
 use think\Request;
 use think\Session;
@@ -121,11 +122,18 @@ class App extends Rest
      * @return mixed
      */
     public function _param($key,$default='',$emptyErrMsg=''){
-
         $value = Request::instance()->param($key,$default);
 
         if($default == $value && !empty($emptyErrMsg)){
             $this->fail($emptyErrMsg);
+        }
+
+        // 特殊增加对于uid参数的检测
+        if($key == 'uid'){
+            $isExist = (new UserHelperAction())->existUid(intval($value));
+            if(!$isExist){
+                $this->fail('该用户不存在');
+            }
         }
 
         return $value;
