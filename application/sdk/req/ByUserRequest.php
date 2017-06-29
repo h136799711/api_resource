@@ -27,7 +27,7 @@ class ByUserRequest extends ByBaseSdkObj
      */
     public function loginByUsernameAndPwd($username,$password,$device_token,$device_type,$country,$code){
         $data = [
-            'type'=>'By_User_Login',
+            'type'=>'By_User_login',
             'api_ver'=>'102',
             'notify_id'=>self::getNotifyId(),
             'role'=>'',
