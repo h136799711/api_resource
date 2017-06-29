@@ -74,7 +74,13 @@ class App extends Rest
                 $this->fail($result['info']);
             }
         }else{
-            var_dump($result);
+            if(isset($result['code'])) {
+                if ($result['code'] === 0) {
+                    $this->success($result['data'], '操作成功');
+                } else {
+                    $this->fail($result['msg']);
+                }
+            }
         }
     }
 
