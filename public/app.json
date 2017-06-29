@@ -21,6 +21,11 @@
           "version": ["100"],
           "params": [
             {
+              "key": "session_id",
+              "desc": "会话id【必须】",
+              "value": "itboye"
+            },
+            {
               "key": "name",
               "desc": "应用名称【必须】",
               "value": "xxx的应用"
@@ -42,6 +47,11 @@
           "type": "clients/delete",
           "version": ["100"],
           "params": [
+            {
+              "key": "session_id",
+              "desc": "会话id【必须】",
+              "value": "itboye"
+            },
             {
               "key": "id",
               "desc": "应用ID【必须】",
