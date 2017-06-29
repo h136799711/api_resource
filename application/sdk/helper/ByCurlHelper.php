@@ -52,6 +52,9 @@ class ByCurlHelper
      * @internal param bool $is_debug
      */
     public function callRemote($data,$api_url=''){
+        if(empty($api_url)){
+            $api_url = $this->gatewayUri;
+        }
         $now = time();
         if(!isset($data['type']) || empty($data['type'])){
             return ByResultHelper::fail(ByLangHelper::get('by_param_need',['param'=>'type']));

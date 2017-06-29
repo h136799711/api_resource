@@ -7,6 +7,7 @@
  */
 
 namespace app\app\controller;
+use app\sdk\req\ByUserRequest;
 use app\src\securitycode\action\SecurityCodeVerifyAction;
 use app\src\user\action\LoginAction;
 use app\src\user\enum\LoginDeviceType;
@@ -44,5 +45,18 @@ class User extends App
         }
         $userinfo = $result['info'];
         $this->success($userinfo);
+    }
+
+    /**
+     * 用户注册
+     */
+    public function register(){
+        $code = $this->_param('code','','请填写验证码');
+        $username = $this->_param('username','','缺少用户名');
+        $nickname = $username;
+        $password = $this->_param('password','','缺少密码');
+        $country = $this->_param('country','','缺少国家区号');
+        $result = (new ByUserRequest())->registerByMobile($nickname,$username,$password,$country,$code);
+        return $this->returnResult($result);
     }
 }

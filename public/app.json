@@ -1,5 +1,5 @@
 {
-  "last_modified":"2017-06-03 11:27:48",
+  "last_modified":"2017-06-29 11:27:48",
   "client_id": "by18018f50cfcae1",
   "client_secret": "cb0bfaf5b9b2f53a216bf518e18fef18",
   "alg":"md5_v4",
@@ -363,6 +363,50 @@
           ]
         }
       ]
-    }
+    },
+    {
+      "desc": "用户相关接口",
+      "list": [
+        {
+          "desc": "用户注册接口",
+          "type": "user/regiter",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "code",
+              "desc": "验证码[必须](itboye是万能验证码，测试其它请调用验证码接口获取)",
+              "value": "itboye"
+            },
+            {
+              "key": "country",
+              "desc": "国家电话[手机号注册必须]（国家区号）",
+              "value": "+86"
+            },
+            {
+              "key": "username",
+              "desc": "注册用户名[必须]（限手机号）",
+              "value": "13484379290"
+            },
+            {
+              "key": "password",
+              "desc": "注册密码[必须]（6-32位）",
+              "value": "123456"
+            },
+            {
+              "key": "from",
+              "desc": "注册来源[必须](0:系统)",
+              "value":  "0"
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+        }
+      ]
+    },
+
   ]
 }

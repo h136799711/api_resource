@@ -9,21 +9,28 @@
 namespace app\sdk\base;
 
 use app\sdk\helper\ByConfigHelper;
+use app\sdk\helper\ByCurlHelper;
 use app\sdk\helper\ByLangHelper;
 
 class ByBaseSdkObj
 {
     private static $config;
+    private static $curlHelper;
 
     public function __construct()
     {
         // 读取配置信息
         $instance = ByConfigHelper::getInstance();
         self::$config = $instance::$config;
+        self::$curlHelper = new ByCurlHelper(self::$config);
         // 设置语言
         ByLangHelper::setLang(self::$config['lang']);
         // 设置时区
         date_default_timezone_set(self::$config['default_timezone']);
+    }
+
+    protected function callremote($data){
+        return self::$curlHelper->callRemote($data);
     }
 
 }
