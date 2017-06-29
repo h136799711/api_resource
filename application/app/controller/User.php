@@ -51,6 +51,7 @@ class User extends App
      * 用户注册
      */
     public function register(){
+        var_dump('app/user/register');
         $code = $this->_param('code','','请填写验证码');
         $username = $this->_param('username','','缺少用户名');
         $nickname = $username;

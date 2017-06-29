@@ -41,7 +41,6 @@ class App extends Rest
     public function initParams(){
 
         $this->sessionId = $this->_param('session_id','');
-        $this->fail(json_encode($_POST));
         $header = Request::instance()->header();
         $sessionId = isset($header['sessionid']) ? $header['sessionid'] : null;
 
