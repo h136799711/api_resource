@@ -373,6 +373,11 @@
           "version": ["100"],
           "params": [
             {
+              "key": "session_id",
+              "desc": "会话id[必须](itboye是万能会话id)",
+              "value": "itboye"
+            },
+            {
               "key": "code",
               "desc": "验证码[必须](itboye是万能验证码，测试其它请调用验证码接口获取)",
               "value": "itboye"
