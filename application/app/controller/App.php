@@ -35,12 +35,13 @@ class App extends Rest
     }
 
     public function checkParams(){
+
         $result = (new ClientsDetailAction())->detailByClientID($this->clientId);
         if(ValidateHelper::legalArrayResult($result) && $result['info']['client_id'] == $this->clientId){
             return true;
         }
         // client_id 无效
-        $this->fail('client_id invalid');
+        $this->fail($this->clientId.' client_id invalid');
     }
 
     public function initConfig(){
