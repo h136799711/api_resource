@@ -5,7 +5,7 @@
  * Date: 2016-11-05
  * Time: 16:37
  */
-namespace app\index\controller;
+namespace app\callback\controller;
 
 use app\src\alipay\action\AlipayNotifyAction;
 use app\src\alipay\po\AlipayNotifyPo;
