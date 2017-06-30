@@ -9,7 +9,7 @@
   ],
   "meta_list":[
     {"title":"友盟推送测试","value":"http://api.app.8raw.com/index.php/device_event/test_push?uid={用户id}&title=[test]"},
-    {"title":"验证码图像","value":"http://apidev.qqav.club/app.php/security_code/image_src?session_id=byitboye&client_id=byitboye&id="}
+    {"title":"验证码图像","value":"http://apidev.qqav.club/app.php/security_code/image_src?session_id=byitboye&client_id=by4da4075b0eb014821&id="}
   ],
   "api_list": [
     {
@@ -153,7 +153,7 @@
             {
               "key": "client_id",
               "desc": "client_id",
-              "value": "byitboye"
+              "value": "by4da4075b0eb014821"
             }
           ],
           "authors": [
@@ -365,10 +365,25 @@
       "desc": "配置相关接口",
       "list": [
         {
-          "desc": "获取app接口配置(10分钟缓存时间)",
-          "type": "By_Config_app",
+          "desc": "获取应用配置",
+          "type": "clients_config/query",
           "version": ["100"],
           "params": [
+            {
+              "key": "session_id",
+              "desc": "会话id[必须](itboye是万能会话id)",
+              "value": "itboye"
+            },
+            {
+              "key": "client_id",
+              "desc": "应用id[必须]",
+              "value": "by4da4075b0eb014821"
+            },
+            {
+              "key": "module_code",
+              "desc": "应用下的模块编码[必须，不传则默认为app]",
+              "value": "app"
+            }
           ],
           "authors": [
             {

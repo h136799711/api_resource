@@ -11,6 +11,8 @@ namespace app\app\controller;
 
 use app\src\base\enum\ErrorCode;
 use app\src\base\helper\PageHelper;
+use app\src\base\helper\ValidateHelper;
+use app\src\clients\action\ClientsDetailAction;
 use app\src\user\action\UserHelperAction;
 use think\controller\Rest;
 use think\Request;
@@ -28,10 +30,18 @@ class App extends Rest
         $this->initConfig();
 
         // 检测
+        $this->checkParams();
 
     }
 
-
+    public function checkParams(){
+        $result = (new ClientsDetailAction())->detailByClientID($this->clientId);
+        if(ValidateHelper::legalArrayResult($result) && $result['info']['client_id'] == $this->clientId){
+            return true;
+        }
+        // client_id 无效
+        $this->fail('client_id invalid');
+    }
 
     public function initConfig(){
 
