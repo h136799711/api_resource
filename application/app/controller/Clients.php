@@ -33,16 +33,16 @@ class Clients extends App
      */
     public function delete(){
         $id = $this->_param('id','');
-        $client_id = $this->_param('client_id','');
-        if(empty($id) && empty($client_id)){
+        $app_id = $this->_param('app_id','');
+        if(empty($id) && empty($app_id)){
             $this->fail('缺少参数');
         }
         $uid = $this->_param('uid','');
         $result = [];
         if(!empty($id)){
             $result = (new ClientsDeleteAction())->deleteByID($id,$uid);
-        }elseif(!empty($client_id)){
-            $result = (new ClientsDeleteAction())->deleteByClientID($$client_id,$uid);
+        }elseif(!empty($app_id)){
+            $result = (new ClientsDeleteAction())->deleteByClientID($$app_id,$uid);
         }
         $this->returnResult($result);
     }
@@ -52,8 +52,8 @@ class Clients extends App
      */
     public function update(){
         $id = $this->_param('id','');
-        $client_id = $this->_param('client_id','');
-        if(empty($id) && empty($client_id)){
+        $app_id = $this->_param('app_id','');
+        if(empty($id) && empty($app_id)){
             $this->fail('缺少参数');
         }
         $name = $this->_param('name','');
@@ -64,8 +64,8 @@ class Clients extends App
         $result = [];
         if(!empty($id)) {
             $result = (new ClientsUpdateAction())->updateByID($id,$name,$note);
-        }elseif(!empty($client_id)) {
-            $result = (new ClientsUpdateAction())->updateByClientID($client_id,$name,$note);
+        }elseif(!empty($app_id)) {
+            $result = (new ClientsUpdateAction())->updateByClientID($app_id,$name,$note);
         }
 
         $this->returnResult($result);
@@ -86,16 +86,16 @@ class Clients extends App
     public function detail(){
 
         $id = $this->_param('id','');
-        $client_id = $this->_param('client_id','');
-        if(empty($id) && empty($client_id)){
+        $app_id = $this->_param('app_id','');
+        if(empty($id) && empty($app_id)){
             $this->fail('缺少参数');
         }
 
         $result = [];
         if(!empty($id)) {
             $result = (new ClientsDetailAction())->detailByID($id);
-        }elseif(!empty($client_id)) {
-            $result = (new ClientsDetailAction())->detailByClientID($client_id);
+        }elseif(!empty($app_id)) {
+            $result = (new ClientsDetailAction())->detailByClientID($app_id);
         }
         $this->returnResult($result);
     }
@@ -103,16 +103,16 @@ class Clients extends App
     public function reset_secret(){
 
         $id = $this->_param('id','');
-        $client_id = $this->_param('client_id','');
-        if(empty($id) && empty($client_id)){
+        $app_id = $this->_param('app_id','');
+        if(empty($id) && empty($app_id)){
             $this->fail('缺少参数');
         }
 
         $result = [];
         if(!empty($id)) {
             $result = (new ClientsResetSecretAction())->resetSecretByID($id);
-        }elseif(!empty($client_id)) {
-            $result = (new ClientsResetSecretAction())->resetSecretByClientID($client_id);
+        }elseif(!empty($app_id)) {
+            $result = (new ClientsResetSecretAction())->resetSecretByClientID($app_id);
         }
         $this->returnResult($result);
     }

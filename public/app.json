@@ -151,8 +151,8 @@
               "value": "byitboye"
             },
             {
-              "key": "client_id",
-              "desc": "client_id",
+              "key": "app_id",
+              "desc": "app_id",
               "value": "by4da4075b0eb014821"
             }
           ],
@@ -375,7 +375,7 @@
               "value": "itboye"
             },
             {
-              "key": "client_id",
+              "key": "app_id",
               "desc": "应用id[必须]",
               "value": "by4da4075b0eb014821"
             },
@@ -423,7 +423,7 @@
               "value": "itboye"
             },
             {
-              "key": "client_id",
+              "key": "app_id",
               "desc": "应用id[必须]",
               "value": "by4da4075b0eb014821"
             },

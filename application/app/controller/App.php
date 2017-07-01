@@ -25,7 +25,7 @@ class App extends Rest
     public function __construct()
     {
         parent::__construct();
-        // TODO 校验 client_id 是否有效
+        // TODO 校验 app_id 是否有效
         $this->initParams();
         $this->initConfig();
 
@@ -37,11 +37,11 @@ class App extends Rest
     public function checkParams(){
 
         $result = (new ClientsDetailAction())->detailByClientID($this->clientId);
-        if(ValidateHelper::legalArrayResult($result) && $result['info']['client_id'] == $this->clientId){
+        if(ValidateHelper::legalArrayResult($result) && $result['info']['app_id'] == $this->clientId){
             return true;
         }
-        // client_id 无效
-        $this->fail($this->clientId.' client_id invalid');
+        // app_id 无效
+        $this->fail($this->clientId.' app_id invalid');
     }
 
     public function initConfig(){
@@ -62,13 +62,13 @@ class App extends Rest
             $this->sessionId = $sessionId;
         }
 
-        $this->clientId = $this->_param('client_id','');
+        $this->clientId = $this->_param('app_id','');
         $clientId = isset($header['clientid']) ? $header['clientid'] : null;
         if(empty($this->clientId)){
             $this->clientId = $clientId;
         }
         if(empty($this->clientId)){
-            $this->fail('缺少 client_id');
+            $this->fail('缺少 app_id');
         }
         if(empty($this->sessionId)){
             $this->fail('缺少 sessionId');

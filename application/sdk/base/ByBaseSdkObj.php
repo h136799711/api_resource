@@ -36,4 +36,14 @@ class ByBaseSdkObj
     protected function getNotifyId(){
         return time();
     }
+
+    protected function merge($data1,$data2){
+        unset($data2['type']);
+        unset($data2['api_ver']);
+        unset($data2['api_type']);
+        unset($data2['client_id']);
+        unset($data2['session_id']);
+
+        return array_merge($data1,$data2);
+    }
 }
