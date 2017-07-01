@@ -36,7 +36,7 @@ class App extends Rest
 
     public function checkParams(){
 
-        $result = (new ClientsDetailAction())->detailByClientID($this->clientId);
+        $result = (new ClientsDetailAction())->detailByAppID($this->clientId);
         if(ValidateHelper::legalArrayResult($result) && $result['info']['app_id'] == $this->clientId){
             return true;
         }

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "af89104cfb7d1458516533c96ff8c1b2",
-    "content-hash": "042331f9ec936f1d423c11352cd2d6e8",
+    "hash": "9f55085d886e84c595a686801246c536",
+    "content-hash": "de071e99ce2fa90000572bbd3e80f70e",
     "packages": [
         {
             "name": "doctrine/instantiator",
@@ -63,11 +63,11 @@
         },
         {
             "name": "itboye/src",
-            "version": "dev-master",
+            "version": "dev-api",
             "source": {
                 "type": "git",
                 "url": "https://git.oschina.net/gooraye/itboye_source.git",
-                "reference": "cb232f763a0b3413e2a6aecbe799aeda8193dc3a"
+                "reference": "2771373501a78e374afec9c03481cb97e1cf48dd"
             },
             "require": {
                 "php": ">=5.3"
@@ -95,7 +95,7 @@
                 }
             ],
             "description": "source",
-            "time": "2017-06-29 09:42:19"
+            "time": "2017-07-01 01:40:32"
         },
         {
             "name": "itboye/vendor",

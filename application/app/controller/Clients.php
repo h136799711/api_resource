@@ -42,7 +42,7 @@ class Clients extends App
         if(!empty($id)){
             $result = (new ClientsDeleteAction())->deleteByID($id,$uid);
         }elseif(!empty($app_id)){
-            $result = (new ClientsDeleteAction())->deleteByClientID($$app_id,$uid);
+            $result = (new ClientsDeleteAction())->deleteByAppID($$app_id,$uid);
         }
         $this->returnResult($result);
     }
@@ -65,7 +65,7 @@ class Clients extends App
         if(!empty($id)) {
             $result = (new ClientsUpdateAction())->updateByID($id,$name,$note);
         }elseif(!empty($app_id)) {
-            $result = (new ClientsUpdateAction())->updateByClientID($app_id,$name,$note);
+            $result = (new ClientsUpdateAction())->updateByAppID($app_id,$name,$note);
         }
 
         $this->returnResult($result);
@@ -95,7 +95,7 @@ class Clients extends App
         if(!empty($id)) {
             $result = (new ClientsDetailAction())->detailByID($id);
         }elseif(!empty($app_id)) {
-            $result = (new ClientsDetailAction())->detailByClientID($app_id);
+            $result = (new ClientsDetailAction())->detailByAppID($app_id);
         }
         $this->returnResult($result);
     }
@@ -112,7 +112,7 @@ class Clients extends App
         if(!empty($id)) {
             $result = (new ClientsResetSecretAction())->resetSecretByID($id);
         }elseif(!empty($app_id)) {
-            $result = (new ClientsResetSecretAction())->resetSecretByClientID($app_id);
+            $result = (new ClientsResetSecretAction())->resetSecretByAppID($app_id);
         }
         $this->returnResult($result);
     }
