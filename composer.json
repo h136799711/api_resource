@@ -8,6 +8,7 @@
         "topthink/framework": "5.0.9",
         "phpunit/phpunit": "4.8.*",
         "itboye/vendor":"dev-master",
-        "itboye/src":"dev-api"
+        "itboye/src":"dev-api",
+        "shark/simple_html_dom":"dev-master"
     }
 }

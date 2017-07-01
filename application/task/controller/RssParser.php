@@ -17,7 +17,17 @@ class RssParser extends Controller
         $url = "http://feeds.feedburner.com/JavForMe?format=xml";
 
         $xml = file_get_contents($url);
-        var_dump($xml);
-//        simplexml_load_string($url)
+        $xml = simplexml_load_string($xml);
+
+        echo var_dump($xml);
+    }
+
+    public function testOne(){
+        $url = "http://javfor.me/96266.html";
+        $html = file_get_contents($url);
+        $loader =  new \simple_html_dom();
+        $loader->load($html);
+        $loader->dump(false);
+        echo 'end';
     }
 }

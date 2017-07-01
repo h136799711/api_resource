@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9f55085d886e84c595a686801246c536",
-    "content-hash": "de071e99ce2fa90000572bbd3e80f70e",
+    "hash": "4483581e97386172739e227bdda4c638",
+    "content-hash": "4e6f9facc4c2c70fcbe1c5c868d948d1",
     "packages": [
         {
             "name": "doctrine/instantiator",
@@ -67,7 +67,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.oschina.net/gooraye/itboye_source.git",
-                "reference": "2771373501a78e374afec9c03481cb97e1cf48dd"
+                "reference": "3d9b9839d126d610cb3646d6396e66003821fc35"
             },
             "require": {
                 "php": ">=5.3"
@@ -95,7 +95,7 @@
                 }
             ],
             "description": "source",
-            "time": "2017-07-01 01:40:32"
+            "time": "2017-07-01 01:43:01"
         },
         {
             "name": "itboye/vendor",
@@ -1140,6 +1140,49 @@
             "time": "2015-06-21 13:59:46"
         },
         {
+            "name": "shark/simple_html_dom",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/samacs/simple_html_dom.git",
+                "reference": "b396c8c87a8db9dca98166db262dcee89b6b83b8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/samacs/simple_html_dom/zipball/b396c8c87a8db9dca98166db262dcee89b6b83b8",
+                "reference": "b396c8c87a8db9dca98166db262dcee89b6b83b8",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": ">=5.2.4"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "simple_html_dom.php"
+                ],
+                "files": [
+                    "simple_html_dom.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "S.C. Chen",
+                    "email": "me578022@gmail.com",
+                    "homepage": "http://simplehtmldom.sourceforge.net/"
+                }
+            ],
+            "description": "Simple HTML DOM package.",
+            "homepage": "http://simplehtmldom.sourceforge.net/",
+            "keywords": [
+                "dom",
+                "php dom"
+            ],
+            "time": "2016-10-28 19:06:55"
+        },
+        {
             "name": "symfony/dom-crawler",
             "version": "v2.8.22",
             "source": {
@@ -1662,7 +1705,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "itboye/vendor": 20,
-        "itboye/src": 20
+        "itboye/src": 20,
+        "shark/simple_html_dom": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
