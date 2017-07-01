@@ -1,0 +1,51 @@
+{
+  "job": {
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "column": ["*"],
+            "connection": [
+              {
+                "jdbcUrl": [
+                  "jdbc:mysql://101.37.37.167:3306/sunsun_xiaoli"
+                ],
+                "table": [
+                  "sunsun_aph300_device"
+                ]
+              }
+            ],
+            "password": "poiuyTREWQ123456",
+            "username": "sunsun",
+            "where": ""
+          }
+        },
+        "writer": {
+          "name": "mysqlwriter",
+          "parameter": {
+            "column": ["*"],
+            "connection": [
+              {
+                "jdbcUrl": "jdbc:mysql://127.0.0.1:3306/sunsun_xiaoli?useUnicode=true&characterEncoding=utf8",
+                "table": [
+                  "sunsun_aph300_device"
+                ]
+              }
+            ],
+            "password": ",364945361hbdHBD",
+            "preSql": [],
+            "session": [],
+            "username": "root",
+            "writeMode": "insert"
+          }
+        }
+      }
+    ],
+    "setting": {
+      "speed": {
+        "channel": "1"
+      }
+    }
+  }
+}
