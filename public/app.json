@@ -365,6 +365,54 @@
       "desc": "配置相关接口",
       "list": [
         {
+          "desc": "添加配置",
+          "type": "clients_config/create",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "session_id",
+              "desc": "会话id[必须](itboye是万能会话id)",
+              "value": "itboye"
+            },
+            {
+              "key": "client_id",
+              "desc": "应用id[必须]",
+              "value": "by4da4075b0eb014821"
+            },
+            {
+              "key": "module_code",
+              "desc": "应用下的模块编码[必须，不传则默认为app]",
+              "value": "app"
+            },
+            {
+              "key": "name",
+              "desc": "配置编码[必须，保证唯一]",
+              "value": "app_test"
+            },
+            {
+              "key": "type",
+              "desc": "配置值的类型[必须，1：字符串 2：json字符串 3：数组]",
+              "value": "1"
+            },
+            {
+              "key": "value",
+              "desc": "配置值[必须]",
+              "value": "test"
+            },
+            {
+              "key": "title",
+              "desc": "标题",
+              "value": "test"
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+        },
+        {
           "desc": "获取应用配置",
           "type": "clients_config/query",
           "version": ["100"],
