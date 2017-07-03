@@ -25,7 +25,7 @@ class RemotePictureHelper
         $sha1 = sha1_file($info['save_path']);
         $entity = [
             'uid'=>0,
-            'path'=>$info['save_path'],
+            'path'=> ltrim($info['save_path'],"."),
             'savename'=>$filename,
             'ori_name'=>$url,
             'size'=>$size,
