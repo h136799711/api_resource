@@ -3,24 +3,22 @@
  * Created by PhpStorm.
  * User: 1
  * Date: 2017-07-03
- * Time: 16:26
+ * Time: 16:51
  */
 
-namespace app\task\controller;
+namespace app\src\crawler\action;
 
 
 use app\src\base\helper\ResultHelper;
-use app\src\file\logic\UserFileLogic;
 use app\src\file\logic\UserPictureLogic;
 
-class Test
+class RemotePictureHelper
 {
-    public function remote(){
-        $url = "http://cdn.hdporn4.me/javforme_img/65412/1-690x0.jpg";
+    public static function download($url){
         $ext=strrchr($url,'.');
         $save_dir = "./upload/r_pic";
         $filename = md5($url).$ext;
-        $result = ($this->getImage($url,$save_dir,$filename,1));
+        $result = (self::getImage($url,$save_dir,$filename,1));
         $info = $result['info'];
         $size = filesize($info['save_path']);
         $md5 = md5_file($info['save_path']);
@@ -41,9 +39,10 @@ class Test
             'porn_prop'=>0
         ];
         $result = (new UserPictureLogic())->add($entity);
-        var_dump($result);
+        return $result;
     }
-    public function getImage($url,$save_dir='',$filename='',$type=0){
+
+    public static function getImage($url,$save_dir='',$filename='',$type=0){
         if(trim($url)==''){
             return ResultHelper::error('图片地址为空');
         }
