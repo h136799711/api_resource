@@ -14,4 +14,5 @@ use app\src\base\model\BaseModel;
 class CrawlerUrl extends BaseModel
 {
     protected $table = "qqav_crawler_url";
+
 }

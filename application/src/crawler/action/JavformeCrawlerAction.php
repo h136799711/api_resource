@@ -12,6 +12,7 @@ namespace app\src\crawler\action;
 use app\src\base\action\BaseAction;
 use app\src\base\helper\ResultHelper;
 use app\src\base\helper\ValidateHelper;
+use app\src\crawler\constants\CrawlerUrlType;
 use app\src\crawler\JavformeCrawler;
 use app\src\crawler\logic\CrawlerUrlLogic;
 use app\src\qqav\action\ActorAction;
@@ -27,7 +28,8 @@ class JavformeCrawlerAction extends BaseAction
                 'url'=>$url,
                 'create_time'=>$now,
                 'update_time'=>$now,
-                'climb_url'=>0
+                'climb_url'=>0,
+                'url_type'=>CrawlerUrlType::JAV_FOR_ME,
             ]);
         }
         $result = (new CrawlerUrlLogic())->addAll($allEntity);
@@ -78,7 +80,7 @@ class JavformeCrawlerAction extends BaseAction
     }
 
     protected function logUrl($url){
-        $map = ['url'=>$url];
+        $map = ['url'=>$url,'climb_status'=>1];
         $result = (new CrawlerUrlLogic())->getInfo($map);
         if(ValidateHelper::legalArrayResult($result) && $result['info']['url'] == $url){
             return ResultHelper::error("[url] 已处理，无需重复处理");
@@ -88,7 +90,8 @@ class JavformeCrawlerAction extends BaseAction
             'url'=>$url,
             'create_time'=>$now,
             'update_time'=>$now,
-            'climb_status'=>0
+            'climb_status'=>0,
+            'url_type'=>CrawlerUrlType::JAV_FOR_ME
         ];
         $result = (new CrawlerUrlLogic())->add($entity);
         return $result;
@@ -118,6 +121,7 @@ class JavformeCrawlerAction extends BaseAction
             }else{
                 $entity = ['climb_status'=>-1];
             }
+            $entity['update_time'] = time();
             (new CrawlerUrlLogic())->save($map,$entity);
             return $result;
         }

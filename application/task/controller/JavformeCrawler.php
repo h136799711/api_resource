@@ -16,9 +16,10 @@ use think\Controller;
 class JavformeCrawler extends Controller
 {
     public function start(){
+        $order = "update_time asc";
         $map = ['climb_status'=>0];
         $page = ['curpage'=>0,'size'=>100];
-        $result = (new CrawlerUrlLogic())->query($map,$page);
+        $result = (new CrawlerUrlLogic())->query($map,$page,$order);
         $info = $result['info'];
         if(array_key_exists("list",$info) && count($info['list']) > 0){
             $crawler = new JavformeCrawlerAction();
