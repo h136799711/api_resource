@@ -10,6 +10,7 @@ namespace app\src\crawler;
 
 
 use app\src\base\helper\ResultHelper;
+use app\src\qqav\action\LogAction;
 use think\Exception;
 
 class JavformeCrawler extends BaseCrawler
@@ -43,7 +44,12 @@ class JavformeCrawler extends BaseCrawler
             if(count($post) > 0){
                 $p_items = $post[0]->find("p");
                 if(count($p_items) >= 4){
-                    $actressName = $p_items[2]->find("a")[0]->plaintext;
+                    $actressName = $p_items[2]->find("a");
+                    if(count($actressName) > 0){
+                        $actressName = $actressName[0]->plaintext;
+                    }else{
+                        LogAction::debug("[$url] 找不到演员信息的a标签");
+                    }
                     $aItems = $p_items[3]->find("a");
                     foreach ($aItems as $a){
                         array_push($tags,$a->plaintext);
