@@ -11,7 +11,6 @@ namespace app\src\crawler;
 
 use app\src\base\helper\ResultHelper;
 use think\Exception;
-use think\exception\ErrorException;
 
 class JavformeCrawler extends BaseCrawler
 {
