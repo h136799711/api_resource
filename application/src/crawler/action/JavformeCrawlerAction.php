@@ -52,9 +52,9 @@ class JavformeCrawlerAction extends BaseAction
             'title_en'=>$info['title'],
             'title_cn'=>'',
             'from_url'=>'http://javfor.me',
-            'url_res'=>json_encode([
+            'url_res'=>json_encode([[
                 'view_url'=>$url
-            ]),
+            ]]),
             'tags'=>implode(",",$info['tags']),
             'create_time'=>time(),
             'update_time'=>time()
