@@ -65,7 +65,9 @@ class JavformeCrawlerAction extends BaseAction
         $isExist = (new ActorAction())->isExistName($info['actress_name']);
 
         if($isExist){
-           return ResultHelper::error("已经存在相同姓名的");
+            $msg = "已经存在相同的".$info['actress_name'];
+            LogAction::debug($msg);
+           return ResultHelper::error($msg);
         }else{
             $now = time();
             $actorPo = [
@@ -77,6 +79,7 @@ class JavformeCrawlerAction extends BaseAction
                 'update_time'=>$now
             ];
             $result = (new ActorAction())->create($actorPo);
+            LogAction::logDebugResult($result);
         }
 
         return $result;
@@ -87,7 +90,9 @@ class JavformeCrawlerAction extends BaseAction
         $result = (new CrawlerUrlLogic())->getInfo($map);
         if(ValidateHelper::legalArrayResult($result) && $result['info']['url'] == $url){
             if($result['info']['climb_status'] == 1){
-                return ResultHelper::error("[url] 已处理，无需重复处理");
+
+                LogAction::debug("[$url] 已处理，无需重复处理");
+                return ResultHelper::error("[$url] 已处理，无需重复处理");
             }else{
                 $map = ['id'=>$result['info']['id']];
                 $entity = ['climb_status'=>1];
@@ -116,9 +121,11 @@ class JavformeCrawlerAction extends BaseAction
      */
     public function parse($url){
         $result = $this->logUrl($url);
+        LogAction::logDebugResult($result);
         if ($result['status']) {
             // 记录成功的情况下开始解析
             $result = (new JavformeCrawler())->parseHtml($url);
+            LogAction::logDebugResult($result);
             $map = ['url'=>$url];
             if($result['status']){
                 $info = $result['info'];
