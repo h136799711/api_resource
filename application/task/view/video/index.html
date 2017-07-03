@@ -29,8 +29,8 @@
     <div class="col-md-10 col-lg-10">
     {$pager}
     </div>
-<div class="container">
-    <div class="col-md-10 col-lg-10">
+<div class="container  col-sm-12">
+    <div class="col-md-10 col-lg-10  col-sm-12">
         <form class="form-inline" method="post" action="">
             <div class="form-group ">
                 <input type="text" name="q" id="q" class="form-control" value="{$q}" placeholder="搜索标题">
@@ -44,7 +44,7 @@
         </form>
     </div>
     {volist name="list" id="vo"}
-    <div class="col-md-10 col-lg-10">
+    <div class="col-md-10 col-lg-10 col-sm-12">
     <div class="media">
         <div class="media-left">
             <a target="_blank" href="{:config('picture_url')}{$vo.local_main_image}">
