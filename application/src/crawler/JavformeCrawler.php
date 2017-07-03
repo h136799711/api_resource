@@ -15,6 +15,12 @@ use think\exception\ErrorException;
 
 class JavformeCrawler extends BaseCrawler
 {
+
+    /**
+     * 解析视频详情页
+     * @param $url
+     * @return array
+     */
     public function parseHtml($url){
         try{
             $html = file_get_html($url,false,null,0);
@@ -26,7 +32,6 @@ class JavformeCrawler extends BaseCrawler
             $mainImg = $loader->find("div#my_main_content_box img");
             $src = '';
             $title = '';
-            $actressName = '';
             $tags = [];
             if(count($mainImg) > 0){
                 $src = $mainImg[0]->src;
@@ -36,8 +41,6 @@ class JavformeCrawler extends BaseCrawler
                 $title = $items[0]->plaintext;
             }
             $post = $loader->find("div#information div.post");
-            var_dump($post[0]->outertext);
-            echo '<br/><br/><br/>';
             if(count($post) > 0){
                 $p_items = $post[0]->find("p");
                 if(count($p_items) >= 4){
@@ -46,17 +49,20 @@ class JavformeCrawler extends BaseCrawler
                     foreach ($aItems as $a){
                         array_push($tags,$a->plaintext);
                     }
-                    echo 'tags = '.json_encode($tags);
                 }else{
-                    echo "无法解析".count($p_items);
+                    return ResultHelper::error("解析失败，没有4个p标签");
                 }
 
+            }else{
+                return ResultHelper::error("解析失败，没有div#information div.post");
             }
-            echo '<br/>main image = '.$src;
-            echo '<br/>title = '.$title;
-            echo '<br/>actress name = '.$actressName;
             $searchKey = preg_replace("/\s+/", "", strtolower(trim($actressName)));
-            echo '<br/>search key = '.$searchKey;
+            $entity = [];
+            $entity['search_key'] = $searchKey;
+            $entity['actress_name'] = $actressName;
+            $entity['title'] = $title;
+            $entity['main_image'] = $src;
+            return ResultHelper::success($entity);
         }catch (Exception $e){
             return ResultHelper::error($e->getMessage());
         }
