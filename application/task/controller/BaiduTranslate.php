@@ -30,9 +30,9 @@ class BaiduTranslate extends Controller
      */
     public function en2cn(){
         $q = $this->request->param('q');
-        $result = (new BDTranslater())->translate($q,BDTranslateLangType::En,BDTranslateLangType::Zh);
+        $result = (new BDTranslater($this->appId,$this->appSecret))->translate($q,BDTranslateLangType::En,BDTranslateLangType::Zh);
         var_dump($result);
-        $result = (new BDTranslater())->translate($q,BDTranslateLangType::En,BDTranslateLangType::Jp);
+        $result = (new BDTranslater($this->appId,$this->appSecret))->translate($q,BDTranslateLangType::En,BDTranslateLangType::Jp);
         var_dump($result);
     }
 }
