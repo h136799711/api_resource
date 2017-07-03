@@ -6,6 +6,5 @@
  * Time: 19:59
  */
 return [
-
     'default_return_type'    => 'html',
 ];

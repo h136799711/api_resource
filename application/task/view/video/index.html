@@ -3,9 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <style type="text/css">
+        .thumbnail{
+            width: 180px;
+            height: 180px;
+        }
+    </style>
 </head>
 <body>
-    {:dump($list)}
+    {volist name="list" id="vo"}
+    <div class="media">
+        <div class="media-left">
+            <a href="{:config('picture_url')}{$vo.local_main_image}">
+                <img class="media-object thumbnail" src="{:config('picture_url')}{$vo.local_main_image}" alt="{$vo.title_en}">
+            </a>
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading">{$vo.title_en}</h4>
+            {$vo.tags}
+        </div>
+    </div>
+    {/volist}
 {$pager}
 </body>
 </html>
