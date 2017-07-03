@@ -17,8 +17,18 @@
     <script type="application/javascript" src="http://apidev.cdn.qqav.club/lazysizes/lazysizes.min.js" async=""></script>
 </head>
 <body>
+
 {$pager}
 <div class="container">
+    <div class="col-md-10 col-lg-10">
+        <form class="inline-form" method="post" action="">
+            <div class="form-group">
+                <label for="q">搜索标题</label>
+                <input type="text" name="q" id="q" class="form-control" value="{$q}" placeholder="搜索标题">
+            </div>
+            <button type="submit" class="btn btn-default">查询</button>
+        </form>
+    </div>
     {volist name="list" id="vo"}
     <div class="col-md-10 col-lg-10">
     <div class="media">

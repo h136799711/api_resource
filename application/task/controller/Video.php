@@ -17,7 +17,11 @@ use think\Controller;
 class Video extends Controller
 {
     public function index(){
+        $q = $this->request->param('q','');
         $map = [];
+        if(!empty($q)){
+            $map['title_en'] = ['like','%'.$q.'%'];
+        }
         $p = $this->request->param('p',0);
         $page = ['page_index'=>$p,'page_size'=>30];
         $result = (new VideoLogic())->queryWithPagingHtml($map,PageHelper::renew($page)->queryParam(),"id asc");
