@@ -9,6 +9,7 @@
 namespace app\task\controller;
 
 
+use app\src\crawler\action\JavformeCrawlerAction;
 use app\src\crawler\JavformeCrawler;
 use think\Controller;
 
@@ -25,8 +26,8 @@ class RssParser extends Controller
 
     public function testJavforme(){
         $url = "http://javfor.me/96265.html";
-        $crawler = new JavformeCrawler();
-        var_dump($crawler->parseHtml($url));
+        $crawler = new JavformeCrawlerAction();
+        var_dump($crawler->parse($url));
     }
 
     public function testOne(){

@@ -24,7 +24,7 @@ class JavformeCrawlerAction extends BaseAction
      * @return array
      */
     protected function logInfo($info){
-        // name_key,actress_name,title,main_image
+        // name_key,actress_name,title,main_image,tags
         // 搜索key
         $isExist = (new ActorAction())->isExistName($info['actress_name']);
 
@@ -42,6 +42,8 @@ class JavformeCrawlerAction extends BaseAction
             'update_time'=>$now
         ];
         $result = (new ActorAction())->create($actorPo);
+
+
         return $result;
     }
 
@@ -62,6 +64,13 @@ class JavformeCrawlerAction extends BaseAction
         return $result;
     }
 
+    /**
+     * 1. 记录url，防止重复
+     * 2. 记录解析后的演员信息
+     * 3. 记录解析后的视频信息
+     * @param $url
+     * @return array
+     */
     public function parse($url){
         $result = $this->logUrl($url);
         if ($result['status']) {

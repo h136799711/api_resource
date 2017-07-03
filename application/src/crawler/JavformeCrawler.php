@@ -61,6 +61,7 @@ class JavformeCrawler extends BaseCrawler
             $entity['actress_name'] = $actressName;
             $entity['title'] = $title;
             $entity['main_image'] = $src;
+            $entity['tags'] = $tags;
             return ResultHelper::success($entity);
         }catch (Exception $e){
             return ResultHelper::error($e->getMessage());
