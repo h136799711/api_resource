@@ -14,13 +14,14 @@
             height: 180px;
         }
     </style>
+    <script type="application/javascript" src="http://apidev.cdn.qqav.club/lazysizes/lazysizes.min.js" async=""></script>
 </head>
 <body>
     {volist name="list" id="vo"}
     <div class="media">
         <div class="media-left">
             <a href="{:config('picture_url')}{$vo.local_main_image}">
-                <img class="media-object thumbnail" src="{:config('picture_url')}{$vo.local_main_image}" alt="{$vo.title_en}">
+                <img class="media-object thumbnail" data-src="{:config('picture_url')}{$vo.local_main_image}" alt="{$vo.title_en}" class="lazyload">
             </a>
         </div>
         <div class="media-body">
