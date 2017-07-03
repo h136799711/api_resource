@@ -10,6 +10,7 @@ namespace app\src\qqav\action;
 
 
 use app\src\base\action\BaseAction;
+use app\src\base\helper\PageHelper;
 use app\src\qqav\logic\VideoLogic;
 
 class VideoAction extends BaseAction
@@ -24,5 +25,9 @@ class VideoAction extends BaseAction
         if(isset($entity['update_time'])) $entity['update_time'] = time();
 
         return (new VideoLogic())->add($entity);
+    }
+
+    public function query($map,PageHelper $pageHelper,$order=false,$params=false){
+        return (new VideoLogic())->query($map,$pageHelper->queryParam(),$order,$params);
     }
 }
