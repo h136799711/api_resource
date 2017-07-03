@@ -14,7 +14,6 @@ use app\src\base\helper\ResultHelper;
 use app\src\base\helper\ValidateHelper;
 use app\src\crawler\JavformeCrawler;
 use app\src\crawler\logic\CrawlerUrlLogic;
-use app\src\crawler\model\CrawlerUrl;
 use app\src\qqav\action\ActorAction;
 
 class JavformeCrawlerAction extends BaseAction
@@ -22,10 +21,17 @@ class JavformeCrawlerAction extends BaseAction
     /**
      * 记录信息
      * @param $info
+     * @return array
      */
     protected function logInfo($info){
         // name_key,actress_name,title,main_image
         // 搜索key
+        $isExist = (new ActorAction())->isExistName($info['actress_name']);
+
+        if($isExist){
+           return ResultHelper::error("已经存在相同姓名的");
+        }
+
         $now = time();
         $actorPo = [
             'name_key'=>$info['name_key'],
@@ -36,7 +42,7 @@ class JavformeCrawlerAction extends BaseAction
             'update_time'=>$now
         ];
         $result = (new ActorAction())->create($actorPo);
-
+        return $result;
     }
 
     protected function logUrl($url){
