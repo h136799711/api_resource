@@ -81,7 +81,7 @@ class JavformeCrawlerAction extends BaseAction
                 $entity = ['climb_status'=>1];
                 (new CrawlerUrlLogic())->save($map,$entity);
                 $info = $result['info'];
-                $this->logInfo($info);
+                return $this->logInfo($info);
             }else{
                 $map = ['url'=>$url];
                 $entity = ['climb_status'=>-1];
