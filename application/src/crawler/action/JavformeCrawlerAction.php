@@ -15,15 +15,17 @@ use app\src\base\helper\ValidateHelper;
 use app\src\crawler\JavformeCrawler;
 use app\src\crawler\logic\CrawlerUrlLogic;
 use app\src\qqav\action\ActorAction;
+use app\src\qqav\action\VideoAction;
 
 class JavformeCrawlerAction extends BaseAction
 {
     /**
      * 记录信息
      * @param $info
+     * @param $url
      * @return array
      */
-    protected function logInfo($info){
+    protected function logInfo($info,$url){
         // name_key,actress_name,title,main_image,tags
         // 搜索key
         $isExist = (new ActorAction())->isExistName($info['actress_name']);
@@ -42,6 +44,19 @@ class JavformeCrawlerAction extends BaseAction
             'update_time'=>$now
         ];
         $result = (new ActorAction())->create($actorPo);
+
+        $videoEntity = [
+            'main_image'=>$info['main_image'],
+            'title_en'=>$info['title'],
+            'title_cn'=>'',
+            'from_url'=>'http://javfor.me',
+            'url_res'=>json_encode([
+                'view_url'=>$url
+            ]),
+            'tags'=>implode(",",$info['tags'])
+        ];
+
+        $result = (new VideoAction())->create($videoEntity);
 
         return $result;
     }
