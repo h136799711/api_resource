@@ -28,7 +28,7 @@ class JavformeCrawlerAction extends BaseAction
                 'url'=>$url,
                 'create_time'=>$now,
                 'update_time'=>$now,
-                'climb_url'=>0,
+                'climb_status'=>0,
                 'url_type'=>CrawlerUrlType::JAV_FOR_ME,
             ]);
         }
