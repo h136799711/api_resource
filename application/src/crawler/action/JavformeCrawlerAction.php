@@ -42,6 +42,7 @@ class JavformeCrawlerAction extends BaseAction
             'update_time'=>$now
         ];
         $result = (new ActorAction())->create($actorPo);
+        var_dump($result);
 
         return $result;
     }

@@ -23,7 +23,7 @@ class ActorAction extends BaseAction
         if(ValidateHelper::legalArrayResult($result) && $result['info']['name_key'] == $name_key){
             return true;
         }
-        return $result['status'];
+        return false;
     }
 
     /**
