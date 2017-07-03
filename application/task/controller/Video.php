@@ -34,7 +34,7 @@ class Video extends Controller
     }
 
     private function process($info){
-        foreach ($info as $vo){
+        foreach ($info as &$vo){
             $url_res = json_decode($vo['url_res'],JSON_OBJECT_AS_ARRAY);
             if(array_key_exists("view_url",$url_res)){
                 $vo['view_url'] = $url_res['view_url'];
