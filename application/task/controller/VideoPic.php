@@ -19,7 +19,7 @@ class VideoPic
     public function remote2local(){
         $order = "update_time asc";
         $map = ['local_main_image'=>0];
-        $page = ['page_index'=>0,'page_size'=>100];
+        $page = ['page_index'=>0,'page_size'=>2];
         $result = (new VideoAction())->query($map,PageHelper::renew($page),$order);
         $info = $result['info'];
         if(array_key_exists("list",$info) && count($info['list']) > 0){
