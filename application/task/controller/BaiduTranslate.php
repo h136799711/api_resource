@@ -34,5 +34,8 @@ class BaiduTranslate extends Controller
         var_dump($result);
         $result = (new BDTranslater($this->appId,$this->appSecret))->translate($q,BDTranslateLangType::En,BDTranslateLangType::Jp);
         var_dump($result);
+        $q = 'かすみりさ';
+        $result = (new BDTranslater($this->appId,$this->appSecret))->translate($q,BDTranslateLangType::Jp,BDTranslateLangType::Zh);
+        var_dump($result);
     }
 }
