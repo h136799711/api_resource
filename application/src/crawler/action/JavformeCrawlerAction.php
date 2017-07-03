@@ -43,7 +43,6 @@ class JavformeCrawlerAction extends BaseAction
         ];
         $result = (new ActorAction())->create($actorPo);
 
-
         return $result;
     }
 
