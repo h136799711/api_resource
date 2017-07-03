@@ -27,6 +27,9 @@ class VideoPic
                 $url = $urlItem['main_image'];
                 $result = RemotePictureHelper::download($url);
                 LogAction::logDebugResult($result);
+                if($result['status']){
+
+                }
             }
             return 'success';
         }

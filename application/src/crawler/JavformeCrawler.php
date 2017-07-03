@@ -33,6 +33,7 @@ class JavformeCrawler extends BaseCrawler
             $src = '';
             $title = '';
             $tags = [];
+            $name_key = '';
             if(count($mainImg) > 0){
                 $src = $mainImg[0]->src;
             }
@@ -47,6 +48,7 @@ class JavformeCrawler extends BaseCrawler
                     $actressName = $p_items[2]->find("a");
                     if(count($actressName) > 0){
                         $actressName = $actressName[0]->plaintext;
+                        $name_key = preg_replace("/\s+/", "", strtolower(trim($actressName)));
                     }else{
                         LogAction::debug("[$url] 找不到演员信息的a标签");
                     }
@@ -61,7 +63,6 @@ class JavformeCrawler extends BaseCrawler
             }else{
                 return ResultHelper::error("解析失败，没有div#information div.post");
             }
-            $name_key = preg_replace("/\s+/", "", strtolower(trim($actressName)));
             $relate_post = $loader->find("div#related_posts a.related_a");
             $urls = [];
             foreach ($relate_post as $vo){

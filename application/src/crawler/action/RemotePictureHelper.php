@@ -21,6 +21,9 @@ class RemotePictureHelper
         $save_dir = $save_dir.'/'.$month;
         $filename = md5($url).$ext;
         $result = (self::getImage($url,$save_dir,$filename,1));
+        if(!$result['status']){
+            return $result;
+        }
         $info = $result['info'];
         $size = filesize($info['save_path']);
         $md5 = md5_file($info['save_path']);
