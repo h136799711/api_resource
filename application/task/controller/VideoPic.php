@@ -24,7 +24,7 @@ class VideoPic
         $info = $result['info'];
         if(array_key_exists("list",$info) && count($info['list']) > 0){
             foreach ($info['list'] as $urlItem){
-                $url = $urlItem['url'];
+                $url = $urlItem['main_image'];
                 $result = RemotePictureHelper::download($url);
                 LogAction::logDebugResult($result);
             }
