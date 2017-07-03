@@ -56,12 +56,23 @@ class JavformeCrawler extends BaseCrawler
                 return ResultHelper::error("解析失败，没有div#information div.post");
             }
             $name_key = preg_replace("/\s+/", "", strtolower(trim($actressName)));
+            $relate_post = $loader->find("div#related_posts a.related_a");
+            $urls = [];
+            foreach ($relate_post as $vo){
+                $href = $vo->href;
+                if(strpos($href,"http") === false){
+                    $href = "http://javfor.me".$href;
+                }
+                array_push($urls,$href);
+            }
+
             $entity = [];
             $entity['name_key'] = $name_key;
             $entity['actress_name'] = $actressName;
             $entity['title'] = $title;
             $entity['main_image'] = $src;
             $entity['tags'] = $tags;
+            $entity['relate_urls'] = $urls;
             return ResultHelper::success($entity);
         }catch (Exception $e){
             return ResultHelper::error($e->getMessage());

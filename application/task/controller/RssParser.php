@@ -15,6 +15,8 @@ use think\Controller;
 
 class RssParser extends Controller
 {
+    
+
     public function test(){
         $url = "http://feeds.feedburner.com/JavForMe?format=xml";
 
