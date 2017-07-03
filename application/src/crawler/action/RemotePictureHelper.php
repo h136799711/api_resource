@@ -17,6 +17,8 @@ class RemotePictureHelper
     public static function download($url){
         $ext=strrchr($url,'.');
         $save_dir = "./upload/r_pic";
+        $month = date("ym");
+        $save_dir = $save_dir.'/'.$month;
         $filename = md5($url).$ext;
         $result = (self::getImage($url,$save_dir,$filename,1));
         $info = $result['info'];
@@ -81,6 +83,9 @@ class RemotePictureHelper
         }
         // $size=strlen($img);
         $path =  $save_dir.$filename;
+        if(file_exists($path)){
+            return ResultHelper::error('图片已存在');
+        }
         //文件大小
         $fp2 = @fopen($path,'a');
         if($fp2 === false){
