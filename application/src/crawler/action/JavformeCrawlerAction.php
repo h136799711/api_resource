@@ -80,10 +80,17 @@ class JavformeCrawlerAction extends BaseAction
     }
 
     protected function logUrl($url){
-        $map = ['url'=>$url,'climb_status'=>1];
+        $map = ['url'=>$url];
         $result = (new CrawlerUrlLogic())->getInfo($map);
         if(ValidateHelper::legalArrayResult($result) && $result['info']['url'] == $url){
-            return ResultHelper::error("[url] 已处理，无需重复处理");
+            if($result['info']['climb_status'] == 1){
+                return ResultHelper::error("[url] 已处理，无需重复处理");
+            }else{
+                $map = ['id'=>$result['info']['id']];
+                $entity = ['climb_status'=>1];
+                $result = (new CrawlerUrlLogic())->save($map,$entity);
+                return $result;
+            }
         }
         $now = time();
         $entity = [
