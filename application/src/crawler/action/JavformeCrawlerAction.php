@@ -55,7 +55,9 @@ class JavformeCrawlerAction extends BaseAction
             'url_res'=>json_encode([
                 'view_url'=>$url
             ]),
-            'tags'=>implode(",",$info['tags'])
+            'tags'=>implode(",",$info['tags']),
+            'create_time'=>time(),
+            'update_time'=>time()
         ];
 
         $result = (new VideoAction())->create($videoEntity);
