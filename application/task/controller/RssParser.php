@@ -24,7 +24,7 @@ class RssParser extends Controller
     }
 
     public function testJavforme(){
-        $url = "http://javfor.me/x96265.html";
+        $url = "http://javfor.me/96265.html";
         $crawler = new JavformeCrawler();
         var_dump($crawler->parseHtml($url));
     }
