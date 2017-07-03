@@ -25,8 +25,11 @@ class JavformeCrawler extends Controller
             $crawler = new JavformeCrawlerAction();
             foreach ($info['list'] as $urlItem){
                 $url = $urlItem['url'];
-                $crawler->parse($url);
+                $result = $crawler->parse($url);
+                var_dump($result);
             }
+            return 'success';
         }
+        return  'fail';
     }
 }
