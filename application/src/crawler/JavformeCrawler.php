@@ -56,9 +56,9 @@ class JavformeCrawler extends BaseCrawler
             }else{
                 return ResultHelper::error("解析失败，没有div#information div.post");
             }
-            $searchKey = preg_replace("/\s+/", "", strtolower(trim($actressName)));
+            $name_key = preg_replace("/\s+/", "", strtolower(trim($actressName)));
             $entity = [];
-            $entity['search_key'] = $searchKey;
+            $entity['name_key'] = $name_key;
             $entity['actress_name'] = $actressName;
             $entity['title'] = $title;
             $entity['main_image'] = $src;

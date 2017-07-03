@@ -15,6 +15,7 @@ use app\src\base\helper\ValidateHelper;
 use app\src\crawler\JavformeCrawler;
 use app\src\crawler\logic\CrawlerUrlLogic;
 use app\src\crawler\model\CrawlerUrl;
+use app\src\qqav\action\ActorAction;
 
 class JavformeCrawlerAction extends BaseAction
 {
@@ -23,6 +24,18 @@ class JavformeCrawlerAction extends BaseAction
      * @param $info
      */
     protected function logInfo($info){
+        // name_key,actress_name,title,main_image
+        // 搜索key
+        $now = time();
+        $actorPo = [
+            'name_key'=>$info['name_key'],
+            'name'=>$info['actress_name'],
+            'name_cn'=>'',
+            'name_jp'=>'',
+            'create_time'=>$now,
+            'update_time'=>$now
+        ];
+        $result = (new ActorAction())->create($actorPo);
 
     }
 
@@ -61,5 +74,6 @@ class JavformeCrawlerAction extends BaseAction
             }
             return $result;
         }
+        return $result;
     }
 }
