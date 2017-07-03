@@ -14,6 +14,12 @@ use app\src\qqav\logic\LogLogic;
 
 class LogAction extends BaseAction
 {
+    public static function logDebugResult($result){
+        if(array_key_exists("status",$result) && $result['status'] === false){
+            self::debug($result['info']);
+        }
+    }
+
     public static function debug($info){
         if(!is_string($info)){
             $info = json_encode($info);

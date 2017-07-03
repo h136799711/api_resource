@@ -16,6 +16,7 @@ use app\src\crawler\constants\CrawlerUrlType;
 use app\src\crawler\JavformeCrawler;
 use app\src\crawler\logic\CrawlerUrlLogic;
 use app\src\qqav\action\ActorAction;
+use app\src\qqav\action\LogAction;
 use app\src\qqav\action\VideoAction;
 
 class JavformeCrawlerAction extends BaseAction
@@ -59,6 +60,7 @@ class JavformeCrawlerAction extends BaseAction
 
         $result = (new VideoAction())->create($videoEntity);
 
+        LogAction::logDebugResult($result);
 
         $isExist = (new ActorAction())->isExistName($info['actress_name']);
 
