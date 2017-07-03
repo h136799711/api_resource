@@ -40,6 +40,8 @@ class Video extends Controller
                 $vo['view_url'] = $url_res['view_url'];
             }elseif(is_array($url_res) && count($url_res) > 0 && array_key_exists("view_url",$url_res[0])){
                 $vo['view_url'] = $url_res[0]['view_url'];
+            }else{
+                $vo['view_url'] = '#unknown';
             }
         }
         return $info;
