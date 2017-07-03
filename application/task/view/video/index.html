@@ -13,11 +13,16 @@
             width: 140px;
             height: 120px;
         }
+        .big.thumbnail{
+            width: 280px;
+            height: 280px;
+        }
         nav span{
             display:block;
         }
     </style>
     <script type="application/javascript" src="http://apidev.cdn.qqav.club/lazysizes/lazysizes.min.js" async=""></script>
+    <script src="http://apidev.cdn.qqav.club/jquery/2.1.1/jquery.min.js"></script>
 </head>
 <body>
 
@@ -31,6 +36,11 @@
                 <input type="text" name="q" id="q" class="form-control" value="{$q}" placeholder="搜索标题">
             </div>
             <button type="submit" class="btn btn-default">查询</button>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" id="j_big_pic"> 大图模式
+                </label>
+            </div>
         </form>
     </div>
     {volist name="list" id="vo"}
@@ -50,5 +60,18 @@
     {/volist}
 </div>
 {$pager}
+<script type="text/javascript">
+    $(function () {
+        $("#j_big_pic").change(function () {
+            var checked = $("#j_big_pic").prop('checked');
+            if(checked){
+                $(".thumbnail").addClass('big');
+            }else{
+                $(".thumbnail").removeClass('big');
+            }
+            console.log('val',$val);
+        });
+    })
+</script>
 </body>
 </html>
