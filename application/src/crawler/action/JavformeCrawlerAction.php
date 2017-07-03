@@ -19,6 +19,20 @@ use app\src\qqav\action\VideoAction;
 
 class JavformeCrawlerAction extends BaseAction
 {
+    protected function logMoreUrl($urls){
+        $now = time();
+        $allEntity = [];
+        foreach ($urls as $url){
+            array_push($allEntity,[
+                'url'=>$url,
+                'create_time'=>$now,
+                'update_time'=>$now,
+                'climb_url'=>0
+            ]);
+        }
+        $result = (new CrawlerUrlLogic())->addAll($allEntity);
+    }
+
     /**
      * 记录信息
      * @param $info
@@ -28,22 +42,7 @@ class JavformeCrawlerAction extends BaseAction
     protected function logInfo($info,$url){
         // name_key,actress_name,title,main_image,tags
         // 搜索key
-        $isExist = (new ActorAction())->isExistName($info['actress_name']);
-
-        if($isExist){
-           return ResultHelper::error("已经存在相同姓名的");
-        }
-
-        $now = time();
-        $actorPo = [
-            'name_key'=>$info['name_key'],
-            'name'=>$info['actress_name'],
-            'name_cn'=>'',
-            'name_jp'=>'',
-            'create_time'=>$now,
-            'update_time'=>$now
-        ];
-        $result = (new ActorAction())->create($actorPo);
+        $this->logMoreUrl($info['relate_urls']);
 
         $videoEntity = [
             'main_image'=>$info['main_image'],
@@ -57,6 +56,23 @@ class JavformeCrawlerAction extends BaseAction
         ];
 
         $result = (new VideoAction())->create($videoEntity);
+
+        $isExist = (new ActorAction())->isExistName($info['actress_name']);
+
+        if($isExist){
+           return ResultHelper::error("已经存在相同姓名的");
+        }else{
+            $now = time();
+            $actorPo = [
+                'name_key'=>$info['name_key'],
+                'name'=>$info['actress_name'],
+                'name_cn'=>'',
+                'name_jp'=>'',
+                'create_time'=>$now,
+                'update_time'=>$now
+            ];
+            $result = (new ActorAction())->create($actorPo);
+        }
 
         return $result;
     }
