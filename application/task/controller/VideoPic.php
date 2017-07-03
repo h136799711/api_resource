@@ -13,6 +13,7 @@ use app\src\base\helper\PageHelper;
 use app\src\crawler\action\RemotePictureHelper;
 use app\src\qqav\action\LogAction;
 use app\src\qqav\action\VideoAction;
+use app\src\qqav\logic\VideoLogic;
 
 class VideoPic
 {
@@ -28,7 +29,10 @@ class VideoPic
                 $result = RemotePictureHelper::download($url);
                 LogAction::logDebugResult($result);
                 if($result['status']){
-
+                    $id = intval($result['info']);
+                    $map = ['id'=>$urlItem['id']];
+                    $result = (new VideoLogic())->save($map,['local_main_image'=>$id]);
+                    LogAction::logDebugResult($result);
                 }
             }
             return 'success';
