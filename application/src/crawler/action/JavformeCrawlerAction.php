@@ -75,17 +75,19 @@ class JavformeCrawlerAction extends BaseAction
         if ($result['status']) {
             // 记录成功的情况下开始解析
             $result = (new JavformeCrawler())->parseHtml($url);
+            $map = ['url'=>$url];
             if($result['status']){
-                $map = ['url'=>$url];
-                $entity = ['climb_status'=>1];
-                (new CrawlerUrlLogic())->save($map,$entity);
                 $info = $result['info'];
-                return $this->logInfo($info);
+                $result =  $this->logInfo($info);
+                if($result['status']){
+                    $entity = ['climb_status'=>1];
+                }else{
+                    $entity = ['climb_status'=>-1];
+                }
             }else{
-                $map = ['url'=>$url];
                 $entity = ['climb_status'=>-1];
-                (new CrawlerUrlLogic())->save($map,$entity);
             }
+            (new CrawlerUrlLogic())->save($map,$entity);
             return $result;
         }
         return $result;
