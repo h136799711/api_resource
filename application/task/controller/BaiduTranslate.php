@@ -28,7 +28,7 @@ class BaiduTranslate extends Controller
     public function actor_name(){
         $order = "id asc";
         $map = ['name_jp'=>''];
-        $page = ['page_index'=>0,'page_size'=>5];
+        $page = ['page_index'=>0,'page_size'=>1];
         $result = (new ActorAction())->query($map,PageHelper::renew($page),$order);
         $info = $result['info'];
         if(array_key_exists("list",$info) && count($info['list']) > 0){
@@ -40,8 +40,16 @@ class BaiduTranslate extends Controller
                 $result = $translater->translate($en,BDTranslateLangType::En,BDTranslateLangType::Jp);
                 if(array_key_exists("trans_result",$result)){
                     $trans_result = $result['trans_result'];
-                    $name_jp = $trans_result['dst'];
+                    $name_jp = $trans_result[0]['dst'];
                     (new ActorLogic())->save(['id'=>$id],['name_jp'=>$name_jp]);
+                }elseif(array_key_exists("error_code",$result)){
+                    LogAction::debug($result['error_msg']);
+                }
+                $result = $translater->translate($en,BDTranslateLangType::En,BDTranslateLangType::Zh);
+                if(array_key_exists("trans_result",$result)){
+                    $trans_result = $result['trans_result'];
+                    $name_cn = $trans_result[0]['dst'];
+                    (new ActorLogic())->save(['id'=>$id],['name_cn'=>$name_cn]);
                 }elseif(array_key_exists("error_code",$result)){
                     LogAction::debug($result['error_msg']);
                 }
