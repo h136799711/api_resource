@@ -2,36 +2,22 @@
 /**
  * Created by PhpStorm.
  * User: 1
- * Date: 2017-07-01
- * Time: 16:00
+ * Date: 2017-07-03
+ * Time: 11:18
  */
 
-namespace app\task\controller;
+namespace app\src\crawler;
 
 
-use app\src\crawler\JavformeCrawler;
-use think\Controller;
+use app\src\base\helper\ResultHelper;
 
-class RssParser extends Controller
+class JavformeCrawler extends BaseCrawler
 {
-    public function test(){
-        $url = "http://feeds.feedburner.com/JavForMe?format=xml";
-
-        $xml = file_get_contents($url);
-        $xml = simplexml_load_string($xml);
-
-        echo var_dump($xml);
-    }
-
-    public function testJavforme(){
-        $url = "http://javfor.me/x96265.html";
-        $crawler = new JavformeCrawler();
-        var_dump($crawler->parseHtml($url));
-    }
-
-    public function testOne(){
-        $url = "http://javfor.me/96266.html";
+    public function parseHtml($url){
         $html = file_get_html($url,false,null,0);
+        if($html === false){
+            return ResultHelper::error("[$url] 读取失败");
+        }
         $loader =  new \simple_html_dom();
         $loader->load($html);
         $mainImg = $loader->find("div#my_main_content_box img");
@@ -68,8 +54,5 @@ class RssParser extends Controller
         echo '<br/>actress name = '.$actressName;
         $searchKey = preg_replace("/\s+/", "", strtolower(trim($actressName)));
         echo '<br/>search key = '.$searchKey;
-
     }
-
-
 }
