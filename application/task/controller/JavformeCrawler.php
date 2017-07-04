@@ -16,6 +16,7 @@ use think\Controller;
 class JavformeCrawler extends Controller
 {
     public function start(){
+        set_time_limit(0);
         $order = "update_time asc";
         $map = ['climb_status'=>0];
         $page = ['curpage'=>0,'size'=>100];
