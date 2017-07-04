@@ -49,6 +49,7 @@ class BaiduTranslate extends Controller
                 }
             }
         }
+        return 'complete';
     }
 
     /**
