@@ -31,6 +31,7 @@ class VideoTagsAction extends BaseAction
                         'update_time'=>$now,
                         'tag_en'=>$tag,
                         'tag_cn'=>'',
+                        'tag_md5'=>md5($tag)
                     ]);
                 }
             }
