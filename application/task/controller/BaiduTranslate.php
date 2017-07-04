@@ -15,12 +15,41 @@ use app\src\base\helper\PageHelper;
 use app\src\qqav\action\ActorAction;
 use app\src\qqav\action\LogAction;
 use app\src\qqav\logic\ActorLogic;
+use app\src\qqav\logic\VideoTagsLogic;
 use think\Controller;
 
 class BaiduTranslate extends Controller
 {
     private $appId = "20170703000062287";
     private $appSecret = "sgel8u4tNsl42t_pC9j2";
+
+    /**
+     *
+     */
+    public function video_tag(){
+        echo '视频标签英文转中文';
+        set_time_limit(0);
+        $order = "id asc";
+        $map = [];
+        $page = ['page_index'=>0,'page_size'=>500];
+        $result = (new VideoTagsLogic())->query($map,PageHelper::renew($page)->queryParam(),$order);
+        $info = $result['info'];
+        if(array_key_exists("list",$info) && count($info['list']) > 0){
+            $translate = (new BDTranslater($this->appId,$this->appSecret));
+            foreach ($info['list'] as $tag){
+                $id = $tag['id'];
+                $src = $tag['tag_en'];
+                $result = $translate->translate($src,BDTranslateLangType::En,BDTranslateLangType::En);
+                if(array_key_exists("trans_result",$result)){
+                    $trans_result = $result['trans_result'];
+                    $tag_cn = $trans_result[0]['dst'];
+                    (new VideoTagsLogic())->save(['id'=>$id],['tag_cn'=>$tag_cn]);
+                }elseif(array_key_exists("error_code",$result)){
+                    LogAction::debug($result['error_msg']);
+                }
+            }
+        }
+    }
 
     /**
      * 翻译演员姓名
