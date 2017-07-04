@@ -22,6 +22,6 @@ class VideoTagsTask extends Controller
     public function index(){
         $page = PageHelper::renew(['page_index'=>0,'page_size'=>1]);
         $result = (new VideoTagsAction())->insertFromVideo($page);
-        return $result;
+        var_dump($result);
     }
 }

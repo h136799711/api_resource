@@ -32,6 +32,8 @@ class VideoTagsLogic extends BaseLogic
         foreach ($list as $vo){
             if(method_exists($vo,"toArray")){
                 array_push($data,$vo->toArray());
+            }else{
+                array_push($data,$vo);
             }
         }
         return $this -> apiReturnSuc(["count" => $count, "list" => $data]);
