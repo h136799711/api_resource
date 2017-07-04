@@ -20,7 +20,8 @@ use think\Controller;
 class VideoTagsTask extends Controller
 {
     public function index(){
-        $page = PageHelper::renew(['page_index'=>0,'page_size'=>1]);
+        set_time_limit(0);
+        $page = PageHelper::renew(['page_index'=>0,'page_size'=>100]);
         $result = (new VideoTagsAction())->insertFromVideo($page);
         var_dump($result);
     }
