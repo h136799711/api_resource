@@ -13,6 +13,7 @@
 
     </style>
     <script src="http://apidev.cdn.qqav.club/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://apidev.cdn.qqav.club/common/common.js?v=1.0"></script>
 </head>
 <body>
 
@@ -28,22 +29,26 @@
             <button type="submit" class="btn btn-default">查询</button>
         </form>
     </div>
-    {volist name="list" id="vo"}
-    <div class="col-md-10 col-lg-10 col-sm-12">
-    <div class="media">
-        <div class="media-left">
-            <a target="_blank" href="{:config('picture_url')}{$vo.local_main_image}">
-                <img class="media-object thumbnail lazyload" data-src="{:config('picture_url')}{$vo.local_main_image}" alt="{$vo.title_en}" >
-            </a>
-        </div>
-        <div class="media-body">
-            <h4 class="media-heading">{$vo.title_en}</h4>
-            {$vo.tags}
-            <a href="{$vo.view_url}" target="_blank">查看原网页(需翻墙)</a>
-        </div>
+    <div class="col-md-10 col-lg-10 col-sm-12 table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>日志内容</th>
+                    <th>时间</th>
+                </tr>
+            </thead>
+            <tbody>
+            {volist name="list" id="vo"}
+                <tr>
+                    <td>{$vo.id}</td>
+                    <td>{$vo['info']}</td>
+                    <td>{:toDatetime($vo['create_time'])}</td>
+                </tr>
+            {/volist}
+            </tbody>
+        </table>
     </div>
-    </div>
-    {/volist}
 </div>
 {$pager}
 <script type="text/javascript">
