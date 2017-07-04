@@ -8,5 +8,6 @@
 return [
     'app\task\command\Test',
     'app\task\command\Translate',
-    'app\task\command\TranslateVideoTitle'
+    'app\task\command\TranslateVideoTitle',
+    'app\task\command\JavformeCrawler'
 ];
