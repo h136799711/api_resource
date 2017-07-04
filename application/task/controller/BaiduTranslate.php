@@ -31,7 +31,7 @@ class BaiduTranslate extends Controller
         set_time_limit(0);
         $order = "id asc";
         $map = ['tag_cn'=>''];
-        $page = ['page_index'=>0,'page_size'=>500];
+        $page = ['page_index'=>0,'page_size'=>5000];
         $result = (new VideoTagsLogic())->query($map,PageHelper::renew($page)->queryParam(),$order);
         $info = $result['info'];
         if(array_key_exists("list",$info) && count($info['list']) > 0){
