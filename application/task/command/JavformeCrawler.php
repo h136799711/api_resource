@@ -19,7 +19,7 @@ class JavformeCrawler extends Command
 {
     protected function configure()
     {
-        $this->setName('translate:video_title')
+        $this->setName('crawler:javforme')
             ->addOption('size','',Option::VALUE_OPTIONAL,'crawler size',10)
             ->setDescription('javfor.me site crawler');
 
