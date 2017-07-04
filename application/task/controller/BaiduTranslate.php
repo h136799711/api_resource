@@ -30,7 +30,7 @@ class BaiduTranslate extends Controller
         echo '视频标签英文转中文';
         set_time_limit(0);
         $order = "id asc";
-        $map = [];
+        $map = ['tag_cn'=>''];
         $page = ['page_index'=>0,'page_size'=>500];
         $result = (new VideoTagsLogic())->query($map,PageHelper::renew($page)->queryParam(),$order);
         $info = $result['info'];
@@ -39,7 +39,7 @@ class BaiduTranslate extends Controller
             foreach ($info['list'] as $tag){
                 $id = $tag['id'];
                 $src = $tag['tag_en'];
-                $result = $translate->translate($src,BDTranslateLangType::En,BDTranslateLangType::En);
+                $result = $translate->translate($src,BDTranslateLangType::En,BDTranslateLangType::Zh);
                 if(array_key_exists("trans_result",$result)){
                     $trans_result = $result['trans_result'];
                     $tag_cn = $trans_result[0]['dst'];
