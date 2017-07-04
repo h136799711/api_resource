@@ -24,8 +24,8 @@ class VideoPicDownloadLocal extends Command
     protected function configure()
     {
         $this->setName('video_pic:download2local')
-            ->addOption('size','',Option::VALUE_OPTIONAL,'translate size',10)
-            ->setDescription('translate video title to chinese');
+            ->addOption('size','',Option::VALUE_OPTIONAL,'process size',10)
+            ->setDescription('download video main image to local server');
 
     }
 
