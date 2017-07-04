@@ -50,7 +50,7 @@ class Video extends Controller
     }
 
     public function log(){
-        $level = $this->request->param('level','');
+        $level = $this->request->param('level','debug');
         $map = [];
         if(!empty($level)){
             $map['level'] = $level;
