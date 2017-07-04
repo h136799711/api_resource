@@ -10,7 +10,9 @@ namespace app\task\controller;
 
 
 use app\src\base\helper\PageHelper;
+use app\src\qqav\action\LogAction;
 use app\src\qqav\action\VideoAction;
+use app\src\qqav\logic\LogLogic;
 use app\src\qqav\logic\VideoLogic;
 use think\Controller;
 
@@ -45,5 +47,22 @@ class Video extends Controller
             }
         }
         return $info;
+    }
+
+    public function log(){
+        $level = $this->request->param('level','');
+        $map = [];
+        if(!empty($level)){
+            $map['level'] = $level;
+        }
+        $p = $this->request->param('p',0);
+        $page = ['page_index'=>$p,'page_size'=>30];
+        $result = (new LogLogic())->queryWithPagingHtml($map,PageHelper::renew($page)->queryParam(),"id asc");
+        $info = $result['info'];
+//        $info['list'] = $this->process($info['list']);
+        $this->assign('level',$level);
+        $this->assign('list',$info['list']);
+        $this->assign('pager',$info['show']);
+        return $this->fetch();
     }
 }
