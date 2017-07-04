@@ -25,6 +25,7 @@ class VideoTagsAction extends BaseAction
                 $video_id = $vo['id'];
                 $tags = explode(",",$vo['tags']);
                 foreach ($tags as $tag){
+                    $tag = trim($tag);
                     array_push($allEntity,[
                         'video_id'=>$video_id,
                         'create_time'=>$now,
