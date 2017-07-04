@@ -37,7 +37,7 @@ class VideoPicDownloadLocal extends Command
         $size = $input->getOption('size');
         $this->remote2local($size);
         $elapse = time() - $start;
-        $desc = ( $elapse / 60 ).'m,'.($elapse % 60).'s';
+        $desc = intval(floor( $elapse / 60 )).'m,'.($elapse % 60).'s';
         $output->writeln(" cost ".$desc);
     }
 
