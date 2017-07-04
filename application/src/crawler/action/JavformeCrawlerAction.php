@@ -33,7 +33,9 @@ class JavformeCrawlerAction extends BaseAction
                 'url_type'=>CrawlerUrlType::JAV_FOR_ME,
             ]);
         }
-        $result = (new CrawlerUrlLogic())->addAll($allEntity);
+        if(count($allEntity) > 0){
+            $result = (new CrawlerUrlLogic())->addAll($allEntity);
+        }
     }
 
     /**
@@ -63,27 +65,28 @@ class JavformeCrawlerAction extends BaseAction
         $result = (new VideoAction())->create($videoEntity);
 
         LogAction::logDebugResult($result);
+        if(!empty($info['actress_name'])){
+            // 只有存在演员姓名时
+            $isExist = (new ActorAction())->isExistName($info['actress_name']);
 
-        $isExist = (new ActorAction())->isExistName($info['actress_name']);
-
-        if($isExist){
-            $msg = "已经存在相同的".$info['actress_name'];
-            LogAction::debug($msg);
-           return ResultHelper::error($msg);
-        }else{
-            $now = time();
-            $actorPo = [
-                'name_key'=>$info['name_key'],
-                'name'=>$info['actress_name'],
-                'name_cn'=>'',
-                'name_jp'=>'',
-                'create_time'=>$now,
-                'update_time'=>$now
-            ];
-            $result = (new ActorAction())->create($actorPo);
-            LogAction::logDebugResult($result);
+            if($isExist){
+                $msg = "已经存在相同的".$info['actress_name'];
+                LogAction::debug($msg);
+               return ResultHelper::error($msg);
+            }else{
+                $now = time();
+                $actorPo = [
+                    'name_key'=>$info['name_key'],
+                    'name'=>$info['actress_name'],
+                    'name_cn'=>'',
+                    'name_jp'=>'',
+                    'create_time'=>$now,
+                    'update_time'=>$now
+                ];
+                $result = (new ActorAction())->create($actorPo);
+                LogAction::logDebugResult($result);
+            }
         }
-
         return $result;
     }
 
