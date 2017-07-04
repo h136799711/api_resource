@@ -21,7 +21,7 @@ class VideoTagsLogic extends BaseLogic
             });
         $start = max(intval($page['page_index'])-1,0)*intval($page['page_size']);
 
-        $list = $query -> limit($start,$page['page_size']) ->order('video_id asc') -> select();
+        $list = $query -> limit($start,$page['page_size']) ->order('id asc') -> select();
         $query = Db::table('qqav_video')
             ->where('id','NOT IN',function($query){
                 $query->table('qqav_video_tags')->field('video_id');
