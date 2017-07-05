@@ -24,6 +24,9 @@ class LogAction extends BaseAction
         if(!is_string($info)){
             $info = json_encode($info);
         }
+        $map = [];
+        $map['create_time'] = ['lt',time() - 24 * 3600];
+        (new LogLogic())->delete($map);
         $entity = [
             'level'=>'debug',
             'info'=>json_encode($info),

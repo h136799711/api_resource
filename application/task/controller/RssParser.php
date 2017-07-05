@@ -12,12 +12,13 @@ namespace app\task\controller;
 use app\src\crawler\action\JavformeCrawlerAction;
 use app\src\crawler\JavformeCrawler;
 use app\src\crawler\logic\CrawlerUrlLogic;
+use app\src\qqav\logic\RssLogic;
 use think\Controller;
 
 class RssParser extends Controller
 {
 
-    private function processJavformeRss($xml){
+    private function processJavformeRss($id,$xml){
         $lastBuildDate = $xml->xpath('channel/lastBuildDate');
         if(count($lastBuildDate) > 0){
             $strLastBuildDate = "".$lastBuildDate[0];
@@ -42,13 +43,13 @@ class RssParser extends Controller
                     $logic->add($entity);
                 }
             }
-            (new )
+            (new RssLogic())->save(['id'=>$id],['update_time'=>$now,'last_read_time'=>$now,'last_update_time'=>$lastUpdateTime]);
         }
     }
 
     public function test(){
         $url = "http://feeds.feedburner.com/JavForMe?format=xml";
-
+        $result = (new RssLogic())->query([],['curpage'=>0,'size'=>10]);
         $xml = file_get_contents($url);
         $xml = simplexml_load_string($xml);
 
