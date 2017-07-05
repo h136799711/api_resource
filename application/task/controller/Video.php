@@ -28,7 +28,7 @@ class Video extends Controller
         }
         $p = $this->request->param('p',0);
         $page = ['page_index'=>$p,'page_size'=>30];
-        $result = (new VideoLogic())->queryWithPagingHtml($map,PageHelper::renew($page)->queryParam(),"id asc",$params);
+        $result = (new VideoLogic())->queryWithPagingHtml($map,PageHelper::renew($page)->queryParam(),"id desc",$params);
         $info = $result['info'];
         $info['list'] = $this->process($info['list']);
         $this->assign('q',$q);
