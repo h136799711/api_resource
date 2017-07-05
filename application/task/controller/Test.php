@@ -18,7 +18,7 @@ class Test
 {
 
     public function insertAll(){
-        $i = 29997;
+        $i = 79472;
         $url = "http://javfor.me/";
         $end = 99999;
         $now = time();

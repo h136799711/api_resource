@@ -32,6 +32,7 @@ class Video extends Controller
         $info = $result['info'];
         $info['list'] = $this->process($info['list']);
         $this->assign('q',$q);
+        $this->assign('p',$p);
         $this->assign('list',$info['list']);
         $this->assign('pager',$info['show']);
         return $this->fetch();
