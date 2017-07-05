@@ -11,11 +11,40 @@ namespace app\task\controller;
 
 use app\src\crawler\action\JavformeCrawlerAction;
 use app\src\crawler\JavformeCrawler;
+use app\src\crawler\logic\CrawlerUrlLogic;
 use think\Controller;
 
 class RssParser extends Controller
 {
-    
+
+    private function processJavformeRss($xml){
+        $lastBuildDate = $xml->xpath('channel/lastBuildDate');
+        if(count($lastBuildDate) > 0){
+            $strLastBuildDate = "".$lastBuildDate[0];
+            $lastUpdateTime = strtotime($strLastBuildDate);
+
+            $items = $xml->xpath('channel/item');
+            $logic = new CrawlerUrlLogic();
+            $now = time();
+            foreach ($items as $item){
+                $url = $item->link.'';
+                $entity = [
+                    'url'=>$url,
+                    'create_time'=>$now,
+                    'update_time'=>$now,
+                    'climb_status'=>0,
+                    'url_type'=>2,
+                ];
+
+                $map = ['url_type'=>2,'url'=>$url];
+                $result = $logic->getInfo($map);
+                if($result['status'] && empty($result['info'])){
+                    $logic->add($entity);
+                }
+            }
+            (new )
+        }
+    }
 
     public function test(){
         $url = "http://feeds.feedburner.com/JavForMe?format=xml";
@@ -23,7 +52,7 @@ class RssParser extends Controller
         $xml = file_get_contents($url);
         $xml = simplexml_load_string($xml);
 
-        echo var_dump($xml);
+
     }
 
     public function testJavforme(){
