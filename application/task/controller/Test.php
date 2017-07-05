@@ -10,11 +10,38 @@ namespace app\task\controller;
 
 
 use app\src\base\helper\ResultHelper;
+use app\src\crawler\logic\CrawlerUrlLogic;
 use app\src\file\logic\UserFileLogic;
 use app\src\file\logic\UserPictureLogic;
 
 class Test
 {
+
+    public function insertAll(){
+        $i = 29997;
+        $url = "http://javfor.me/";
+        $end = 99999;
+        $now = time();
+        $allEntity = [];
+        $logic = (new CrawlerUrlLogic());//->addAll($allEntity);
+        for (;$i<$end;$i++){
+            $entity = [
+                'url'=>$url.$i.'.html',
+                'create_time'=>$now,
+                'update_time'=>$now,
+                'climb_status'=>0,
+                'url_type'=>2,
+            ];
+
+            $map = ['url_type'=>2,'url'=>$url.$i.'.html'];
+            $result = $logic->getInfo($map);
+            if($result['status'] && empty($result['info'])){
+                $logic->add($entity);
+             //   array_push($allEntity,$entity);
+            }
+        }
+    }
+
     public function remote(){
         $url = "http://cdn.hdporn4.me/javforme_img/65412/1-690x0.jpg";
         $ext=strrchr($url,'.');

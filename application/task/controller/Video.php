@@ -21,12 +21,14 @@ class Video extends Controller
     public function index(){
         $q = $this->request->param('q','');
         $map = [];
+        $params = [];
         if(!empty($q)){
             $map['title_en'] = ['like','%'.$q.'%'];
+            $params['q'] = $q;
         }
         $p = $this->request->param('p',0);
         $page = ['page_index'=>$p,'page_size'=>30];
-        $result = (new VideoLogic())->queryWithPagingHtml($map,PageHelper::renew($page)->queryParam(),"id asc");
+        $result = (new VideoLogic())->queryWithPagingHtml($map,PageHelper::renew($page)->queryParam(),"id asc",$params);
         $info = $result['info'];
         $info['list'] = $this->process($info['list']);
         $this->assign('q',$q);
