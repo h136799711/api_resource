@@ -31,8 +31,10 @@ class VideoPicDownloadLocal extends Command
 
     protected function execute(Input $input, Output $output)
     {
+
         $start = time();
         $output->writeln(date("Y-m-d H:i:s",$start)." start");
+        echo ''.realpath(".");
 
         $size = $input->getOption('size');
         $this->remote2local($size);
