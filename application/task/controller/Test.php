@@ -9,6 +9,7 @@
 namespace app\task\controller;
 
 
+use app\src\aliyun_api\AreaData;
 use app\src\base\helper\ResultHelper;
 use app\src\crawler\logic\CrawlerUrlLogic;
 use app\src\file\logic\UserFileLogic;
@@ -16,6 +17,10 @@ use app\src\file\logic\UserPictureLogic;
 
 class Test
 {
+
+    public function area_data(){
+        var_dump((new AreaData())->demo());
+    }
 
     public function insertAll(){
         $i = 79472;
