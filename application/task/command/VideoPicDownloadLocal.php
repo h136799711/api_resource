@@ -44,7 +44,7 @@ class VideoPicDownloadLocal extends Command
     private function remote2local($size=50){
         $order = "update_time asc";
         $map = ['local_main_image'=>0];
-        $page = ['page_index'=>0,'page_size'=>50];
+        $page = ['page_index'=>0,'page_size'=>$size];
         $result = (new VideoAction())->query($map,PageHelper::renew($page),$order);
         $info = $result['info'];
         if(array_key_exists("list",$info) && count($info['list']) > 0){
