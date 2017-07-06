@@ -16,7 +16,7 @@ class RemotePictureHelper
 {
     public static function download($url){
         $ext=strrchr($url,'.');
-        $save_dir = "./upload/r_pic";
+        $save_dir = "./public/upload/r_pic";
         $month = date("ymd");
         $save_dir = $save_dir.'/'.$month;
         $filename = md5($url).$ext;
