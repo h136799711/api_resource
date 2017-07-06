@@ -52,6 +52,7 @@ class VideoPicDownloadLocal extends Command
                 $url = $urlItem['main_image'];
                 $result = RemotePictureHelper::download($url);
                 LogAction::logDebugResult($result);
+                var_dump($result);
                 if($result['status']){
                     $id = intval($result['info']);
                     $map = ['id'=>$urlItem['id']];
