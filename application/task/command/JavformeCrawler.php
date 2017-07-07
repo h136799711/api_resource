@@ -29,13 +29,13 @@ class JavformeCrawler extends Command
     protected function execute(Input $input, Output $output)
     {
         $start = time();
-        $output->writeln(date("Y-m-d H:i:s",$start)." start");
+        $output->writeln('\n'.date("Y-m-d H:i:s",$start)." start");
 
         $size = $input->getOption('size');
         $this->start($size);
         $elapse = time() - $start;
         $desc = intval(floor( $elapse / 60 )).'m,'.($elapse % 60).'s';
-        $output->writeln(" cost ".$desc);
+        $output->writeln("\n cost ".$desc);
     }
 
     protected function start($size=10){
