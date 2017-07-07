@@ -1,10 +1,7 @@
-###森森硬件
-项目服务器：
-
-公司服务器
+### 综合接口地址
 
 api地址
-dev.sunsunxiaoli.com 
+devapi.qqav.club 
 
 public 文件夹
 appdowload.php => app下载地址
@@ -17,8 +14,7 @@ LangHelper::lackParameter('position')
 
 #### require:
 composer
-thinkphp5.0.7
-itboye_sunsun_tcp
+thinkphp5.0.9 
 #### 文件夹权限:
 public/upload 写入权限
 runtime 写入权限
@@ -27,19 +23,12 @@ open_basedir 权限
 scandir,
 proc_open,
 
-####启动部署:
-1. 过滤桶 FilterVatTask 定时调用用于推送邮件故障消息，发布邮件任务 以及 清理日志表
-2. 启动queue队列 bash/start_queue.sh
-
 ### redis 安装
 http://example.com/redisadmin
 git clone https://github.com/ErikDubbelboer/phpRedisAdmin.git
 cd phpRedisAdmin
 git clone https://github.com/nrk/predis.git vendor
-#### 改动:
-2016-xx-xx 配置文件设置一律从入口文件处改到config.php中，符合官方规范
-2016-12-13 添加faker库,生成假数据,见官方文档或参考写好的getFaker()函数
+
 #### 注意
 时区设置问题，流浪器端设置cookies，key=timezone   
-
 mysql时区也要设置成default-time_zone = '+0:00'   
