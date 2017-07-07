@@ -5,3 +5,4 @@ runtime/
 public/static/cdn/
 .vscode/
 vendor/
+composer.lock
