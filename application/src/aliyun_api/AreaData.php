@@ -11,16 +11,16 @@ namespace app\src\aliyun_api;
 
 class AreaData
 {
-    public function demo(){
+    public function demo($parent_id=0){
         $host = "http://jisuarea.market.alicloudapi.com";
-        $path = "/area/all";
+        $path = "/area/query";
         $method = "GET";
         $appcode = "d9683b82762043a4a00daa592b6f62f6";
         $headers = array();
         array_push($headers, "Authorization:APPCODE " . $appcode);
-        $querys = "";
+        $querys = "parentid=$parent_id";
         $bodys = "";
-        $url = $host . $path;
+        $url = $host . $path . "?" . $querys;
 
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $method);

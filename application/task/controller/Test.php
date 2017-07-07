@@ -14,12 +14,15 @@ use app\src\base\helper\ResultHelper;
 use app\src\crawler\logic\CrawlerUrlLogic;
 use app\src\file\logic\UserFileLogic;
 use app\src\file\logic\UserPictureLogic;
+use think\Controller;
 
-class Test
+class Test extends Controller
 {
 
     public function area_data(){
-        var_dump((new AreaData())->demo());
+        $parent_id = $this->request->param('id',0);
+        $result = ((new AreaData())->demo($parent_id));
+        var_dump($result);
     }
 
     public function insertAll(){

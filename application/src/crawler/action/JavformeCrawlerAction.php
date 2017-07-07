@@ -18,6 +18,7 @@ use app\src\crawler\logic\CrawlerUrlLogic;
 use app\src\qqav\action\ActorAction;
 use app\src\qqav\action\LogAction;
 use app\src\qqav\action\VideoAction;
+use app\src\qqav\logic\VideoLogic;
 
 class JavformeCrawlerAction extends BaseAction
 {
@@ -38,17 +39,13 @@ class JavformeCrawlerAction extends BaseAction
         }
     }
 
-    /**
-     * 记录信息
-     * @param $info
-     * @param $url
-     * @return array
-     */
-    protected function logInfo($info,$url){
-        // name_key,actress_name,title,main_image,tags
-        // 搜索key
-        $this->logMoreUrl($info['relate_urls']);
-
+    protected function logVideo($info,$url){
+        $video_key = md5($info['title']);
+        $map = ['video_key'=>$video_key];
+        $result = (new VideoLogic())->getInfo($map);
+        if(ValidateHelper::legalArrayResult($result) && $result['info']['video_key'] == $video_key){
+            return  ResultHelper::success($result['info']['id']);
+        }
         $videoEntity = [
             'main_image'=>$info['main_image'],
             'title_en'=>$info['title'],
@@ -59,20 +56,23 @@ class JavformeCrawlerAction extends BaseAction
             ]]),
             'tags'=>implode(",",$info['tags']),
             'create_time'=>time(),
-            'update_time'=>time()
+            'update_time'=>time(),
+            'video_key'=>$video_key
         ];
 
         $result = (new VideoAction())->create($videoEntity);
+        return $result;
+    }
 
-        LogAction::logDebugResult($result);
+    protected function logActor($info){
+        $actor_id = 0;
         if(!empty($info['actress_name'])){
             // 只有存在演员姓名时
-            $isExist = (new ActorAction())->isExistName($info['actress_name']);
+            $actorResult = (new ActorAction())->isExistName($info['actress_name']);
 
-            if($isExist){
-                $msg = "已经存在相同的".$info['actress_name'];
-                LogAction::debug($msg);
-               return ResultHelper::error($msg);
+            if(ResultHelper::isSuccess($actorResult)){
+                $actor_id = $actorResult['info']['id'];
+                return ResultHelper::success($actor_id);
             }else{
                 $now = time();
                 $actorPo = [
@@ -85,9 +85,41 @@ class JavformeCrawlerAction extends BaseAction
                 ];
                 $result = (new ActorAction())->create($actorPo);
                 LogAction::logDebugResult($result);
+                if($result['status']){
+                    return ResultHelper::success($result['info']);
+                }
             }
         }
-        return $result;
+        return ResultHelper::error($actor_id);
+    }
+
+    /**
+     * 记录信息
+     * @param $info
+     * @param $url
+     * @return array
+     */
+    protected function logInfo($info,$url){
+        // name_key,actress_name,title,main_image,tags
+        // 搜索key
+        $this->logMoreUrl($info['relate_urls']);
+        $video_id = 0;
+        $actor_id = 0;
+        $videoResult = $this->logVideo($info,$url);
+        if($videoResult['status']){
+            $video_id = $videoResult['info'];
+        }
+
+        LogAction::logDebugResult($videoResult);
+        $actorResult = $this->logActor($info);
+        $actor_id = $actorResult['info'];
+        if($actor_id > 0 && $video_id > 0){
+            // 同时大于0
+
+        }
+
+
+        return $videoResult;
     }
 
     protected function logUrl($url){

@@ -55,7 +55,7 @@ class BaiduTranslate extends Controller
     public function actor_name(){
         set_time_limit(0);
         $order = "id asc";
-        $map = [];
+        $map = ['name_jp'=>''];
         $page = ['page_index'=>0,'page_size'=>500];
         $result = (new ActorAction())->query($map,PageHelper::renew($page),$order);
         $info = $result['info'];
@@ -64,26 +64,26 @@ class BaiduTranslate extends Controller
             $translater = (new BDTranslater($this->appId,$this->appSecret));
             foreach ($info['list'] as $actor){
                 $id = $actor['id'];
-//                $en = $actor['name'];
-//                $result = $translater->translate($en,BDTranslateLangType::En,BDTranslateLangType::Jp);
-                $name_jp = $actor['name_jp'];
-//                if(array_key_exists("trans_result",$result)){
-//                    $trans_result = $result['trans_result'];
-//                    $name_jp = $trans_result[0]['dst'];
-//                    (new ActorLogic())->save(['id'=>$id],['name_jp'=>$name_jp]);
-//                }elseif(array_key_exists("error_code",$result)){
-//                    LogAction::debug($result['error_msg']);
-//                }
-                if(!empty($name_jp)){
-                    $result = $translater->translate($name_jp,BDTranslateLangType::Jp,BDTranslateLangType::Zh);
-                    if(array_key_exists("trans_result",$result)){
-                        $trans_result = $result['trans_result'];
-                        $name_cn = $trans_result[0]['dst'];
-                        (new ActorLogic())->save(['id'=>$id],['name_cn'=>$name_cn]);
-                    }elseif(array_key_exists("error_code",$result)){
-                        LogAction::debug($result['error_msg']);
-                    }
+                $en = $actor['name'];
+                $result = $translater->translate($en,BDTranslateLangType::En,BDTranslateLangType::Jp);
+//                $name_jp = $actor['name_jp'];
+                if(array_key_exists("trans_result",$result)){
+                    $trans_result = $result['trans_result'];
+                    $name_jp = $trans_result[0]['dst'];
+                    (new ActorLogic())->save(['id'=>$id],['name_jp'=>$name_jp]);
+                }elseif(array_key_exists("error_code",$result)){
+                    LogAction::debug($result['error_msg']);
                 }
+//                if(!empty($name_jp)){
+//                    $result = $translater->translate($name_jp,BDTranslateLangType::Jp,BDTranslateLangType::Zh);
+//                    if(array_key_exists("trans_result",$result)){
+//                        $trans_result = $result['trans_result'];
+//                        $name_cn = $trans_result[0]['dst'];
+//                        (new ActorLogic())->save(['id'=>$id],['name_cn'=>$name_cn]);
+//                    }elseif(array_key_exists("error_code",$result)){
+//                        LogAction::debug($result['error_msg']);
+//                    }
+//                }
             }
         }
     }

@@ -51,8 +51,8 @@ class RssParser extends Controller
         $url = "http://feeds.feedburner.com/JavForMe?format=xml";
         $result = (new RssLogic())->query([],['curpage'=>0,'size'=>10]);
         $xml = file_get_contents($url);
-        $xml = simplexml_load_string($xml);
-
+//        $xml = simplexml_load_string($xml);
+var_dump($xml);
 
     }
 
