@@ -21,7 +21,6 @@ class JavformeRss extends Command
     {
         $this->setName('rss:javforme')
             ->setDescription('javfor.me site rss reader');
-
     }
 
     protected function execute(Input $input, Output $output)
