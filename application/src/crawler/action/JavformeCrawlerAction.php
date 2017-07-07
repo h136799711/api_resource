@@ -27,7 +27,13 @@ class JavformeCrawlerAction extends BaseAction
         $now = time();
         $allEntity = [];
         foreach ($urls as $url){
-            array_push($allEntity,[
+            $map = ['url'=>$url];
+            $result = (new CrawlerUrlLogic())->getInfo($map);
+            if(ValidateHelper::legalArrayResult($result) && $result['info']['url'] == $url) {
+                //已经存在则不添加了
+                continue;
+            }
+                array_push($allEntity,[
                 'url'=>$url,
                 'create_time'=>$now,
                 'update_time'=>$now,
