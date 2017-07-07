@@ -29,7 +29,7 @@ class RemotePictureHelper
         $md5 = md5_file($info['save_path']);
         $sha1 = sha1_file($info['save_path']);
         $path = ltrim($info['save_path'],".");
-        $path = str_replace("/public/","",$path);
+        $path = str_replace("/public","",$path);
         $entity = [
             'uid'=>0,
             'path'=> $path,
