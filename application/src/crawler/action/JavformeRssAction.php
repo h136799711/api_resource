@@ -22,6 +22,7 @@ class JavformeRssAction
         $items = $xml->xpath("channel/item");
         $now = time();
         $allEntity = [];
+        echo 'read count = '.count($items);
         foreach ($items as $item){
             $url = ''.$item->link;
             $map = ['url'=>$url];
@@ -39,6 +40,7 @@ class JavformeRssAction
                 'url_type'=>CrawlerUrlType::JAV_FOR_ME,
             ]);
         }
+        echo 'new url count = '.count($allEntity);
         if(count($allEntity) > 0){
             $result = (new CrawlerUrlLogic())->addAll($allEntity);
             return $result;
