@@ -10,5 +10,6 @@ return [
     'app\task\command\Translate',
     'app\task\command\TranslateVideoTitle',
     'app\task\command\JavformeCrawler',
-    'app\task\command\VideoPicDownloadLocal'
+    'app\task\command\VideoPicDownloadLocal',
+    'app\task\command\JavformeRss'
 ];
