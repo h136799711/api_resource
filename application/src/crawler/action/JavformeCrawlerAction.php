@@ -18,6 +18,7 @@ use app\src\crawler\logic\CrawlerUrlLogic;
 use app\src\qqav\action\ActorAction;
 use app\src\qqav\action\LogAction;
 use app\src\qqav\action\VideoAction;
+use app\src\qqav\logic\VideoActorsLogic;
 use app\src\qqav\logic\VideoLogic;
 
 class JavformeCrawlerAction extends BaseAction
@@ -104,7 +105,6 @@ class JavformeCrawlerAction extends BaseAction
         // 搜索key
         $this->logMoreUrl($info['relate_urls']);
         $video_id = 0;
-        $actor_id = 0;
         $videoResult = $this->logVideo($info,$url);
         if($videoResult['status']){
             $video_id = $videoResult['info'];
@@ -115,7 +115,11 @@ class JavformeCrawlerAction extends BaseAction
         $actor_id = $actorResult['info'];
         if($actor_id > 0 && $video_id > 0){
             // 同时大于0
-
+            $result = (new VideoActorsLogic())->add([
+                'actor_id'=>$actor_id,
+                'video_id'=>$video_id
+            ]);
+            LogAction::logDebugResult($result);
         }
 
 
