@@ -18,8 +18,10 @@ use app\src\crawler\logic\CrawlerUrlLogic;
 use app\src\qqav\action\ActorAction;
 use app\src\qqav\action\LogAction;
 use app\src\qqav\action\VideoAction;
+use app\src\qqav\action\VideoTagsAction;
 use app\src\qqav\logic\VideoActorsLogic;
 use app\src\qqav\logic\VideoLogic;
+use app\src\qqav\logic\VideoTagsLogic;
 
 class JavformeCrawlerAction extends BaseAction
 {
@@ -46,6 +48,29 @@ class JavformeCrawlerAction extends BaseAction
         }
     }
 
+    protected function logTags($video_id,$tags){
+        if($video_id <= 0) return ResultHelper::error('video_id 无效');
+        $now = time();
+        $allEntity = [];
+        foreach ($tags as $tag){
+            $tag = trim($tag);
+            array_push($allEntity,[
+                'video_id'=>$video_id,
+                'create_time'=>$now,
+                'update_time'=>$now,
+                'tag_en'=>$tag,
+                'tag_cn'=>'',
+                'tag_md5'=>md5($tag)
+            ]);
+        }
+        if(count($allEntity) > 0){
+            $result = (new VideoTagsLogic())->addAll($allEntity);
+        }else{
+            return ResultHelper::error("video_id = ".$video_id.'没有tags');
+        }
+        return $result;
+    }
+
     protected function logVideo($info,$url){
         $video_key = md5($info['title']);
         $map = ['video_key'=>$video_key];
@@ -68,6 +93,7 @@ class JavformeCrawlerAction extends BaseAction
         ];
 
         $result = (new VideoAction())->create($videoEntity);
+
         return $result;
     }
 
@@ -112,11 +138,14 @@ class JavformeCrawlerAction extends BaseAction
         $this->logMoreUrl($info['relate_urls']);
         $video_id = 0;
         $videoResult = $this->logVideo($info,$url);
+        LogAction::logDebugResult($videoResult);
+
         if($videoResult['status']){
             $video_id = $videoResult['info'];
+            $result = $this->logTags($video_id,$info['tags']);
+            LogAction::logDebugResult($result);
         }
 
-        LogAction::logDebugResult($videoResult);
         $actorResult = $this->logActor($info);
         $actor_id = $actorResult['info'];
         if($actor_id > 0 && $video_id > 0){
