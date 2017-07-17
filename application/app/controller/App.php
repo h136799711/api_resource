@@ -25,13 +25,12 @@ class App extends Rest
     public function __construct()
     {
         parent::__construct();
-        // TODO 校验 app_id 是否有效
+        // 初始化参数
         $this->initParams();
+        // 初始化配置
         $this->initConfig();
-
-        // 检测
+        // 检测必要参数
         $this->checkParams();
-
     }
 
     public function checkParams(){
@@ -42,6 +41,7 @@ class App extends Rest
         }
         // app_id 无效
         $this->fail($this->appId.' app_id invalid');
+        return false;
     }
 
     public function initConfig(){
@@ -50,10 +50,9 @@ class App extends Rest
 
     public function initParams(){
 
-        $this->sessionId = $this->_param('session_id','');
-        $header = Request::instance()->header();
-        var_dump($header);
-        $sessionId = isset($header['by-session-id']) ? $header['by-session-id'] : null;
+        $this->sessionId = Request::instance()->header('by-session-id');
+
+        $sessionId = $this->_param('session_id','');
 
         if(!empty($sessionId)) {
             session_start();
@@ -64,9 +63,9 @@ class App extends Rest
         }
 
         $this->appId = $this->_param('app_id','');
-        $clientId = isset($header['by-app-id']) ? $header['by-app-id'] : null;
+        $appId = Request::instance()->header('by-app-id');
         if(empty($this->appId)){
-            $this->appId = $clientId;
+            $this->appId = $appId;
         }
         if(empty($this->appId)){
             $this->fail('缺少 app_id');
@@ -74,7 +73,6 @@ class App extends Rest
         if(empty($this->sessionId)){
             $this->fail('缺少 sessionId');
         }
-
     }
 
     public function returnResult($result){
