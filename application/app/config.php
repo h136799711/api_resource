@@ -6,7 +6,7 @@
  * Time: 19:59
  */
 return [
-    'exception_handle'       => '\\app\\src\\base\\exception\\JsonExceptionHandler',
+    'exception_handle'       => '\\app\\app\\exception\\AppExceptionHandler',
     'default_return_type'    => 'json',
     // 异常页面的模板文件
     'exception_tmpl'         => APP_PATH . 'index' . DS . 'view/exception.json',

@@ -16,15 +16,26 @@ use app\src\clients\action\ClientsDetailAction;
 use app\src\user\action\UserHelperAction;
 use think\controller\Rest;
 use think\Request;
+use think\Response;
 
 class App extends Rest
 {
     protected $appId;
     protected $sessionId;
+    protected $response;
 
     public function __construct()
     {
         parent::__construct();
+        $this->response = Response::create();
+        $this->response ->header("Access-Control-Allow-Origin","*")
+            ->header("Access-Control-Allow-Methods","GET, POST,OPTIONS")
+            ->header("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Accept, BY-SESSION-ID,BY-APP-ID ")
+            ->header("X-Powered-By","WWW.ITBOYE.COM");
+        if(strtoupper($_SERVER['REQUEST_METHOD'])== 'OPTIONS'){
+            $this->response->send();
+            exit;
+        }
         // 初始化参数
         $this->initParams();
         // 初始化配置
@@ -100,8 +111,8 @@ class App extends Rest
      * @param array $data
      */
     protected function jsonReturn($code=0,$msg='',$data=[]){
-        $response = $this->response(['code'=>$code,'msg'=>$msg,'data'=>$data], "json",200);
-
+        $this->response->data(['code'=>$code,'msg'=>$msg,'data'=>$data]);
+        $this->response->contentType('application/json');
         $response->header("Access-Control-Allow-Origin","*")
             ->header("Access-Control-Allow-Methods","GET, POST,OPTIONS")
             ->header("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Accept, BY-SESSION-ID,BY-APP-ID ")

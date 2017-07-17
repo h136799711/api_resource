@@ -26,7 +26,7 @@ class SecurityCode extends App
      */
     public function image_create(){
         $acceptor = $this->sessionId;
-        $result = (new SecurityCodeCreateAction())->create($this->clientId,$acceptor,\app\src\securitycode\model\SecurityCode::TYPE_FOR_LOGIN,CodeCreateWayEnum::ALPHA_AND_NUMBER,4);
+        $result = (new SecurityCodeCreateAction())->create($this->appId,$acceptor,\app\src\securitycode\model\SecurityCode::TYPE_FOR_LOGIN,CodeCreateWayEnum::ALPHA_AND_NUMBER,4);
         if(ValidateHelper::legalArrayResult($result)){
             unset($result['info']['code']);
         }
