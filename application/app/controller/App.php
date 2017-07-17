@@ -19,7 +19,7 @@ use think\Request;
 
 class App extends Rest
 {
-    protected $clientId;
+    protected $appId;
     protected $sessionId;
 
     public function __construct()
@@ -36,12 +36,12 @@ class App extends Rest
 
     public function checkParams(){
 
-        $result = (new ClientsDetailAction())->detailByAppID($this->clientId);
-        if(ValidateHelper::legalArrayResult($result) && $result['info']['app_id'] == $this->clientId){
+        $result = (new ClientsDetailAction())->detailByAppID($this->appId);
+        if(ValidateHelper::legalArrayResult($result) && $result['info']['app_id'] == $this->appId){
             return true;
         }
         // app_id 无效
-        $this->fail($this->clientId.' app_id invalid');
+        $this->fail($this->appId.' app_id invalid');
     }
 
     public function initConfig(){
@@ -62,12 +62,12 @@ class App extends Rest
             $this->sessionId = $sessionId;
         }
 
-        $this->clientId = $this->_param('app_id','');
-        $clientId = isset($header['clientid']) ? $header['clientid'] : null;
-        if(empty($this->clientId)){
-            $this->clientId = $clientId;
+        $this->appId = $this->_param('app_id','');
+        $clientId = isset($header['appId']) ? $header['clientid'] : null;
+        if(empty($this->appId)){
+            $this->appId = $clientId;
         }
-        if(empty($this->clientId)){
+        if(empty($this->appId)){
             $this->fail('缺少 app_id');
         }
         if(empty($this->sessionId)){
@@ -105,7 +105,7 @@ class App extends Rest
 
         $response->header("Access-Control-Allow-Origin","*")
             ->header("Access-Control-Allow-Methods","GET, POST,OPTIONS")
-            ->header("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Accept, sessionId,clientId ")
+            ->header("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Accept, Session-ID,App-ID ")
 
             ->header("X-Powered-By","WWW.ITBOYE.COM")->send();
         exit(0);
