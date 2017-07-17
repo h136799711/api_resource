@@ -52,7 +52,8 @@ class App extends Rest
 
         $this->sessionId = $this->_param('session_id','');
         $header = Request::instance()->header();
-        $sessionId = isset($header['sessionid']) ? $header['sessionid'] : null;
+        var_dump($header);
+        $sessionId = isset($header['by-session-id']) ? $header['by-session-id'] : null;
 
         if(!empty($sessionId)) {
             session_start();
@@ -63,7 +64,7 @@ class App extends Rest
         }
 
         $this->appId = $this->_param('app_id','');
-        $clientId = isset($header['appId']) ? $header['clientid'] : null;
+        $clientId = isset($header['by-app-id']) ? $header['by-app-id'] : null;
         if(empty($this->appId)){
             $this->appId = $clientId;
         }
@@ -105,7 +106,7 @@ class App extends Rest
 
         $response->header("Access-Control-Allow-Origin","*")
             ->header("Access-Control-Allow-Methods","GET, POST,OPTIONS")
-            ->header("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Accept, Session-ID,App-ID ")
+            ->header("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Accept, BY-SESSION-ID,BY-APP-ID ")
 
             ->header("X-Powered-By","WWW.ITBOYE.COM")->send();
         exit(0);
