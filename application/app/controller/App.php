@@ -27,7 +27,7 @@ class App extends Rest
     public function __construct()
     {
         parent::__construct();
-        $this->response = Response::create();
+        $this->response = Response::create('','json');
         $this->response ->header("Access-Control-Allow-Origin","*")
             ->header("Access-Control-Allow-Methods","GET, POST,OPTIONS")
             ->header("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Accept, BY-SESSION-ID,BY-APP-ID ")
@@ -112,11 +112,9 @@ class App extends Rest
      */
     protected function jsonReturn($code=0,$msg='',$data=[]){
         $this->response->data(['code'=>$code,'msg'=>$msg,'data'=>$data]);
-        $this->response->contentType('application/json');
         $this->response->header("Access-Control-Allow-Origin","*")
             ->header("Access-Control-Allow-Methods","GET, POST,OPTIONS")
             ->header("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Accept, BY-SESSION-ID,BY-APP-ID ")
-
             ->header("X-Powered-By","WWW.ITBOYE.COM")->send();
         exit(0);
     }
