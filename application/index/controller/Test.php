@@ -53,11 +53,13 @@ class Test extends Controller
 //        $model = new \app\index\model\Test();
         $connection = Db::connect($config);
         $table = $connection->name('test2');
+        $model = new \app\index\model\Test();
         foreach ($list as $item){
-            $id = $item['id'];
+            $id = $item;
 //            $result = $logic->saveByID($id,['create_time'=>2]);
 //            var_dump($result);
-            $result = $table->where('id',$id)->update(['create_time'=>5]);
+            $result = $model->save(['create_time'=>6],['id'=>$id]);
+//            $result = $table->where('id',$id)->update(['create_time'=>5]);
             var_dump($result);
         }
     }
