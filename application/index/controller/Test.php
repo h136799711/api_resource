@@ -9,6 +9,7 @@
 namespace app\index\controller;
 
 
+use app\index\logic\TestLogic;
 use app\src\alibaichuan\service\OpenIMUserService;
 use app\src\base\helper\ResultHelper;
 use app\src\encrypt\algorithm\Md5V3Alg;
@@ -26,9 +27,45 @@ use app\src\tool_email\helper\EmailHelper;
 use app\src\user\action\LoginAction;
 use app\src\user\logic\MemberConfigLogic;
 use think\Controller;
+use think\Db;
 
 class Test extends Controller
 {
+    public function model(){
+        $logic = (new TestLogic());
+        $result =  $logic->queryNoPaging();
+        $list = $result['info'];
+        $config = [
+            // 数据库类型
+            'type'        => 'mysql',
+            // 服务器地址
+            'hostname'    => '127.0.0.1',
+            // 数据库名
+            'database'    => 'shopstore',
+            // 用户名
+            'username'       => 'hebidu',
+            // 密码
+            'password'       => ',136799711hbdHBD',
+            // 数据库编码默认采用utf8
+            'charset'     => 'utf8',
+            // 数据库表前缀
+            'prefix'      => 'think_',
+            // 数据库调试模式
+            'debug'       => true,
+        ];
+        var_dump($list);
+//        $model = new \app\index\model\Test();
+        $connection = Db::connect($config);
+        $table = $connection->table('shop_test');
+        foreach ($list as $item){
+            $id = $item['id'];
+//            $result = $logic->saveByID($id,['create_time'=>2]);
+//            var_dump($result);
+            $result = $table->where('id',$id)->update(['create_time'=>4]);
+            var_dump($result);
+        }
+    }
+
     public function time(){
         var_dump(LoginAction::class);
         echo time();
