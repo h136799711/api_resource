@@ -32,9 +32,7 @@ use think\Db;
 class Test extends Controller
 {
     public function model(){
-        $logic = (new TestLogic());
-        $result =  $logic->queryNoPaging();
-        $list = $result['info'];
+        $list = [1,2,3,4,5];
         $config = [
             // 数据库类型
             'type'        => 'mysql',
@@ -48,20 +46,18 @@ class Test extends Controller
             'password'       => ',136799711hbdHBD',
             // 数据库编码默认采用utf8
             'charset'     => 'utf8',
-            // 数据库表前缀
-            'prefix'      => 'shop_',
             // 数据库调试模式
             'debug'       => true,
         ];
-        var_dump($list);
+//        var_dump($list);
 //        $model = new \app\index\model\Test();
         $connection = Db::connect($config);
-        $table = $connection->table('test');
+        $table = $connection->name('test2');
         foreach ($list as $item){
             $id = $item['id'];
 //            $result = $logic->saveByID($id,['create_time'=>2]);
 //            var_dump($result);
-            $result = $table->where('id',$id)->update(['create_time'=>4]);
+            $result = $table->where('id',$id)->update(['create_time'=>5]);
             var_dump($result);
         }
     }
