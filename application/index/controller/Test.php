@@ -49,14 +49,14 @@ class Test extends Controller
             // 数据库编码默认采用utf8
             'charset'     => 'utf8',
             // 数据库表前缀
-            'prefix'      => 'think_',
+            'prefix'      => 'shop_',
             // 数据库调试模式
             'debug'       => true,
         ];
         var_dump($list);
 //        $model = new \app\index\model\Test();
         $connection = Db::connect($config);
-        $table = $connection->table('shop_test');
+        $table = $connection->table('test');
         foreach ($list as $item){
             $id = $item['id'];
 //            $result = $logic->saveByID($id,['create_time'=>2]);
