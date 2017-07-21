@@ -22,7 +22,7 @@ return [
         // 是否自动开启 SESSION
         'auto_start'     => true
     ],
-    'baidu_map_key'=> 'bV4eyokvXF2Z36PeTbww7fHQ',
+
     'default_module'         => 'admin',
     // 默认控制器名
     'default_controller'     => 'Index',
@@ -32,11 +32,11 @@ return [
     'default_return_type'    => 'html',
     'view_replace_str' => [
         '__UPLOAD__' => __ROOT__.'/static/upload', // 更改默认的/Public 替换规则
-        '__PUBLIC__' => __ROOT__ . '/static/' . request()->module(),
-        '__JS__' => __ROOT__ . '/static/' . request()->module() . '/js',
-        '__CSS__' => __ROOT__ . '/static/' . request()->module() . '/css',
-        '__IMG__' => __ROOT__ . '/static/' . request()->module() . '/imgs',
-        '__LEARUN__' => __ROOT__ . '/static/'. request()->module() . '/learun',
+        '__PUBLIC__' => '/static/' . request()->module(),
+        '__JS__' => '/static/' . request()->module() . '/js',
+        '__CSS__' => '/static/' . request()->module() . '/css',
+        '__IMG__' => '/static/' . request()->module() . '/imgs',
+        '__LEARUN__' => '/static/'. request()->module() . '/learun',
         '__CDN__' => ITBOYE_CDN,
         '__APP_VERSION__'=> time(),
         '__SELF__'=>__SELF__

@@ -15,21 +15,5 @@ define('__SELF__',strip_tags($_SERVER['REQUEST_URI']));
 define('APP_PATH', __DIR__ . '/../application/');
 // 定义缓存目录
 define('RUNTIME_PATH',__DIR__ . '/../runtime/');
-// 开始运行时间和内存使用
-define('START_TIME', microtime(true));
-define('START_MEM', memory_get_usage());
-//环境变量
-define('IS_CLI_', PHP_SAPI == 'cli' ? true : false);
-define('NOW_TIME', $_SERVER['REQUEST_TIME']);
 
-// 当前文件名
-if(!defined('_PHP_FILE_')) {
-    $_temp  = explode('.php',$_SERVER['PHP_SELF']);
-    define('_PHP_FILE_',    rtrim(str_replace($_SERVER['HTTP_HOST'],'',$_temp[0].'.php'),'/'));
-}
-if(!defined('__ROOT__')) {
-    $_root  =   rtrim(dirname(_PHP_FILE_),'/');
-    define('__ROOT__',  (($_root=='/' || $_root=='\\')?'':$_root));
-}
-// 加载框架引导文件
-require __DIR__ . '/../vendor/topthink/framework/start.php';
+require_once APP_PATH.'common_entry.php';
