@@ -175,4 +175,9 @@ class App extends Rest
         $page_size  = $this->_param('page_size',10);
         return new PageHelper(['page_index'=>$page_index,'page_size'=>$page_size]);
     }
+
+    public function _empty($method)
+    {
+        return $this->fail('404 不存在的资源');
+    }
 }

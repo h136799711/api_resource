@@ -20,6 +20,10 @@ use think\Request;
 class User extends App
 {
 
+    public function logout(){
+        return $this->success('退出成功');
+    }
+
     public function login(){
         $code = 'itboye';
         $country = $this->_param('country','+86');
