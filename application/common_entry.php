@@ -22,7 +22,7 @@ define('IS_POST', REQUEST_METHOD == 'POST' ? true : false);
 
 // 当前文件名
 if(!defined('_PHP_FILE_')) {
-    $_temp  = explode('.php',$_SERVER['PHP_SELF']);
+    $_temp  = explode('.php',$_SERVER['REQUEST_URI']);
     define('_PHP_FILE_',    rtrim(str_replace($_SERVER['HTTP_HOST'],'',$_temp[0].'.php'),'/'));
 }
 if(!defined('__ROOT__')) {
