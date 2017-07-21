@@ -6,6 +6,8 @@
  * Time: 19:59
  */
 return [
+    // 总管理员
+    'user_administrator'     =>  [1],
     'exception_handle'       => '\\app\\app\\exception\\AppExceptionHandler',
     'default_return_type'    => 'json',
     // 异常页面的模板文件

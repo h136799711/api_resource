@@ -9,7 +9,6 @@
 namespace app\app\helper;
 
 
-use app\src\admin\helper\AdminFunctionHelper;
 use app\src\menu\logic\MenuLogic;
 use app\src\powersystem\logic\AuthGroupAccessLogic;
 use app\src\powersystem\logic\AuthGroupLogic;
@@ -20,7 +19,6 @@ class AppMenuHelper
 
         $map = array('uid' => $uid);
         $result = (new AuthGroupAccessLogic())->queryNoPaging($map);
-
         $menuList = "";
         if ($result['status']) {
             $group_ids = '';
@@ -69,8 +67,8 @@ class AppMenuHelper
 
             $current_menus = array_unique($current_menus);
             foreach ($list as $val) {
-
-                if (in_array($val['id'], $current_menus) || AdminFunctionHelper::isRoot($uid)) {
+                var_dump(AppConfigHelper::isRoot($uid));
+                if (in_array($val['id'], $current_menus) || AppConfigHelper::isRoot($uid)) {
                     $menuList[] = [
                         'Id' => $val['id'],
                         'ParentId' => $val['pid'],
