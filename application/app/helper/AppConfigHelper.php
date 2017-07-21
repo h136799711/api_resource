@@ -21,8 +21,6 @@ class AppConfigHelper extends ConfigHelper
     public static function isRoot($uid){
         $admin = self::getValue('user_administrator');
         if(is_array($admin)){
-            var_dump($uid);
-            var_dump($admin);
             return in_array(intval($uid),$admin);
         }
         return $uid > 0 && $admin == intval($uid);
