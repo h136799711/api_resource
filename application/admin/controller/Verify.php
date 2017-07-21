@@ -39,7 +39,8 @@ class Verify extends BaseController {
         $result = $api->create($po);
         if($result['status']){
             $verify = new DbVerify();
-            $verify->entry($result['info']);
+            $info = $result['info'];
+            $verify->entry($info['code']);
         }else{
             dump($result['info']) ;
             exit;
