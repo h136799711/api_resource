@@ -67,7 +67,6 @@ class AppMenuHelper
 
             $current_menus = array_unique($current_menus);
             foreach ($list as $val) {
-                var_dump(AppConfigHelper::isRoot($uid));
                 if (in_array($val['id'], $current_menus) || AppConfigHelper::isRoot($uid)) {
                     $menuList[] = [
                         'Id' => $val['id'],
