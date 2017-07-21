@@ -28,8 +28,7 @@ if(!defined('_PHP_FILE_')) {
 if(!defined('__ROOT__')) {
     $_root  =   rtrim(dirname(_PHP_FILE_),'/');
     define('__ROOT__',  (($_root=='/' || $_root=='\\')?'':$_root));
-}
-
+} 
 // 加载框架引导文件
 try{
     require __DIR__ . '/../vendor/topthink/framework/start.php';
