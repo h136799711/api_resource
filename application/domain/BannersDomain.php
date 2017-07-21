@@ -17,7 +17,13 @@ use app\src\i18n\helper\LangHelper;
  */
 class BannersDomain extends BaseDomain{
 
+    /**
+     * 查询接口
+     * @internal param String $position 广告图片所在位置
+     */
     public function query(){
+
+        $this->checkVersion("100");
 
         $position = $this->_post('position','',LangHelper::lackParameter('position'));
 

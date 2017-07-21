@@ -52,10 +52,10 @@
       ]
     },
     {
-      "desc": "轮播广告相关接口",
+      "desc": "广告图片相关接口",
       "list": [
         {
-          "desc": "轮播广告查询接口",
+          "desc": "广告图片查询接口",
           "type": "By_Banners_query",
           "version": ["100","101"],
           "params": [
