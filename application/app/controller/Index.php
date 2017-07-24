@@ -10,6 +10,7 @@ namespace app\app\controller;
 
 
 use app\app\helper\AppMenuHelper;
+use app\app\helper\SensitiveDataHelper;
 use app\src\admin\helper\AdminConfigHelper;
 use app\src\admin\helper\AdminSessionHelper;
 use app\src\admin\helper\MenuHelper;
@@ -42,7 +43,8 @@ class Index extends App
             'id' => $user_info['id'],
             'username' => $user_info['username'],
             'nickname' => $user_info['nickname'],
-            'head' => $user_info['head']
+            'head' => $user_info['head'],
+            'mobile'=> SensitiveDataHelper::hiddenMobile($user_info['mobile'])
         ];
         $data = [
             'menuList' => $menuList,
