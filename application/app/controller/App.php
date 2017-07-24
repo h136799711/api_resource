@@ -87,14 +87,14 @@ class App extends Rest
     }
 
     public function returnResult($result){
-        if(isset($result['status'])){
+        if(array_key_exists('status',$result)){
             if($result['status']){
                 $this->success($result['info'],'操作成功');
             }else{
                 $this->fail($result['info']);
             }
         }else{
-            if(isset($result['code'])) {
+            if(array_key_exists('code', $result)) {
                 if ($result['code'] === 0) {
                     $this->success($result['data'], '操作成功');
                 } else {
@@ -102,6 +102,8 @@ class App extends Rest
                 }
             }
         }
+
+        $this->fail('无效的返回数据结构');
     }
 
     /**
