@@ -24,6 +24,35 @@
   ],
   "api_list": [
     {
+      "desc": "数据字典相关接口",
+      "list": [
+        {
+          "desc": "数据字典查询接口",
+          "type": "By_Datatree_query",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "parent_id",
+              "desc": "父节点id",
+              "value": "0"
+            },
+            {
+              "key": "level",
+              "desc": "所处层级",
+              "value": ""
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com",
+              "modify": "2017-06-19"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "desc": "异步通知模拟接口",
       "list": [
         {

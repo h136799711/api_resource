@@ -29,6 +29,16 @@
               "key": "app_id",
               "desc": "app_id",
               "value": "by4da4075b0eb014821"
+            },
+            {
+              "key": "parent_id",
+              "desc": "父节点id",
+              "value": "0"
+            },
+            {
+              "key": "level",
+              "desc": "所处层级",
+              "value": ""
             }
           ],
           "authors": [
