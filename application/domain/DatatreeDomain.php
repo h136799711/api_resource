@@ -14,10 +14,14 @@ use app\src\system\logic\DatatreeLogicV2;
 class DatatreeDomain extends BaseDomain {
     
     public function query(){
+        $parent_id = $this->_param('parent_id','');
         $level = $this->_post('level','');
         $map = [];
         if(!empty($level)){
             $map['level'] = $level;
+        }
+        if(strlen($parent_id) > 0){
+            $map['parentid'] = $parent_id;
         }
         $fields = "*";
         $order = "create_time desc";
