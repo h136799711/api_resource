@@ -14,7 +14,7 @@ use app\src\system\logic\DatatreeLogicV2;
 class DatatreeDomain extends BaseDomain {
     
     public function query(){
-        $parent_id = $this->_param('parent_id','');
+        $parent_id = $this->_post('parent_id','');
         $level = $this->_post('level','');
         $map = [];
         if(!empty($level)){
