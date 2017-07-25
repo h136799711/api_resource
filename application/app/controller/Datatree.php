@@ -21,7 +21,7 @@ class Datatree extends App
             $map['level'] = $level;
         }
         if(strlen($parent_id) > 0){
-            $map['parentid'] = $parent_id;
+            $map['parent_id'] = $parent_id;
         }
 
         $order = $this->_param('order','level asc');
