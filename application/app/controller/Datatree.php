@@ -16,6 +16,7 @@ class Datatree extends App
     public function query(){
         $parent_id = $this->_param('parent_id','');
         $level = $this->_param('level','');
+        $order = $this->_param('order','');
         $map = [];
         if(!empty($level)){
             $map['level'] = $level;
@@ -23,8 +24,14 @@ class Datatree extends App
         if(strlen($parent_id) > 0){
             $map['parent_id'] = $parent_id;
         }
+        if($order == 1){
+            $order = "sort desc";
+        }elseif($order == 2){
+            $order = "sort asc";
+        }else{
+            $order = "sort desc";
+        }
 
-        $order = $this->_param('order','level asc');
         $fields = $this->_param('fields','parents,parentid,notes,create_time,update_time,level,iconurl,data_level,sort,alias,id,code,name');
         $pageHelper = $this->getPageHelper();
         $req = new ByDatatreeRequest();

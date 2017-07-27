@@ -24,14 +24,19 @@ class DatatreeDomain extends BaseDomain {
             $map['parentid'] = $parent_id;
         }
         $fields = "*";
-        $order = "create_time desc";
+        $order = "id asc";
         $page = $this->getPageParams();
         $result = (new DatatreeLogicV2())->query($map,$page->queryParam(),$order,false,$fields);
         $this->apiReturnSuc($result);
     }
     
     public function add(){
-        
+        $parent_id = $this->_post('parent_id','');
+
+        if(strlen($parent_id) > 0 && intval($parent_id)){
+            $result = (new DatatreeLogicV2())->getInfo(['id'=>$parent_id]);
+
+        }
     }
     
     public function update(){
