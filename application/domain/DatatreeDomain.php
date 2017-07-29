@@ -11,6 +11,8 @@ namespace app\domain;
 
 use app\src\base\helper\ValidateHelper;
 use app\src\datatree\action\DatatreeAddAction;
+use app\src\datatree\action\DatatreeDeleteAction;
+use app\src\datatree\action\DatatreeUpdateAction;
 use app\src\system\logic\DatatreeLogicV2;
 use app\src\tool\helper\RadixHelper;
 
@@ -39,6 +41,7 @@ class DatatreeDomain extends BaseDomain {
         $name = $this->_post('name','');
         $notes = $this->_post('notes','');
         $sort = $this->_post('sort',0);
+        $iconurl = $this->_post('iconurl','');
         $data_level = $this->_post('data_level',0);
 
         $entity = [
@@ -47,7 +50,7 @@ class DatatreeDomain extends BaseDomain {
             'name'=>$name,
             'notes'=>$notes,
             'sort'=>$sort,
-            'iconurl'=>'',
+            'iconurl'=>$iconurl,
             'data_level'=>$data_level,
         ];
         $result = (new DatatreeAddAction())->add($entity);
@@ -55,11 +58,31 @@ class DatatreeDomain extends BaseDomain {
     }
     
     public function update(){
-        
+        $id = $this->_post('id','');
+        $alias = $this->_post('alias','');
+        $name = $this->_post('name','');
+        $notes = $this->_post('notes','');
+        $sort = $this->_post('sort',0);
+        $data_level = $this->_post('data_level',0);
+        $iconurl = $this->_post('iconurl','');
+
+        $entity = [
+            'parentid'=>$parent_id,
+            'alias'=>$alias,
+            'name'=>$name,
+            'notes'=>$notes,
+            'sort'=>$sort,
+            'iconurl'=>$iconurl,
+            'data_level'=>$data_level,
+        ];
+        $result = (new DatatreeUpdateAction())->update($id,$entity);
+        $this->returnResult($result);
     }
     
     public function delete(){
-        
+        $id = $this->_post('id','');
+        $result = (new DatatreeDeleteAction())->delete($id);
+        $this->returnResult($result);
     }
 
 
