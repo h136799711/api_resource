@@ -9,7 +9,10 @@
 namespace app\domain;
 
 
+use app\src\base\helper\ValidateHelper;
+use app\src\datatree\action\DatatreeAddAction;
 use app\src\system\logic\DatatreeLogicV2;
+use app\src\tool\helper\RadixHelper;
 
 class DatatreeDomain extends BaseDomain {
     
@@ -32,11 +35,23 @@ class DatatreeDomain extends BaseDomain {
     
     public function add(){
         $parent_id = $this->_post('parent_id','');
+        $alias = $this->_post('alias','');
+        $name = $this->_post('name','');
+        $notes = $this->_post('notes','');
+        $sort = $this->_post('sort',0);
+        $data_level = $this->_post('data_level',0);
 
-        if(strlen($parent_id) > 0 && intval($parent_id)){
-            $result = (new DatatreeLogicV2())->getInfo(['id'=>$parent_id]);
-
-        }
+        $entity = [
+            'parentid'=>$parent_id,
+            'alias'=>$alias,
+            'name'=>$name,
+            'notes'=>$notes,
+            'sort'=>$sort,
+            'iconurl'=>'',
+            'data_level'=>$data_level,
+        ];
+        $result = (new DatatreeAddAction())->add($entity);
+        $this->returnResult($result);
     }
     
     public function update(){
@@ -46,6 +61,6 @@ class DatatreeDomain extends BaseDomain {
     public function delete(){
         
     }
-    
-    
+
+
 }
