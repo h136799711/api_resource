@@ -76,7 +76,7 @@ class App extends Rest
     }
 
     public function initParams(){
-
+        $this->uid = -1;
         $this->sessionId = Request::instance()->header('by-session-id');
 
         $sessionId = $this->_param('session_id','');

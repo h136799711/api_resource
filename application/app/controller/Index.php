@@ -23,20 +23,18 @@ use app\src\user\facade\DefaultUserFacade;
 class Index extends App
 {
     public function user_data(){
-        $result = (new LoginSessionLogic())->getInfo(['log_session_id'=>$this->sessionId]);
 
-        if(!ValidateHelper::legalArrayResult($result)){
+        if($this->uid <= 0){
             $this->failNeedLogin('请重新登录');
         }
-        $uid = $result['info']['uid'];
 
-        $result = (new DefaultUserFacade())->getInfo($uid,$this->sessionId);
+        $result = (new DefaultUserFacade())->getInfo($this->uid,$this->sessionId);
         if(!ValidateHelper::legalArrayResult($result)){
             $this->failNeedLogin('请重新登录');
         }
 
         $user_info = $result['info'];
-        $menuList = AppMenuHelper::getMenu($uid);
+        $menuList = AppMenuHelper::getMenu($this->uid);
 
         $UCENTER_PLATFORM = ConfigHelper::getValue('UCENTER_PLATFORM');
         $user_info = [
