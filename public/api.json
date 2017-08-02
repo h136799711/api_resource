@@ -3,11 +3,12 @@
   "client_id": "by58018f50cfcae1",
   "client_secret": "cb0bfaf5b9b2f53a216bf518e18fef18",
   "alg":"md5_v3",
-  "project_name": "森森硬件项目接口",
+  "project_name": "API项目接口",
   "url_list":[
     {"desc":"APP测试环境地址(新)","url":"http://apidev.qqav.club/index.php?lang=en"}
   ],
   "meta_list":[
+    {"title":"注意","value":"所有接口统一传入by_uid参数，如果没有值，则传-1"},
     {"title":"友盟推送测试","value":"http://apidev.qqav.club/index.php/device_event/test_push?uid={用户id}&title=[test]"},
     {"title":"快递查看地址","value":"http://apidev.qqav.club/web.php/Express/index?order_code={订单编号}&uid={用户id}&psw={用户密码}"},
     {"title":"模拟支付完成(荒废)","value":"http://apidev.qqav.club/index.php/payback/test?pay_type={1=>支付宝(未毕),2=>Paypal(未毕),3=>微信,4=>余额(未毕)}&pay_cde={支付编号}[&fee={支付金额,分,可选,默认1}]"},
@@ -40,6 +41,123 @@
               "key": "level",
               "desc": "所处层级",
               "value": ""
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com",
+              "modify": "2017-06-19"
+            }
+          ]
+        },
+        {
+          "desc": "数据字典添加接口",
+          "type": "By_Datatree_add",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "parent_id",
+              "desc": "父节点id",
+              "value": "0"
+            },
+            {
+              "key": "iconurl",
+              "desc": "数据字典图标ID",
+              "value": "0"
+            },
+            {
+              "key": "data_level",
+              "desc": "数据级别（目前就系统和一般2种0：一般 1：系统）",
+              "value": "0"
+            },
+            {
+              "key": "alias",
+              "desc": "节点别名",
+              "value": "alias"
+            },
+            {
+              "key": "name",
+              "desc": "节点名称",
+              "value": "alias"
+            },
+            {
+              "key": "notes",
+              "desc": "备注",
+              "value": ""
+            },
+            {
+              "key": "sort",
+              "desc": "排序",
+              "value": "0"
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com",
+              "modify": "2017-06-19"
+            }
+          ]
+        },
+        {
+          "desc": "数据字典更新接口",
+          "type": "By_Datatree_update",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "id",
+              "desc": "数据ID",
+              "value": "0"
+            },
+            {
+              "key": "iconurl",
+              "desc": "数据字典图标ID",
+              "value": "0"
+            },
+            {
+              "key": "data_level",
+              "desc": "数据级别（目前就系统和一般2种0：一般 1：系统）",
+              "value": "0"
+            },
+            {
+              "key": "alias",
+              "desc": "节点别名",
+              "value": "alias"
+            },
+            {
+              "key": "name",
+              "desc": "节点名称",
+              "value": "alias"
+            },
+            {
+              "key": "notes",
+              "desc": "备注",
+              "value": ""
+            },
+            {
+              "key": "sort",
+              "desc": "排序",
+              "value": "0"
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com",
+              "modify": "2017-06-19"
+            }
+          ]
+        },
+        {
+          "desc": "数据字典删除接口（只有该节点是叶子节点才能删掉）",
+          "type": "By_Datatree_delete",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "id",
+              "desc": "节点id",
+              "value": "0"
             }
           ],
           "authors": [

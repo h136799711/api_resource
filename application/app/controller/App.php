@@ -13,6 +13,9 @@ use app\src\base\enum\ErrorCode;
 use app\src\base\helper\PageHelper;
 use app\src\base\helper\ValidateHelper;
 use app\src\clients\action\ClientsDetailAction;
+use app\src\session\action\LoginSessionGetInfoAction;
+use app\src\session\logic\LoginSessionLogic;
+use app\src\session\po\LoginInfoPo;
 use app\src\user\action\UserHelperAction;
 use think\controller\Rest;
 use think\Request;
@@ -23,6 +26,9 @@ class App extends Rest
     protected $appId;
     protected $sessionId;
     protected $response;
+    protected $uid;  // 会话id对于的uid
+    protected $uidIp;// 用户登录的时候的ip地址
+    protected $uidDeviceType;// 用户登录的时候的设备
 
     public function __construct()
     {
@@ -49,9 +55,19 @@ class App extends Rest
         $result = (new ClientsDetailAction())->detailByAppID($this->appId);
         if(ValidateHelper::legalArrayResult($result) && $result['info']['app_id'] == $this->appId){
             return true;
+        }else{
+            // app_id 无效
+            $this->fail($this->appId.' app_id invalid');
         }
-        // app_id 无效
-        $this->fail($this->appId.' app_id invalid');
+
+        $result = (new LoginSessionGetInfoAction())->info($this->sessionId);
+        if(ValidateHelper::legalArrayResult($result) && $result['info']['log_session_id'] == $this->sessionId){
+            $this->uid = $result['info']['uid'];
+            $loginInfoPo =  new LoginInfoPo($result['info']['login_info']);
+            $this->uidIp = $loginInfoPo->getIp();
+            $this->uidDeviceType = $loginInfoPo->getDeviceType();
+        }
+
         return false;
     }
 

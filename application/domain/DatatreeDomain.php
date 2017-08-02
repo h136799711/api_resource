@@ -9,12 +9,10 @@
 namespace app\domain;
 
 
-use app\src\base\helper\ValidateHelper;
 use app\src\datatree\action\DatatreeAddAction;
 use app\src\datatree\action\DatatreeDeleteAction;
 use app\src\datatree\action\DatatreeUpdateAction;
 use app\src\system\logic\DatatreeLogicV2;
-use app\src\tool\helper\RadixHelper;
 
 class DatatreeDomain extends BaseDomain {
     
@@ -34,7 +32,13 @@ class DatatreeDomain extends BaseDomain {
         $result = (new DatatreeLogicV2())->query($map,$page->queryParam(),$order,false,$fields);
         $this->apiReturnSuc($result);
     }
-    
+
+    /**
+     * 数据字典添加接口
+     *
+     * @version 1.0.0
+     * @history 1.0.0 创建该接口
+     */
     public function add(){
         $parent_id = $this->_post('parent_id','');
         $alias = $this->_post('alias','');
@@ -56,7 +60,13 @@ class DatatreeDomain extends BaseDomain {
         $result = (new DatatreeAddAction())->add($entity);
         $this->returnResult($result);
     }
-    
+
+    /**
+     * 数据字典更新接口
+     *
+     * @version 1.0.0
+     * @history 1.0.0 创建该接口
+     */
     public function update(){
         $id = $this->_post('id','');
         $alias = $this->_post('alias','');
@@ -78,11 +88,28 @@ class DatatreeDomain extends BaseDomain {
         $result = (new DatatreeUpdateAction())->update($id,$entity);
         $this->returnResult($result);
     }
-    
+
     public function delete(){
         $id = $this->_post('id','');
         $result = (new DatatreeDeleteAction())->delete($id);
         $this->returnResult($result);
+    }
+
+    /**
+     * 批量删除
+     *
+     * @version 1.0.0
+     * @history 1.0.0 创建该接口
+     */
+    public function bulkDelete(){
+        $ids = $this->_post('ids','');
+        $idArr = explode(",",$ids);
+
+        foreach ($idArr as $id){
+            (new DatatreeDeleteAction())->delete($id);
+        }
+
+        $this->apiReturnSuc(lang('success'));
     }
 
 
