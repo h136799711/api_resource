@@ -25,7 +25,7 @@ class Index extends App
     public function user_data(){
 
         if($this->uid <= 0){
-            $this->failNeedLogin('请重新登录');
+            $this->failNeedLogin($this->sessionId.'[uid] 请重新登录'.$this->uid);
         }
 
         $result = (new DefaultUserFacade())->getInfo($this->uid,$this->sessionId);

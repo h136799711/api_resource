@@ -53,9 +53,7 @@ class App extends Rest
     public function checkParams(){
 
         $result = (new ClientsDetailAction())->detailByAppID($this->appId);
-        if(ValidateHelper::legalArrayResult($result) && $result['info']['app_id'] == $this->appId){
-            return true;
-        }else{
+        if(!(ValidateHelper::legalArrayResult($result) && $result['info']['app_id'] == $this->appId)){
             // app_id 无效
             $this->fail($this->appId.' app_id invalid');
         }
@@ -68,7 +66,7 @@ class App extends Rest
             $this->uidDeviceType = $loginInfoPo->getDeviceType();
         }
 
-        return false;
+        return true;
     }
 
     public function initConfig(){
