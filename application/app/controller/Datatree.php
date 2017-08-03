@@ -45,4 +45,27 @@ class Datatree extends App
         $result = $req->delete($id);
         $this->returnResult($result);
     }
+
+    public function add() {
+        $parent_id = $this->_param('parent_id','');
+        $alias = $this->_param('alias','');
+        $name = $this->_param('name','');
+        $notes = $this->_param('notes','');
+        $sort = $this->_param('sort',0);
+        $iconurl = $this->_param('iconurl','');
+        $data_level = $this->_param('data_level',0);
+
+        $entity = [
+            'parentid'=>$parent_id,
+            'alias'=>$alias,
+            'name'=>$name,
+            'notes'=>$notes,
+            'sort'=>$sort,
+            'iconurl'=>$iconurl,
+            'data_level'=>$data_level,
+        ];
+        $req = new ByDatatreeRequest();
+        $result = $req->add($entity);
+        $this->returnResult($result);
+    }
 }
