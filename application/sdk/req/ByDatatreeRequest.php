@@ -63,13 +63,29 @@ class ByDatatreeRequest extends ByBaseSdkObj
      */
     public function update($id,$entity)
     {
-
         $data = [
             'type'=>'By_Datatree_update',
             'api_ver'=>'100',
             'notify_id'=>self::getNotifyId(),
         ];
         $data['id'] = $id;
+        $data = array_merge($entity,$data);
+
+        return $this->callRemote($data);
+    }
+
+    /**
+     * 数据字典添加
+     * @param $entity
+     * @return array
+     */
+    public function add($entity){
+        $data = [
+            'type'=>'By_Datatree_add',
+            'api_ver'=>'100',
+            'notify_id'=>self::getNotifyId()
+        ];
+
         $data = array_merge($entity,$data);
 
         return $this->callRemote($data);
