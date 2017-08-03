@@ -2,12 +2,16 @@
 
 if(config('app_debug')){
 $data = [
-    'data'=>htmlentities($message)
+    'msg'=>htmlentities($message)
 ];
 $data['line'] = $line;
 $data['file'] = $file;
 $data['trace_str'] = $trace;
-echo json_encode($data);
+$data['code'] = -2;
 }else{
-echo json_encode('服务器发生异常~ 请稍后再试');
+$data = [
+    'msg'=>'服务器发生异常~ 请稍后再试',
+    'code'=> -2
+]
 }
+echo json_encode($data);
