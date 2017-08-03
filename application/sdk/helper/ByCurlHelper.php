@@ -114,7 +114,11 @@ class ByCurlHelper
                 }
 
             }else{
-                $r = ByResultHelper::fail($info);
+                if(array_key_exists('msg',$info) && array_key_exists('code',$info)){            // 异常信息
+                    $r = ByResultHelper::fail($info['msg'],$info['code'],$info);
+                }else{
+                    $r = ByResultHelper::fail($info);
+                }
             }
 
         }

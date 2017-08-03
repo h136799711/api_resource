@@ -35,7 +35,7 @@ class ByResultHelper
      * @param int $code
      * @return array ['code','msg','data']
      */
-    public static function fail($info='',$code = ByRetCode::FAILED){
-        return ['code' => $code,'msg' => $info,'data'=>[]];
+    public static function fail($info='',$code = ByRetCode::FAILED,$data=[]){
+        return ['code' => $code,'msg' => $info,'data'=>$data];
     }
 }
