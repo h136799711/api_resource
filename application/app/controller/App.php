@@ -112,7 +112,7 @@ class App extends Rest
                 if ($result['code'] === 0) {
                     $this->success($result['data'], '操作成功');
                 } else {
-                    $this->fail($result['msg']);
+                    $this->fail($result['msg'],$result['code'],$result['data']);
                 }
             }
         }
@@ -143,9 +143,10 @@ class App extends Rest
      * 失败
      * @param $msg
      * @param int $code
+     * @param array $data
      */
-    protected function fail($msg,$code=-1){
-        $this->jsonReturn($code,$msg,[]);
+    protected function fail($msg,$code=-1,$data=[]){
+        $this->jsonReturn($code,$msg,$data);
     }
 
     /**
