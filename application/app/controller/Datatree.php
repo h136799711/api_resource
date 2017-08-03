@@ -43,6 +43,7 @@ class Datatree extends App
         $id = $this->_param('id','','缺少id');
         $req = new ByDatatreeRequest();
         $result = $req->delete($id);
+        var_dump($result);
         $this->returnResult($result);
     }
 }

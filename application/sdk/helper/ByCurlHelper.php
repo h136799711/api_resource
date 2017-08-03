@@ -23,8 +23,6 @@ class ByCurlHelper
     private $alg;
     private $debug = true;
 
-    private static $helper = false;
-
     function __construct($cfg = array()){
         if(!isset($cfg['by_api_gateway_uri']) || !isset($cfg['by_client_id'])
             || !isset($cfg['by_client_secret']) ){
@@ -105,14 +103,14 @@ class ByCurlHelper
 
                 // 签名校验
                 if(!$this->algInstance->verify_sign($info['sign'],$algParams)){
-
                     $r = ByResultHelper::fail(ByLangHelper::get('by_alg_verify_sign_fail'));
-                }
-                if($decrypt_data['code'] != 0){
-                    $pre = $this->debug ? 'API_'.$type.'=>' : '';
-                    $r = ByResultHelper::fail($pre.$decrypt_data['data']);
                 }else{
-                    $r = ByResultHelper::success($decrypt_data['data'],ByLangHelper::get('by_success'));
+                    if($decrypt_data['code'] != 0){
+                        $pre = $this->debug ? 'API_'.$type.'=>' : '';
+                        $r = ByResultHelper::fail($pre.$decrypt_data['data']);
+                    }else{
+                        $r = ByResultHelper::success($decrypt_data['data'],ByLangHelper::get('by_success'));
+                    }
                 }
 
             }else{
