@@ -113,7 +113,10 @@ class DatatreeDomain extends BaseDomain {
 
         foreach ($idArr as $id){
             if(!empty($id)){
-                (new DatatreeDeleteAction())->delete($id);
+                $result = (new DatatreeDeleteAction())->delete($id);
+                if(!$result['status']){
+                    $this->apiReturnErr($result['info']);
+                }
             }
         }
 
