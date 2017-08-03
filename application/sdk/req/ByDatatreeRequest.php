@@ -35,4 +35,43 @@ class ByDatatreeRequest extends ByBaseSdkObj
 
         return $this->callRemote($data);
     }
+
+    /**
+     * 删除
+     * @param $id
+     * @return array
+     */
+    public function delete($id)
+    {
+
+        $data = [
+            'type'=>'By_Datatree_bulkDelete',
+            'api_ver'=>'100',
+            'notify_id'=>self::getNotifyId(),
+        ];
+        $data['id'] = trim($id,",");
+
+        return $this->callRemote($data);
+    }
+
+
+    /**
+     * 更新
+     * @param $id
+     * @param $entity array name,alias,sort,iconurl
+     * @return array
+     */
+    public function update($id,$entity)
+    {
+
+        $data = [
+            'type'=>'By_Datatree_update',
+            'api_ver'=>'100',
+            'notify_id'=>self::getNotifyId(),
+        ];
+        $data['id'] = $id;
+        $data = array_merge($entity,$data);
+
+        return $this->callRemote($data);
+    }
 }

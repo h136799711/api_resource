@@ -58,6 +58,35 @@
               "modify": "2017-06-19"
             }
           ]
+        },
+        {
+          "desc": "数据字典删除接口",
+          "type": "datatree/delete",
+          "version": ["100"],
+          "params": [
+            {
+              "key":"session_id",
+              "desc": "[必须]",
+              "value": "byitboye"
+            },
+            {
+              "key": "app_id",
+              "desc": "app_id",
+              "value": "by4da4075b0eb014821"
+            },
+            {
+              "key": "id",
+              "desc": "删除的节点id，多个以逗号隔开",
+              "value": "0"
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com",
+              "modify": "2017-06-19"
+            }
+          ]
         }
       ]
     },

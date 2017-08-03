@@ -72,19 +72,25 @@ class DatatreeDomain extends BaseDomain {
         $alias = $this->_post('alias','');
         $name = $this->_post('name','');
         $notes = $this->_post('notes','');
-        $sort = $this->_post('sort',0);
-        $data_level = $this->_post('data_level',0);
-        $iconurl = $this->_post('iconurl','');
+        $sort = $this->_post('sort','');
+        $data_level = $this->_post('data_level','');
+        $iconurl = $this->_post('iconurl',-1);
 
         $entity = [
-            'parentid'=>$parent_id,
             'alias'=>$alias,
             'name'=>$name,
-            'notes'=>$notes,
-            'sort'=>$sort,
-            'iconurl'=>$iconurl,
-            'data_level'=>$data_level,
+            'notes'=>$notes
         ];
+        if($iconurl != -1){
+            $entity['iconurl'] = $iconurl;
+        }
+        if(strlen($sort) > 0){
+            $entity['sort'] = $sort;
+        }
+        if(strlen($data_level) > 0){
+            $entity['data_level'] = $data_level;
+        }
+
         $result = (new DatatreeUpdateAction())->update($id,$entity);
         $this->returnResult($result);
     }

@@ -38,4 +38,11 @@ class Datatree extends App
         $result = $req->query($map,$pageHelper,$order,$fields);
         $this->returnResult($result);
     }
+
+    public function delete(){
+        $id = $this->_param('id','','缺少id');
+        $req = new ByDatatreeRequest();
+        $result = $req->delete($id);
+        $this->returnResult($result);
+    }
 }
