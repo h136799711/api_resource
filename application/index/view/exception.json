@@ -1,7 +1,7 @@
 <?php
 if(config('app_debug')){
 $data = [
-'data'=>htmlentities($message)
+'msg'=>htmlentities($message)
 ];
 $data['line'] = $line;
 $data['file'] = $file;
