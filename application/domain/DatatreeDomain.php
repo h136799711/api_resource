@@ -108,11 +108,13 @@ class DatatreeDomain extends BaseDomain {
      * @history 1.0.0 创建该接口
      */
     public function bulkDelete(){
-        $ids = $this->_post('ids','');
+        $ids = $this->_post('id','');
         $idArr = explode(",",$ids);
 
         foreach ($idArr as $id){
-            (new DatatreeDeleteAction())->delete($id);
+            if(!empty($id)){
+                (new DatatreeDeleteAction())->delete($id);
+            }
         }
 
         $this->apiReturnSuc(lang('success'));
