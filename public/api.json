@@ -5,7 +5,7 @@
   "alg":"md5_v3",
   "project_name": "API项目接口",
   "url_list":[
-    {"desc":"APP测试环境地址(新)","url":"http://apidev.qqav.club/index.php?lang=en"}
+    {"desc":"APP测试环境地址(新)","url":"http://apidev.qqav.club/index.php"}
   ],
   "meta_list":[
     {"title":"注意","value":"所有接口统一传入by_uid参数，如果没有值，则传-1"},
