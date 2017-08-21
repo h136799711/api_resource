@@ -107,9 +107,17 @@ class ByCurlHelper
                 }else{
                     if($decrypt_data['code'] != 0){
                         $pre = $this->debug ? 'API_'.$type.'=>' : '';
-                        $r = ByResultHelper::fail($pre.$decrypt_data['data']);
+                        if(array_key_exists('msg',$decrypt_data)){
+                            $r = ByResultHelper::fail($pre.$decrypt_data['msg']);
+                        }else{
+                            $r = ByResultHelper::fail($pre.$decrypt_data['data']);
+                        }
                     }else{
-                        $r = ByResultHelper::success($decrypt_data['data'],ByLangHelper::get('by_success'));
+                        if(array_key_exists('msg',$decrypt_data)){
+                            $r = ByResultHelper::success($decrypt_data['data'],$decrypt_data['msg']);
+                        }else{
+                            $r = ByResultHelper::success($decrypt_data['data'],ByLangHelper::get('by_success'));
+                        }
                     }
                 }
 
