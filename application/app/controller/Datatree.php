@@ -56,7 +56,7 @@ class Datatree extends App
         $data_level = $this->_param('data_level',0);
 
         $entity = [
-            'parentid'=>$parent_id,
+            'parent_id'=>$parent_id,
             'alias'=>$alias,
             'name'=>$name,
             'notes'=>$notes,
