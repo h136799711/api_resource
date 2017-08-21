@@ -90,7 +90,7 @@
         },
         {
           "desc": "数据字典添加接口",
-          "type": "By_Datatree_add",
+          "type": "datatree/add",
           "version": ["100"],
           "params": [
             {
