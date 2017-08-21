@@ -271,7 +271,7 @@ class BaseDomain {
     /**
      * ajax返回
      * @param $msg
-     * @param array $data
+     * @param $data
      * @param bool $cache
      * @internal param string $msg
      * @internal param $i
@@ -312,7 +312,7 @@ class BaseDomain {
             //如果是数字，则应该是添加或修改操作
             //对于这种情况，如果大于0 则默认成功 否则 失败
             if($id > 0){
-                $this->apiReturnSuc(lang("success"),$id);
+                $this->apiReturnSuc($id,lang("success"));
             }else{
                 $this->apiReturnErr(lang("fail"), $id);
             }
