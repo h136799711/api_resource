@@ -270,16 +270,17 @@ class BaseDomain {
 
     /**
      * ajax返回
-     * @param $data
+     * @param $msg
+     * @param array $data
      * @param bool $cache
      * @internal param string $msg
      * @internal param $i
      */
-    protected function apiReturnSuc($data ,  $cache = false) {
+    protected function apiReturnSuc($msg , $data=[],  $cache = false) {
         if($this->apiVersionIsDeprecated){
-            $this->ajaxReturn(['code' => ErrorCode::Api_Service_Is_Deprecated, 'data' => $data,'cache' => $cache]);
+            $this->ajaxReturn(['code' => ErrorCode::Api_Service_Is_Deprecated, 'data' => $data,'cache' => $cache,'msg' => $msg]);
         }else{
-            $this->ajaxReturn(['code' => 0, 'data' => $data,'cache' => $cache]);
+            $this->ajaxReturn(['code' => 0, 'data' => $data,'cache' => $cache,'msg' => $msg]);
         }
     }
 
@@ -305,28 +306,30 @@ class BaseDomain {
             $info = $result['info'];
 
             if(!is_int($info) && !ValidateHelper::isNumberStr($info)){
-                $this->apiReturnSuc($info);
+                $this->apiReturnSuc($info,$info);
             }
             $id = intval($info);
             //如果是数字，则应该是添加或修改操作
             //对于这种情况，如果大于0 则默认成功 否则 失败
             if($id > 0){
-                $this->apiReturnSuc(lang("success"));
+                $this->apiReturnSuc(lang("success"),$id);
             }else{
-                $this->apiReturnErr(lang("fail"));
+                $this->apiReturnErr(lang("fail"), $id);
             }
 
         }
     }
+
     /**
      * ajax返回，并自动写入token返回
-     * @param $data
+     * @param $msg
+     * @param array $data
      * @param int $code
      * @internal param $i
      */
-    protected function apiReturnErr($data, $code = -1){
+    protected function apiReturnErr($msg,$code = -1,$data=[]){
         //TODO: 异步收集错误信息
-        $this->ajaxReturn(['code' => $code, 'data' => $data,'cache' => false]);
+        $this->ajaxReturn(['code' => $code,'msg'=>$msg, 'data' => $data,'cache' => false]);
     }
 
     /**

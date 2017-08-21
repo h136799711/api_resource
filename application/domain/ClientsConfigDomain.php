@@ -20,7 +20,7 @@ class ClientsConfigDomain extends BaseDomain
     public function create(){
         $entity = $this->getParams(['title','value','type','app_id','module_code','name']);
         $result = (new ClientsConfigCreateAction())->create($entity);
-        return $result;
+        $this->exitWhenError($result,true);
     }
 
     public function del(){
