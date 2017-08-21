@@ -276,7 +276,7 @@ class BaseDomain {
      * @internal param string $msg
      * @internal param $i
      */
-    protected function apiReturnSuc($msg , $data=[],  $cache = false) {
+    protected function apiReturnSuc($data, $msg='success' , $cache = false) {
         if($this->apiVersionIsDeprecated){
             $this->ajaxReturn(['code' => ErrorCode::Api_Service_Is_Deprecated, 'data' => $data,'cache' => $cache,'msg' => $msg]);
         }else{
