@@ -13,6 +13,7 @@ use app\src\datatree\action\DatatreeAddAction;
 use app\src\datatree\action\DatatreeDeleteAction;
 use app\src\datatree\action\DatatreeUpdateAction;
 use app\src\system\logic\DatatreeLogicV2;
+use think\Db;
 
 class DatatreeDomain extends BaseDomain {
     
@@ -110,16 +111,17 @@ class DatatreeDomain extends BaseDomain {
     public function bulkDelete(){
         $ids = $this->_post('id','');
         $idArr = explode(",",$ids);
-
+        Db::startTrans();
         foreach ($idArr as $id){
             if(!empty($id)){
                 $result = (new DatatreeDeleteAction())->delete($id);
                 if(!$result['status']){
+                    Db::rollback();
                     $this->apiReturnErr($result['info']);
                 }
             }
         }
-
+        Db::commit();
         $this->apiReturnSuc(lang('success'));
     }
 
