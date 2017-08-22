@@ -50,7 +50,7 @@ class DatatreeDomain extends BaseDomain {
         $data_level = $this->_post('data_level',0);
 
         $entity = [
-            'parentid'=>$parent_id,
+            'parent_id'=>$parent_id,
             'alias'=>$alias,
             'name'=>$name,
             'notes'=>$notes,
