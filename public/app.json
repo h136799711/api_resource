@@ -141,6 +141,60 @@
               "modify": "2017-06-19"
             }
           ]
+        },
+        {
+          "desc": "数据字典更新接口",
+          "type": "datatree/update",
+          "version": ["100"],
+          "params": [
+            {
+              "key":"session_id",
+              "desc": "[必须]",
+              "value": "byitboye"
+            },
+            {
+              "key": "id",
+              "desc": "数据ID",
+              "value": "0"
+            },
+            {
+              "key": "iconurl",
+              "desc": "数据字典图标ID",
+              "value": "0"
+            },
+            {
+              "key": "data_level",
+              "desc": "数据级别（目前就系统和一般2种0：一般 1：系统）",
+              "value": "0"
+            },
+            {
+              "key": "alias",
+              "desc": "节点别名",
+              "value": "alias"
+            },
+            {
+              "key": "name",
+              "desc": "节点名称",
+              "value": "alias"
+            },
+            {
+              "key": "notes",
+              "desc": "备注",
+              "value": ""
+            },
+            {
+              "key": "sort",
+              "desc": "排序",
+              "value": "0"
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com",
+              "modify": "2017-06-19"
+            }
+          ]
         }
       ]
     },

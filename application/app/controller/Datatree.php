@@ -68,4 +68,38 @@ class Datatree extends App
         $result = $req->add($entity);
         $this->returnResult($result);
     }
+
+    /*
+     * 更新接口
+     * @version 1.0.0
+     * @history 1.0.0
+     */
+    public function update(){
+        $id = $this->_param('id','');
+        $alias = $this->_param('alias','');
+        $name = $this->_param('name','');
+        $notes = $this->_param('notes','');
+        $sort = $this->_param('sort','');
+        $data_level = $this->_param('data_level','');
+        $iconurl = $this->_param('iconurl',-1);
+
+        $entity = [
+            'alias'=>$alias,
+            'name'=>$name,
+            'notes'=>$notes
+        ];
+        if($iconurl != -1){
+            $entity['iconurl'] = $iconurl;
+        }
+        if(strlen($sort) > 0){
+            $entity['sort'] = $sort;
+        }
+        if(strlen($data_level) > 0){
+            $entity['data_level'] = $data_level;
+        }
+
+        $req = new ByDatatreeRequest();
+        $result = $req->update($id,$entity);
+        $this->returnResult($result);
+    }
 }
