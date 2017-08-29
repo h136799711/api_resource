@@ -52,7 +52,6 @@ abstract class Base extends Rest{
     public function __construct(){
         $this->alParams = new AlgParams();
         try{
-            addLog("__BASE__ORIGIN__",$_GET,$_POST,"入口",false);
             parent::__construct();
 
             if(method_exists($this,"_initialize")){
@@ -84,7 +83,7 @@ abstract class Base extends Rest{
 
         //读取传输过来的加密参数
         $post = $this->_post('itboye','');
-        addLog("__BASE__ORIGIN__",$post,'__ORIGIN__',"通信算法(".$alg.")",false,$clientInfo['client_name']);
+        addLog("__BASE__ORIGIN__",$post,'__ORIGIN__',"通信算法(".$alg.")",true,$clientInfo['client_name']);
 
         $algFactory = new AlgFactory();
         $this->algInstance = $algFactory->getAlg($alg);
@@ -103,6 +102,13 @@ abstract class Base extends Rest{
         $this->alParams->initFromArray($data);
 
         $this->alParams->isValid();
+
+        // 验证数据签名
+        $sign = array_key_exists('sign',$data);
+
+        if($this->algInstance->verify_sign($sign, $this->alParams)){
+            $this->apiReturnErr('sign verify failed');
+        }
     }
 
     /**

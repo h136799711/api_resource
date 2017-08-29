@@ -85,57 +85,6 @@ class BaseDomain {
         $this->lang      = $this->origin_data['lang'];
     }
 
-//    private function verify(){
-//        if(!($this->algInstance instanceof IAlgorithm)){
-//            throw  new \Exception("invalid algInstance param");
-//        }
-//
-//        //1. 请求时间戳校验
-//        $now = microtime(true);//time();
-//        //时间误差 +- 1分钟
-//        if($now - 60 > $this->time || $this->time > $now + 60){
-//            $this->apiReturnErr(lang('invalid_request'),ErrorCode::Invalid_Parameter);
-//        }
-
-//        //2. 签名校验
-//        $algParams = new AlgParams();
-//        $algParams->setClientSecret($this->client_secret);
-//        $algParams->setNotifyId($this->notify_id);
-//        $algParams->setTime($this->time);
-//        $algParams->setData($this->data);
-//        $algParams->setType($this->api_type);
-//
-//        try{
-//
-//            //2. 验签
-//            if(!$this->algInstance->verify_sign($this->sign,$algParams)){
-//                $this->apiReturnErr(lang('err_sign'));
-//            }
-//
-//            //3. 数据解密
-//            $this->decrypt_data                 = [];
-//            $this->decrypt_data                 = $algParams->getResponseParams();
-//            $this->decrypt_data['api_ver']      = $this->api_ver;
-//            $this->decrypt_data['lang']         = $this->lang;
-//            $this->decrypt_data['client_id']    = $this->client_id;
-//            $this->decrypt_data['client_secret']= $this->client_secret;
-//            $this->decrypt_data['app_version']  = $this->app_version;
-//            $this->decrypt_data['app_type']     = $this->app_type;
-//
-//            $data = $this->algInstance->decryptData($this->data);
-//            if(is_array($data)){
-//                foreach($data as $key=>$vo){
-//                    $this->decrypt_data['_data_'.$key] = $vo;
-//                }
-//            }
-//        }catch (Exception $e){
-//
-//            $this->apiReturnErr(ExceptionHelper::getErrorString($e));
-//
-//        }
-//    }
-
-
     /**
      * 缓存 api结果 并返回
      * @param $key
