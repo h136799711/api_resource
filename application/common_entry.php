@@ -1,12 +1,13 @@
 <?php
 /**
- * 用于入口文件公有部分提取，仅此作用
- * User: 1
- * Date: 2017-07-21
- * Time: 10:39
- * @author 346551990@qq.com
- * @version 1.0
+ * @author hebidu <email:346551990@qq.com>
+ * @modify 2017-11-08 16:15:15
  */
+
+// 禁止访问
+if (!array_key_exists('pwd', $_GET)) {
+    exit('DENY');
+}
 
 // 开始运行时间和内存使用
 define('START_TIME', microtime(true));

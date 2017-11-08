@@ -11,5 +11,6 @@
         "itboye/src":"dev-api",
         "shark/simple_html_dom":"dev-master",
         "phpmailer/phpmailer": "^5.2"
+
     }
 }
