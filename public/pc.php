@@ -11,4 +11,4 @@ define('APP_PATH', __DIR__ . '/../application/');
 // 定义运行时目录
 define('RUNTIME_PATH',__DIR__ . '/../runtime/');
 
-require_once APP_PATH.'common_entry.php';
+require_once APP_PATH . 'common_entry.php';
