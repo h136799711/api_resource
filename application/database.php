@@ -11,9 +11,9 @@ return [
     // 数据库名
     'database'       => 'qqav',
     // 用户名
-    'username'       => 'hebidu',
+    'username'       => 'root',
     // 密码
-    'password'       => ',136799711hbdHBD',
+    'password'       => ',364945361hbdHBD',
     // 端口
     'hostport'       => '3306',
     // 连接dsn
