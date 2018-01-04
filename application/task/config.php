@@ -7,4 +7,5 @@
  */
 return [
     'default_return_type'    => 'html',
+    'VAR_PAGE'=>'p',
 ];

@@ -9,6 +9,7 @@ define("ITBOYE_CDN", "http://devapi.cdn.qqav.club");
 
 return [
 
+
     // 默认时区
     'default_timezone'       => 'Etc/GMT',
 
