@@ -4,10 +4,6 @@
  * @modify 2017-11-08 16:15:15
  */
 
-// 禁止访问
-if (!array_key_exists('pwd', $_GET)) {
-    exit('DENY');
-}
 
 // 开始运行时间和内存使用
 define('START_TIME', microtime(true));
